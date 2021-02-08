@@ -9,5 +9,7 @@ import XCTest
 @testable import Chat2chat
 
 class Chat2chatTests: XCTestCase {
-
+    func testTest(){
+        XCTAssertEqual(1, 1)
+    }
 }
