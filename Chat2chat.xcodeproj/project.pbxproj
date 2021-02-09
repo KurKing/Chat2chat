@@ -20,6 +20,7 @@
 		D23733DD25D27BCB004098E5 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23733DB25D27BCB004098E5 /* ChatViewController.swift */; };
 		D23733E525D27C12004098E5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23733E325D27C12004098E5 /* SettingsViewController.swift */; };
 		D23733F725D2B976004098E5 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23733F625D2B976004098E5 /* AccountViewController.swift */; };
+		D237341525D30E0B004098E5 /* MessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237341425D30E0B004098E5 /* MessageViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		D23733DB25D27BCB004098E5 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		D23733E325D27C12004098E5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D23733F625D2B976004098E5 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		D237341425D30E0B004098E5 /* MessageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewCell.swift; sourceTree = "<group>"; };
 		EA43C064B6CD8363F3C21829 /* Pods_Chat2chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat2chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -120,8 +122,9 @@
 			isa = PBXGroup;
 			children = (
 				D237334E25D1C689004098E5 /* App */,
-				D237335225D1C69C004098E5 /* Controllers */,
 				D237335125D1C691004098E5 /* Model */,
+				D237341325D30DD2004098E5 /* Views */,
+				D237335225D1C69C004098E5 /* Controllers */,
 				D23733F325D2A3DB004098E5 /* SupportingFiles */,
 				D237331B25D1BD1F004098E5 /* Info.plist */,
 				D237334925D1C61B004098E5 /* GoogleService-Info.plist */,
@@ -173,6 +176,14 @@
 				D237331625D1BD1F004098E5 /* Assets.xcassets */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		D237341325D30DD2004098E5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D237341425D30E0B004098E5 /* MessageViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,6 +371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D237341525D30E0B004098E5 /* MessageViewCell.swift in Sources */,
 				D237331525D1BD1B004098E5 /* Chat2chat.xcdatamodeld in Sources */,
 				D237330F25D1BD1B004098E5 /* MainViewController.swift in Sources */,
 				D237330B25D1BD1B004098E5 /* AppDelegate.swift in Sources */,

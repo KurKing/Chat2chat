@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private let bgImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "chatBg"))
@@ -17,12 +17,22 @@ class ChatViewController: UIViewController {
         return imageView
     }()
     
-    //MARK: - viewDidLoad
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private let chatTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(MessageViewCell.self, forCellReuseIdentifier: "cell")
         
-        //bg image
-        view.addSubview(bgImageView)
+        return tableView
+    }()
+    
+    //MARK: - loadView
+    override func loadView() {
+        super.loadView()
+        
+        chatTableView.dataSource = self
+        chatTableView.delegate = self
+        chatTableView.backgroundView = bgImageView
+        view.addSubview(chatTableView)
         addConstraints()
     }
     
@@ -30,21 +40,41 @@ class ChatViewController: UIViewController {
     private func addConstraints(){
         var constraints = [NSLayoutConstraint]()
         
-        //bgImageView
-        constraints.append(
-            bgImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)
-        )
-        constraints.append(
-            bgImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
-        )
-        constraints.append(
-            bgImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
-        )
-        constraints.append(
-            bgImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        )
+        //full screen constraints
+        for i in [bgImageView, chatTableView]{
+            constraints.append(
+                i.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)
+            )
+            constraints.append(
+                i.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+            )
+            constraints.append(
+                i.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+            )
+            constraints.append(
+                i.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            )
+        }
         
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    //MARK: - viewDidLoad
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+    }
+    
+    //MARK: - Table view delegate
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        return cell
     }
 
 }
