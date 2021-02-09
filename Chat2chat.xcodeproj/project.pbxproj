@@ -11,13 +11,15 @@
 		4DFEC4FCFE689CFA7C358A26 /* Pods_Chat2chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA43C064B6CD8363F3C21829 /* Pods_Chat2chat.framework */; };
 		D237330B25D1BD1B004098E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237330A25D1BD1B004098E5 /* AppDelegate.swift */; };
 		D237330D25D1BD1B004098E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237330C25D1BD1B004098E5 /* SceneDelegate.swift */; };
-		D237330F25D1BD1B004098E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237330E25D1BD1B004098E5 /* ViewController.swift */; };
-		D237331225D1BD1B004098E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D237331025D1BD1B004098E5 /* Main.storyboard */; };
+		D237330F25D1BD1B004098E5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237330E25D1BD1B004098E5 /* MainViewController.swift */; };
 		D237331525D1BD1B004098E5 /* Chat2chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D237331325D1BD1B004098E5 /* Chat2chat.xcdatamodeld */; };
 		D237331725D1BD1F004098E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D237331625D1BD1F004098E5 /* Assets.xcassets */; };
 		D237331A25D1BD1F004098E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D237331825D1BD1F004098E5 /* LaunchScreen.storyboard */; };
 		D237332525D1BD1F004098E5 /* Chat2chatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237332425D1BD1F004098E5 /* Chat2chatTests.swift */; };
 		D237334A25D1C61B004098E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D237334925D1C61B004098E5 /* GoogleService-Info.plist */; };
+		D23733DD25D27BCB004098E5 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23733DB25D27BCB004098E5 /* ChatViewController.swift */; };
+		D23733E525D27C12004098E5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23733E325D27C12004098E5 /* SettingsViewController.swift */; };
+		D23733F725D2B976004098E5 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23733F625D2B976004098E5 /* AccountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +41,7 @@
 		D237330725D1BD1B004098E5 /* Chat2chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat2chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D237330A25D1BD1B004098E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D237330C25D1BD1B004098E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D237330E25D1BD1B004098E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D237331125D1BD1B004098E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D237330E25D1BD1B004098E5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D237331425D1BD1B004098E5 /* Chat2chat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chat2chat.xcdatamodel; sourceTree = "<group>"; };
 		D237331625D1BD1F004098E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D237331925D1BD1F004098E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +50,9 @@
 		D237332425D1BD1F004098E5 /* Chat2chatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat2chatTests.swift; sourceTree = "<group>"; };
 		D237332625D1BD1F004098E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D237334925D1C61B004098E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D23733DB25D27BCB004098E5 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		D23733E325D27C12004098E5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D23733F625D2B976004098E5 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		EA43C064B6CD8363F3C21829 /* Pods_Chat2chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat2chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -118,8 +122,7 @@
 				D237334E25D1C689004098E5 /* App */,
 				D237335225D1C69C004098E5 /* Controllers */,
 				D237335125D1C691004098E5 /* Model */,
-				D237334D25D1C681004098E5 /* Views */,
-				D237331625D1BD1F004098E5 /* Assets.xcassets */,
+				D23733F325D2A3DB004098E5 /* SupportingFiles */,
 				D237331B25D1BD1F004098E5 /* Info.plist */,
 				D237334925D1C61B004098E5 /* GoogleService-Info.plist */,
 			);
@@ -133,15 +136,6 @@
 				D237332625D1BD1F004098E5 /* Info.plist */,
 			);
 			path = Chat2chatTests;
-			sourceTree = "<group>";
-		};
-		D237334D25D1C681004098E5 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				D237331025D1BD1B004098E5 /* Main.storyboard */,
-				D237331825D1BD1F004098E5 /* LaunchScreen.storyboard */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		D237334E25D1C689004098E5 /* App */ = {
@@ -164,9 +158,21 @@
 		D237335225D1C69C004098E5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D237330E25D1BD1B004098E5 /* ViewController.swift */,
+				D237330E25D1BD1B004098E5 /* MainViewController.swift */,
+				D23733F625D2B976004098E5 /* AccountViewController.swift */,
+				D23733DB25D27BCB004098E5 /* ChatViewController.swift */,
+				D23733E325D27C12004098E5 /* SettingsViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D23733F325D2A3DB004098E5 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D237331825D1BD1F004098E5 /* LaunchScreen.storyboard */,
+				D237331625D1BD1F004098E5 /* Assets.xcassets */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,7 +262,6 @@
 				D237331A25D1BD1F004098E5 /* LaunchScreen.storyboard in Resources */,
 				D237334A25D1C61B004098E5 /* GoogleService-Info.plist in Resources */,
 				D237331725D1BD1F004098E5 /* Assets.xcassets in Resources */,
-				D237331225D1BD1B004098E5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,9 +361,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D237331525D1BD1B004098E5 /* Chat2chat.xcdatamodeld in Sources */,
-				D237330F25D1BD1B004098E5 /* ViewController.swift in Sources */,
+				D237330F25D1BD1B004098E5 /* MainViewController.swift in Sources */,
 				D237330B25D1BD1B004098E5 /* AppDelegate.swift in Sources */,
+				D23733DD25D27BCB004098E5 /* ChatViewController.swift in Sources */,
 				D237330D25D1BD1B004098E5 /* SceneDelegate.swift in Sources */,
+				D23733E525D27C12004098E5 /* SettingsViewController.swift in Sources */,
+				D23733F725D2B976004098E5 /* AccountViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,14 +389,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D237331025D1BD1B004098E5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D237331125D1BD1B004098E5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D237331825D1BD1F004098E5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
