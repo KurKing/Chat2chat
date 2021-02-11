@@ -6,57 +6,65 @@
 //
 
 import UIKit
+import SnapKit
 
 class MessageViewCell: UITableViewCell {
     
     //MARK: - Avatar
     let avatar: UIImageView = {
-        let image = UIImage(named: "avatar")
+        let image = UIImage(named: "avatar\(Int.random(in: 0...2))")
         let imageView = UIImageView(image: image)
+        imageView.layer.cornerRadius = 20
+        imageView.clipsToBounds = true
         
         return imageView
     }()
     
-    //MARK: - label
-    let label: UILabel = {
+    //MARK: - messageLabel
+    let messageLabel: UILabel = {
         let uilabel = UILabel()
-        uilabel.text = "Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!Hello, World!"
+        uilabel.text = "\(pow(10,Int.random(in: 1...6)))"
         uilabel.numberOfLines = 0
         uilabel.translatesAutoresizingMaskIntoConstraints = false
         uilabel.lineBreakMode = .byWordWrapping
-        uilabel.backgroundColor = UIColor(named: "BackgroundColor")
         uilabel.textColor = .white
+        uilabel.font = .systemFont(ofSize: 18, weight: .light)
         
         return uilabel
     }()
     
-    //MARK: - StackView
-    let stackView: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.spacing = 5
-        stack.alignment = .leading
-        stack.alignment = .bottom
-        stack.distribution = .fillProportionally
-        stack.translatesAutoresizingMaskIntoConstraints = false
+    //MARK: - view
+    let messageView: UIView = {
+        let uiView = UIView()
+        uiView.layer.cornerRadius = 10
+        uiView.clipsToBounds = true
+        uiView.backgroundColor = UIColor(named: "BackgroundColor")
         
-        return stack
+        return uiView
     }()
     
     //MARK: - addConstraints
     private func addConstraints(){
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 5),
-            stackView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
+        avatar.snp.makeConstraints {
+            $0.size.equalTo(40)
             
-            stackView.leadingAnchor.constraint(
-                equalTo: leadingAnchor, constant: 10),
-            stackView.trailingAnchor.constraint(
-                equalTo: trailingAnchor, constant: -30),
+            $0.leading.equalToSuperview().offset(10)
+            $0.bottom.equalToSuperview()
+        }
+        
+        messageView.snp.makeConstraints {
+            $0.leading.equalTo(avatar.snp.trailing).offset(5)
+            $0.trailing.lessThanOrEqualTo(contentView.bounds.width-100)
+            $0.bottom.equalToSuperview()
+        }
+        
+        messageLabel.snp.makeConstraints {
+            $0.topMargin.equalTo(7)
+            $0.bottomMargin.equalTo(-7)
             
-            avatar.widthAnchor.constraint(equalToConstant: 40),
-            avatar.heightAnchor.constraint(equalToConstant: 40)
-        ])
+            $0.leadingMargin.equalTo(7)
+            $0.trailingMargin.equalTo(-7)
+        }
     }
     
     //MARK: - init
@@ -66,10 +74,10 @@ class MessageViewCell: UITableViewCell {
         selectionStyle = .none
         backgroundColor = .clear
         
-        stackView.addArrangedSubview(avatar)
-        stackView.addArrangedSubview(label)
+        messageView.addSubview(messageLabel)
         
-        addSubview(stackView)
+        addSubview(avatar)
+        addSubview(messageView)
         
         addConstraints()
     }

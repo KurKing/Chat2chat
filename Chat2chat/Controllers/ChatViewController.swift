@@ -9,54 +9,17 @@ import UIKit
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    private let bgImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "chatBg"))
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleToFill
-        
-        return imageView
-    }()
-    
-    private let chatTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(MessageViewCell.self, forCellReuseIdentifier: "cell")
-        
-        return tableView
-    }()
+    private var chatView: ChatView!
     
     //MARK: - loadView
     override func loadView() {
         super.loadView()
         
-        chatTableView.dataSource = self
-        chatTableView.delegate = self
-        chatTableView.backgroundView = bgImageView
-        view.addSubview(chatTableView)
-        addConstraints()
-    }
-    
-    //MARK: - addConstraints
-    private func addConstraints(){
-        var constraints = [NSLayoutConstraint]()
+        chatView = ChatView(dataSource: self, tableViewDelegate: self)
         
-        //full screen constraints
-        for i in [bgImageView, chatTableView]{
-            constraints.append(
-                i.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)
-            )
-            constraints.append(
-                i.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
-            )
-            constraints.append(
-                i.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
-            )
-            constraints.append(
-                i.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-            )
-        }
+        view.addSubview(chatView.view)
+        chatView.addConstraints(view: view)
         
-        NSLayoutConstraint.activate(constraints)
     }
     
     //MARK: - viewDidLoad
@@ -66,9 +29,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    //MARK: - Table view delegate
+    //MARK: - Table view delegate, source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 100
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

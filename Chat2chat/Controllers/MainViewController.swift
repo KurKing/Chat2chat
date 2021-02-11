@@ -20,7 +20,7 @@ class MainViewController: UITabBarController {
         tabBar.unselectedItemTintColor = UIColor(named: "UnselectedBarItemColor")
         
         viewControllers = generateChildViewControllers()
-        selectedIndex = 0
+        selectedIndex = 1
     }
     
     //MARK: - generateChildViewControllers
@@ -44,7 +44,6 @@ class MainViewController: UITabBarController {
         settingsVC.tabBarItem = newTabItem(imageName: "gearshape", title: "Settings")
         
         return [accountVC, chatVC, settingsVC]
-        
         
     }
     
