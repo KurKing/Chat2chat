@@ -18,9 +18,6 @@ class MainViewController: UITabBarController {
         
         tabBar.tintColor = UIColor(named: "SelectedBarItemColor")
         tabBar.unselectedItemTintColor = UIColor(named: "UnselectedBarItemColor")
-        
-        viewControllers = generateChildViewControllers()
-        selectedIndex = 1
     }
     
     //MARK: - generateChildViewControllers
@@ -34,13 +31,14 @@ class MainViewController: UITabBarController {
             return tabItem
         }
         
-        let accountVC = AccountViewController()
+        
+        let accountVC = UINavigationController(rootViewController: AccountViewController())
         accountVC.tabBarItem = newTabItem(imageName: "person", title: "Account")
         
-        let chatVC = ChatViewController()
-        chatVC.tabBarItem = newTabItem(imageName: "message", title: "chat")
+        let chatVC = UINavigationController(rootViewController:ChatViewController())
+        chatVC.tabBarItem = newTabItem(imageName: "message", title: "Chat")
         
-        let settingsVC = SettingsViewController()
+        let settingsVC = UINavigationController(rootViewController:SettingsViewController())
         settingsVC.tabBarItem = newTabItem(imageName: "gearshape", title: "Settings")
         
         return [accountVC, chatVC, settingsVC]
@@ -51,6 +49,10 @@ class MainViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewControllers = generateChildViewControllers()
+        selectedIndex = 1
+        
+        let navigationVC = UINavigationController(rootViewController: self)
     }
 
 }

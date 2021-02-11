@@ -12,6 +12,9 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Settings"
+        navigationController?.navigationBar.barTintColor = UIColor(named: "BackgroundColor")
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
 
 }

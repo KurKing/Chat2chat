@@ -20,13 +20,17 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         view.addSubview(chatView.view)
         chatView.addConstraints(view: view)
         
+        title = "Chat"
+        navigationController?.navigationBar.barTintColor = UIColor(named: "BackgroundColor")
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        chatView.tableView.register(InterlocutorMessageViewCell.self, forCellReuseIdentifier: "interlocutor")
+        chatView.tableView.register(SelfMessageViewCell.self, forCellReuseIdentifier: "self")
     }
     
     //MARK: - Table view delegate, source
@@ -35,8 +39,25 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
+        var message = ""
+        for _ in 0...Int.random(in: 1...3) {
+            message += "Lorem ipsum"
+        }
+        
+        if Bool.random() {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "self", for: indexPath) as! SelfMessageViewCell
+            
+            cell.message = Message(text: message, time: "12:30")
+
+            return cell
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "interlocutor", for: indexPath) as! InterlocutorMessageViewCell
+        
+        cell.message = Message(text: message, time: "12:30")
+        cell.avatarImage = UIImage(named: "avatar\(Int.random(in: 1...2))")
+
         return cell
     }
 

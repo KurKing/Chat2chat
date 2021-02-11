@@ -12,6 +12,9 @@ class AccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Account"
+        navigationController?.navigationBar.barTintColor = UIColor(named: "BackgroundColor")
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
 
 }

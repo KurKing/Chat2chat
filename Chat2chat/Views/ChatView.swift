@@ -22,7 +22,6 @@ struct ChatView {
     private let chatTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(MessageViewCell.self, forCellReuseIdentifier: "cell")
         tableView.separatorStyle = .none
         
         return tableView
@@ -59,8 +58,11 @@ struct ChatView {
         chatTableView.backgroundView = bgImageView
     }
     
-    //MARK: - view getter
+    //MARK: - getter
     var view: UIView {
+        return chatTableView
+    }
+    var tableView: UITableView {
         return chatTableView
     }
 }
