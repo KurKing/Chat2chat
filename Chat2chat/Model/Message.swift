@@ -9,7 +9,7 @@ import UIKit
 
 struct Message {
     let text: String
-    let time: String
+    let fromMe: Bool
 }
 
 

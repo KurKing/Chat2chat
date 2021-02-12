@@ -9,6 +9,9 @@ import UIKit
 
 class MainViewController: UITabBarController {
     
+    var isNetworkAvaiable: (()->Bool)!
+    let db = DataBase()
+    
     //MARK: - loadView
     override func loadView() {
         super.loadView()
@@ -18,6 +21,7 @@ class MainViewController: UITabBarController {
         
         tabBar.tintColor = UIColor(named: "SelectedBarItemColor")
         tabBar.unselectedItemTintColor = UIColor(named: "UnselectedBarItemColor")
+        
     }
     
     //MARK: - generateChildViewControllers
@@ -35,7 +39,9 @@ class MainViewController: UITabBarController {
         let accountVC = UINavigationController(rootViewController: AccountViewController())
         accountVC.tabBarItem = newTabItem(imageName: "person", title: "Account")
         
-        let chatVC = UINavigationController(rootViewController:ChatViewController())
+        let findChatVC = FindChatViewController()
+        findChatVC.db = db
+        let chatVC = UINavigationController(rootViewController: findChatVC)
         chatVC.tabBarItem = newTabItem(imageName: "message", title: "Chat")
         
         let settingsVC = UINavigationController(rootViewController:SettingsViewController())
@@ -48,12 +54,9 @@ class MainViewController: UITabBarController {
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         viewControllers = generateChildViewControllers()
-        selectedIndex = 1
-        
-        let navigationVC = UINavigationController(rootViewController: self)
+        selectedIndex = UserDefaults.standard.integer(forKey: "selectedIndex")
     }
-
+    
 }
 

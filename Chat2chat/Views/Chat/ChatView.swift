@@ -19,7 +19,7 @@ struct ChatView {
     }()
     
     //MARK: - chatTableView
-    private let chatTableView: UITableView = {
+    let view: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
@@ -28,22 +28,22 @@ struct ChatView {
     }()
     
     //MARK: - addConstraints
-    func addConstraints(view: UIView){
+    func addConstraints(to rootView: UIView){
         var constraints = [NSLayoutConstraint]()
         
         //full screen constraints
-        for i in [bgImageView, chatTableView]{
+        for i in [bgImageView, view]{
             constraints.append(
-                i.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)
+                i.leadingAnchor.constraint(equalTo: rootView.safeAreaLayoutGuide.leadingAnchor)
             )
             constraints.append(
-                i.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+                i.trailingAnchor.constraint(equalTo: rootView.safeAreaLayoutGuide.trailingAnchor)
             )
             constraints.append(
-                i.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+                i.topAnchor.constraint(equalTo: rootView.safeAreaLayoutGuide.topAnchor)
             )
             constraints.append(
-                i.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+                i.bottomAnchor.constraint(equalTo: rootView.safeAreaLayoutGuide.bottomAnchor)
             )
         }
         
@@ -52,17 +52,9 @@ struct ChatView {
     
     //MARK: - init
     init(dataSource: UITableViewDataSource, tableViewDelegate: UITableViewDelegate) {
-        chatTableView.dataSource = dataSource
-        chatTableView.delegate = tableViewDelegate
+        view.dataSource = dataSource
+        view.delegate = tableViewDelegate
         
-        chatTableView.backgroundView = bgImageView
-    }
-    
-    //MARK: - getter
-    var view: UIView {
-        return chatTableView
-    }
-    var tableView: UITableView {
-        return chatTableView
+        view.backgroundView = bgImageView
     }
 }
