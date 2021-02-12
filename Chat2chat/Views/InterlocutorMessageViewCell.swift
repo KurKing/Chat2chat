@@ -41,23 +41,13 @@ class InterlocutorMessageViewCell: UITableViewCell {
         messageView.addConstraints()
     }
     
-    //MARK: - Setter
-    var message: Message? {
-        didSet {
-            guard let message = message else {
-                return
-            }
-            
-            messageView.message = message
-        }
+    //MARK: - Setters
+    func setMessage(_ message: Message) {
+        messageView.setMessage(message)
     }
     
-    var avatarImage: UIImage? {
-        didSet {
-            if let avatarImage = avatarImage {
-                avatar.image = avatarImage
-            }
-        }
+    func setAvatarImage(_ image: UIImage) {
+        avatar.image = image
     }
     
     

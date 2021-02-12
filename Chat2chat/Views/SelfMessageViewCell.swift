@@ -26,14 +26,8 @@ class SelfMessageViewCell: UITableViewCell {
     }
     
     //MARK: - Setter
-    var message: Message? {
-        didSet {
-            guard let message = message else {
-                return
-            }
-            
-            messageView.message = message
-        }
+    func setMessage(_ message: Message) {
+        messageView.setMessage(message)
     }
     
     //MARK: - init

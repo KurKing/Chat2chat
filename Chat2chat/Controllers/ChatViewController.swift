@@ -48,15 +48,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         if Bool.random() {
             let cell = tableView.dequeueReusableCell(withIdentifier: "self", for: indexPath) as! SelfMessageViewCell
             
-            cell.message = Message(text: message, time: "12:30")
+            cell.setMessage(Message(text: message, time: "12:30"))
 
             return cell
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "interlocutor", for: indexPath) as! InterlocutorMessageViewCell
         
-        cell.message = Message(text: message, time: "12:30")
-        cell.avatarImage = UIImage(named: "avatar\(Int.random(in: 1...2))")
+        cell.setMessage(Message(text: message, time: "12:30"))
+        cell.setAvatarImage(UIImage(named: "avatar\(Int.random(in: 1...2))")!) 
 
         return cell
     }

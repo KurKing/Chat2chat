@@ -43,14 +43,8 @@ struct MessageView {
     }
     
     //MARK: - Setter
-    var message: Message? {
-        didSet {
-            guard let message = message else {
-                return
-            }
-            
-            messageLabel.text = message.text
-        }
+    func setMessage(_ message: Message) {
+        messageLabel.text = message.text
     }
     
     init() {
