@@ -8,8 +8,7 @@
 import UIKit
 
 class MainViewController: UITabBarController {
-    
-    var isNetworkAvaiable: (()->Bool)!
+
     let db = DataBase()
     
     //MARK: - loadView
@@ -55,8 +54,8 @@ class MainViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewControllers = generateChildViewControllers()
-        selectedIndex = UserDefaults.standard.integer(forKey: "selectedIndex")
+        selectedIndex = 1
     }
-    
+
 }
 
