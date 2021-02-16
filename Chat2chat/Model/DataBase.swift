@@ -8,11 +8,19 @@
 import Firebase
 
 class DataBase {
+    //MARK: - Constants
+    private let chatCollection = "Chats"
+    private let messageCollection = "messages"
+    
+    //MARK: - Properties
     private let db = Firestore.firestore()
     private var listener: ListenerRegistration?
     private let userToken: String
     private let lastChatId = UserDefaults.standard.string(forKey: "lastChatId")
     
+    private var currentChatId: String
+    
+    //MARK: - Init
     init() {
         if let token = UserDefaults.standard.string(forKey: "userToken"){
             userToken = token[0..<4]
@@ -21,16 +29,20 @@ class DataBase {
             UserDefaults.standard.set(userToken, forKey: "userToken")
         }
         
+        currentChatId = userToken
+        
         print("TOKEN: \(userToken)")
     }
     
     //MARK: - startChat
     func startChat(with complition: @escaping (Message)->()){
         
+        return
+        
         print("Start chat")
         
         if let lastChatId = lastChatId {
-            db.collection("Chats")
+            db.collection(chatCollection)
                 .document(lastChatId)
                 .getDocument { [self] (document, error) in
                     if let document = document, document.exists {
@@ -50,7 +62,7 @@ class DataBase {
         
         print("Create new chat")
         
-        db.collection("Chats")
+        db.collection(chatCollection)
             .document(userToken)
             .setData(["isFree": true]) {
                 if let error = $0 {
@@ -66,7 +78,7 @@ class DataBase {
         
         print("Find new chat")
         
-        self.db.collection("Chats")
+        self.db.collection(chatCollection)
             .whereField("isFree", isEqualTo: true)
             .getDocuments { [self] query, error in
                 
@@ -86,7 +98,7 @@ class DataBase {
                     let documents = query.documents
                     let id = documents[Int.random(in: 0..<documents.count)].documentID
                     
-                    self.db.collection("Chats").document(id).updateData(["isFree" : false])
+                    self.db.collection(chatCollection).document(id).updateData(["isFree" : false])
                     self.addListenerToChat(with: id, with: complition)
                     
                 }
@@ -101,10 +113,12 @@ class DataBase {
         UserDefaults.standard.set(id, forKey: "lastChatId")
         
         print("Add listener to chat with id: \(id)")
+        currentChatId = id
+        sendMessage(Message(text: "User \(userToken) connected", fromMe: true))
         
-        listener = db.collection("Chats")
+        listener = db.collection(chatCollection)
             .document(id)
-            .collection("messanges")
+            .collection(messageCollection)
             .order(by: "time")
             .addSnapshotListener { [self] query, error in
                 
@@ -131,7 +145,14 @@ class DataBase {
     
     //MARK: - sendMessage
     func sendMessage(_ message: Message){
-        
+        db.collection(chatCollection)
+            .document(currentChatId)
+            .collection(messageCollection)
+            .addDocument(data: [
+                "text" : message.text,
+                "fromUser": userToken,
+                "time" : Date().timeIntervalSince1970
+            ])
     }
 }
 

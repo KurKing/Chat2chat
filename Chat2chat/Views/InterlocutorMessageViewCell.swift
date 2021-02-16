@@ -20,7 +20,7 @@ class InterlocutorMessageViewCell: UITableViewCell {
         return imageView
     }()
     
-    private var messageView: MessageView!
+    private var messageView: MessageView
     
     //MARK: - Constraints
     func addConstraints(){
@@ -53,12 +53,12 @@ class InterlocutorMessageViewCell: UITableViewCell {
     
     //MARK: - init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        messageView = MessageView()
+        
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         selectionStyle = .none
         backgroundColor = .clear
-        
-        messageView = MessageView()
         
         addSubview(avatar)
         addSubview(messageView.view)
