@@ -27,8 +27,8 @@
 		D26610E725D7EA4A00CB7CFE /* SenderTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26610E625D7EA4A00CB7CFE /* SenderTextFieldView.swift */; };
 		D297722625D70CDC002EA547 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D297722525D70CDC002EA547 /* DataBase.swift */; };
 		D29C106425D7C186003473F3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29C106325D7C186003473F3 /* StringExtension.swift */; };
+		D2A4C5CC25F95D2800307B72 /* ClearMessagesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A4C5CB25F95D2700307B72 /* ClearMessagesDelegate.swift */; };
 		D2ED2B6125D6A1CD0031465C /* FindChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ED2B6025D6A1CD0031465C /* FindChatViewController.swift */; };
-		D2ED2B6E25D6FD240031465C /* ChatTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ED2B6D25D6FD240031465C /* ChatTableDelegate.swift */; };
 		D96D86F0C0E3156FA350326E /* Pods_Chat2chatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8BE8A5C72B2360047DA629 /* Pods_Chat2chatTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,8 +72,9 @@
 		D26610E625D7EA4A00CB7CFE /* SenderTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderTextFieldView.swift; sourceTree = "<group>"; };
 		D297722525D70CDC002EA547 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		D29C106325D7C186003473F3 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		D2A4C5C125F93E9F00307B72 /* Chat2chat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chat2chat.entitlements; sourceTree = "<group>"; };
+		D2A4C5CB25F95D2700307B72 /* ClearMessagesDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearMessagesDelegate.swift; sourceTree = "<group>"; };
 		D2ED2B6025D6A1CD0031465C /* FindChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindChatViewController.swift; sourceTree = "<group>"; };
-		D2ED2B6D25D6FD240031465C /* ChatTableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,10 +140,12 @@
 		D237330925D1BD1B004098E5 /* Chat2chat */ = {
 			isa = PBXGroup;
 			children = (
+				D2A4C5C125F93E9F00307B72 /* Chat2chat.entitlements */,
 				D237334E25D1C689004098E5 /* App */,
 				D237335125D1C691004098E5 /* Model */,
 				D237341325D30DD2004098E5 /* Views */,
 				D237335225D1C69C004098E5 /* Controllers */,
+				D2A4C5CA25F95D0200307B72 /* Protocols */,
 				D23733F325D2A3DB004098E5 /* SupportingFiles */,
 				D237331B25D1BD1F004098E5 /* Info.plist */,
 				D237334925D1C61B004098E5 /* GoogleService-Info.plist */,
@@ -186,7 +189,6 @@
 				D23733E325D27C12004098E5 /* SettingsViewController.swift */,
 				D2ED2B6025D6A1CD0031465C /* FindChatViewController.swift */,
 				D23733DB25D27BCB004098E5 /* ChatViewController.swift */,
-				D2ED2B6D25D6FD240031465C /* ChatTableDelegate.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -211,6 +213,14 @@
 				D237349325D535C8004098E5 /* ChatView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		D2A4C5CA25F95D0200307B72 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D2A4C5CB25F95D2700307B72 /* ClearMessagesDelegate.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -399,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2ED2B6125D6A1CD0031465C /* FindChatViewController.swift in Sources */,
+				D2A4C5CC25F95D2800307B72 /* ClearMessagesDelegate.swift in Sources */,
 				D237341525D30E0B004098E5 /* InterlocutorMessageViewCell.swift in Sources */,
 				D237331525D1BD1B004098E5 /* Chat2chat.xcdatamodeld in Sources */,
 				D237330F25D1BD1B004098E5 /* MainViewController.swift in Sources */,
@@ -411,7 +422,6 @@
 				D237330D25D1BD1B004098E5 /* SceneDelegate.swift in Sources */,
 				D22826FF25D55DB400589766 /* Message.swift in Sources */,
 				D23733E525D27C12004098E5 /* SettingsViewController.swift in Sources */,
-				D2ED2B6E25D6FD240031465C /* ChatTableDelegate.swift in Sources */,
 				D228270B25D573E500589766 /* SelfMessageViewCell.swift in Sources */,
 				D23733F725D2B976004098E5 /* AccountViewController.swift in Sources */,
 				D26610E725D7EA4A00CB7CFE /* SenderTextFieldView.swift in Sources */,
@@ -570,6 +580,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Chat2chat/Chat2chat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CUJ73BXL42;
 				INFOPLIST_FILE = Chat2chat/Info.plist;
@@ -580,6 +591,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kurking.Chat2chat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -591,6 +603,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Chat2chat/Chat2chat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CUJ73BXL42;
 				INFOPLIST_FILE = Chat2chat/Info.plist;
@@ -601,6 +614,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kurking.Chat2chat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

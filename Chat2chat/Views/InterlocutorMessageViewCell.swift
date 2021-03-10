@@ -9,8 +9,7 @@ import UIKit
 import SnapKit
 
 class InterlocutorMessageViewCell: UITableViewCell {
-    
-    //MARK: - Views
+
     private let avatar: UIImageView = {
         let image = UIImage(named: "noavatar")
         let imageView = UIImageView(image: image)
@@ -21,8 +20,7 @@ class InterlocutorMessageViewCell: UITableViewCell {
     }()
     
     private var messageView: MessageView
-    
-    //MARK: - Constraints
+
     func addConstraints(){
         avatar.snp.makeConstraints {
             $0.size.equalTo(40)
@@ -40,8 +38,7 @@ class InterlocutorMessageViewCell: UITableViewCell {
         
         messageView.addConstraints()
     }
-    
-    //MARK: - Setters
+
     func setMessage(_ message: Message) {
         messageView.setMessage(message)
     }
@@ -50,8 +47,6 @@ class InterlocutorMessageViewCell: UITableViewCell {
         avatar.image = image
     }
     
-    
-    //MARK: - init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         messageView = MessageView()
         

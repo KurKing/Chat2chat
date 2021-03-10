@@ -8,15 +8,16 @@
 import UIKit
 import Firebase
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController, ClearMessagesDelegate {
     
-    private var chatView: ChatView!
+    private var database: DataBase!
+    private(set) var chatView: ChatView!
     private(set) var messages = [Message]()
+    
     let avatarName = "catAvatar\(Int.random(in: 1...5))"
     
-    var db: DataBase?
+    private var chatComplition: ((Message)->())!
     
-    //MARK: - loadView
     override func loadView() {
         super.loadView()
         
@@ -28,30 +29,141 @@ class ChatViewController: UIViewController {
         chatView.addConstraints()
     }
     
-    //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        database = DataBase(delegate: self, complition: { [weak self] (message) in
+            if let vc = self {
+                DispatchQueue.main.async {
+                    vc.add(message: message)
+                }
+            }
+        })
+        
+        // naviogation view
+        title = "Chat2chat"
+        navigationController?.navigationBar.barTintColor = UIColor(named: "BackgroundColor")
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadButtonPressed(_:)))
+        
+        // cells registration
         chatView.tableView.register(
             InterlocutorMessageViewCell.self, forCellReuseIdentifier: "interlocutor")
         chatView.tableView.register(
             SelfMessageViewCell.self, forCellReuseIdentifier: "self")
         
-        db?.startChat(with: { [weak self] (newMessage) in
+        // send button target
+        chatView.textFieldView.button.addTarget(self, action: #selector(sendButtonPressed(_:)), for: .touchUpInside)
+        
+        // load chat
+        chatComplition = { [weak self] (message) in
             if let vc = self {
                 DispatchQueue.main.async {
-                    vc.add(newMessage)
+                    vc.add(message: message)
                 }
             }
-        })
+        }
         
+        DispatchQueue.global(qos: .background).async { [self] in
+            self.database.startChat()
+        }
+        
+        // keyboard manipulations
         hideKeyboardWhenTappedAround()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    //MARK: - Keyboard
+    @objc func sendButtonPressed(_ sender: UIButton){
+        
+        print("OK")
+        
+        guard let text = chatView.messageText else {
+            return
+        }
+        
+        if text == "" {
+            return
+        }
+        
+        database.sendMessage(Message(text: text, fromMe: true))
+        
+        chatView.messageText = ""
+    }
+    
+    @objc func reloadButtonPressed(_ sender: UIButton){
+        database.deleteChat()
+        messages = []
+        // TODO: loading view
+        database.startChat()
+    }
+        
+    func clearMessages() {
+        messages = []
+    }
+    
+    private func add(message: Message){
+        messages.append(message)
+        chatView.tableView.reloadData()
+        chatView.tableView.scrollToRow(at: IndexPath(row: messages.count-1, section: 0), at: .top, animated: true)
+    }
+    
+    private func showDeletedChatAlert(){
+        let alert = UIAlertController(title: "Your interlocutor has finished chatting", message: nil, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: { _ in
+            print("start new chat")
+        }))
+        
+        DispatchQueue.main.async {
+            self.present(alert, animated: true)
+        }
+    }
+}
+
+//MARK: - Table data source
+extension ChatViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let message = messages[indexPath.row]
+        
+        if message.fromMe {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "self", for: indexPath) as! SelfMessageViewCell
+            
+            cell.setMessage(message)
+            
+            return cell
+            
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "interlocutor", for: indexPath) as! InterlocutorMessageViewCell
+            
+            cell.setMessage(message)
+            
+            if let avatar = UIImage(named: avatarName) {
+                cell.setAvatarImage(avatar)
+            }
+            
+            return cell
+        }
+        
+    }
+}
+
+//MARK: - Table delegate
+extension ChatViewController: UITableViewDelegate {
+    
+}
+
+//MARK: - Keyboard
+extension ChatViewController {
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let userInfo = notification.userInfo else { return }
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
@@ -61,6 +173,8 @@ class ChatViewController: UIViewController {
             $0.bottom.equalToSuperview().offset(-keyboardFrame.height)
         }
         
+        chatView.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        
         view.layoutIfNeeded()
     }
     @objc func keyboardWillHide(notification: NSNotification) {
@@ -69,23 +183,13 @@ class ChatViewController: UIViewController {
         }
         view.layoutIfNeeded()
     }
-    
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
-    //MARK: - Add message
-    /// add new message to messages array
-    private func add(_ message: Message){
-        messages.append(message)
-        chatView.tableView.reloadData()
-        chatView.tableView.scrollToRow(at: IndexPath(row: messages.count-1, section: 0), at: .top, animated: true)
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        chatView.tableView.addGestureRecognizer(tap)
     }
-    
 }

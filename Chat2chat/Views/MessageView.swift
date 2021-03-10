@@ -8,7 +8,6 @@
 import UIKit
 
 struct MessageView {
-    //MARK: - messageLabel
     private let messageLabel: UILabel = {
         let uilabel = UILabel()
         
@@ -20,8 +19,7 @@ struct MessageView {
         
         return uilabel
     }()
-    
-    //MARK: - view
+
     private let messageView: UIView = {
         let uiView = UIView()
         uiView.layer.cornerRadius = 10
@@ -31,7 +29,6 @@ struct MessageView {
         return uiView
     }()
     
-    //MARK: - addConstraints
     func addConstraints(){
         messageLabel.snp.makeConstraints {
             $0.topMargin.equalTo(10)
@@ -41,8 +38,7 @@ struct MessageView {
             $0.trailingMargin.equalTo(-10)
         }
     }
-    
-    //MARK: - Setter
+
     func setMessage(_ message: Message) {
         messageLabel.text = message.text
     }
@@ -50,8 +46,7 @@ struct MessageView {
     init() {
         messageView.addSubview(messageLabel)
     }
-    
-    //MARK: - getter
+
     var view: UIView {
         return messageView
     }

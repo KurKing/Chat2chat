@@ -8,11 +8,10 @@
 import Firebase
 
 class DataBase {
-    //MARK: - Constants
+
     private let chatCollection = "Chats"
     private let messageCollection = "messages"
-    
-    //MARK: - Properties
+
     private let db = Firestore.firestore()
     private var listener: ListenerRegistration?
     private let userToken: String
@@ -20,8 +19,14 @@ class DataBase {
     
     private var currentChatId: String
     
-    //MARK: - Init
-    init() {
+    private let addMessageComplition: ((Message)->())
+    private let delegate: ClearMessagesDelegate
+
+    init(delegate: ClearMessagesDelegate, complition: @escaping ((Message)->())) {
+        self.delegate = delegate
+        
+        addMessageComplition = complition
+        
         if let token = UserDefaults.standard.string(forKey: "userToken"){
             userToken = token[0..<4]
         } else {
@@ -30,37 +35,47 @@ class DataBase {
         }
         
         currentChatId = userToken
-        
-        print("TOKEN: \(userToken)")
+        print(userToken)
     }
-    
-    //MARK: - startChat
-    func startChat(with complition: @escaping (Message)->()){
-        
-        return
-        
-        print("Start chat")
-        
+
+    func startChat(){
+            
         if let lastChatId = lastChatId {
             db.collection(chatCollection)
                 .document(lastChatId)
                 .getDocument { [self] (document, error) in
                     if let document = document, document.exists {
-                        addListenerToChat(with: lastChatId, with: complition)
+                        addListenerToChat(id: lastChatId)
                     } else {
-                        findNewChat(with: complition)
+                        findNewChat()
                     }
                 }
         } else {
-            findNewChat(with: complition)
+            findNewChat()
         }
         
     }
     
-    //MARK: - createNewChat
-    private func createNewChat(with complition: @escaping (Message)->()){
-        
-        print("Create new chat")
+    func deleteChat(){
+        db.collection(chatCollection)
+            .document(currentChatId)
+            .collection(messageCollection)
+            .getDocuments { (query, error) in
+                if let query = query {
+                    for i in query.documents {
+                        i.reference.delete()
+                    }
+                }
+            }
+            
+        db.collection(chatCollection)
+            .document(currentChatId)
+            .delete()
+        listener?.remove()
+        listener = nil
+    }
+
+    private func createNewChat(){
         
         db.collection(chatCollection)
             .document(userToken)
@@ -70,28 +85,22 @@ class DataBase {
                 }
             }
         
-        addListenerToChat(with: userToken, with: complition)
+        addListenerToChat(id: userToken)
     }
-    
-    //MARK: - findNewChat
-    private func findNewChat(with complition: @escaping (Message)->()){
-        
-        print("Find new chat")
+
+    private func findNewChat(){
         
         self.db.collection(chatCollection)
             .whereField("isFree", isEqualTo: true)
             .getDocuments { [self] query, error in
                 
                 guard let query = query else {
-                    if let error = error {
-                        print(error.localizedDescription)
-                    }
                     return
                 }
                 
                 if query.isEmpty {
-                    
-                    self.createNewChat(with: complition)
+    
+                    self.createNewChat()
                     
                 } else {
                     
@@ -99,14 +108,13 @@ class DataBase {
                     let id = documents[Int.random(in: 0..<documents.count)].documentID
                     
                     self.db.collection(chatCollection).document(id).updateData(["isFree" : false])
-                    self.addListenerToChat(with: id, with: complition)
+                    self.addListenerToChat(id: id)
                     
                 }
             }
     }
-    
-    //MARK: - addListenerToChat
-    private func addListenerToChat(with id: String, with complition: @escaping (Message)->()) {
+
+    private func addListenerToChat(id: String) {
         
         listener?.remove()
         
@@ -132,18 +140,23 @@ class DataBase {
                 query.documentChanges.forEach { diff in
                     if (diff.type == .added) {
                         let data = diff.document.data()
-                        complition(
+                        addMessageComplition(
                             Message(
                                 text: data["text"] as! String,
                                 fromMe: data["fromUser"] as! String == self.userToken
                             )
                         )
+                    } else if (diff.type == .removed){
+                        deleteChat()
+                        delegate.clearMessages()
+                        startChat()
                     }
                 }
             }
     }
     
-    //MARK: - sendMessage
+    
+    
     func sendMessage(_ message: Message){
         db.collection(chatCollection)
             .document(currentChatId)

@@ -8,7 +8,7 @@
 import UIKit
 
 struct SenderTextFieldView {
-    //MARK: - TextField
+    //MARK: - Views
     let sendMessageTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = UIColor(named: "BackgroundColor")
@@ -18,11 +18,16 @@ struct SenderTextFieldView {
         
         return textField
     }()
-    
-    //MARK: - Button
-    
-    
-    //MARK: - view
+
+    let button: UIButton = {
+        let uiButton = UIButton(type: .system)
+        
+        uiButton.setImage(UIImage(systemName: "arrow.up.circle.fill"), for: .normal)
+        uiButton.tintColor = UIColor(named: "UnselectedBarItemColor")
+        
+        return uiButton
+    }()
+
     private let sendMessageTextFieldView: UIView = {
         let uiView = UIView()
         uiView.backgroundColor = UIColor(named: "BackgroundColor")
@@ -34,18 +39,25 @@ struct SenderTextFieldView {
     func addConstraints(){
         sendMessageTextField.snp.makeConstraints {
             $0.topMargin.equalToSuperview().offset(10)
-            $0.bottom.equalToSuperview().offset(-15)
+            $0.bottom.equalToSuperview().offset(-20)
             
             $0.leading.equalToSuperview().offset(15)
-            $0.trailing.equalToSuperview().offset(-15)
+            $0.trailing.equalTo(button.snp.leading).offset(-3)
+        }
+        button.snp.makeConstraints {
+            $0.size.equalTo(30)
+            
+            $0.bottom.equalToSuperview().offset(-15)
+            $0.trailing.equalToSuperview().offset(-5)
         }
     }
     
     init() {
         sendMessageTextFieldView.addSubview(sendMessageTextField)
+        sendMessageTextFieldView
+            .addSubview(button)
     }
-    
-    //MARK: - getter
+
     var view: UIView {
         return sendMessageTextFieldView
     }

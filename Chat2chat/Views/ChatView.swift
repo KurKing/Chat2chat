@@ -9,7 +9,7 @@ import UIKit
 
 struct ChatView {
 
-    //MARK: - bgImageView
+    //MARK: - Views
     let bgImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "chatBg"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -17,8 +17,7 @@ struct ChatView {
         
         return imageView
     }()
-    
-    //MARK: - chatTableView
+
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -28,10 +27,8 @@ struct ChatView {
         return tableView
     }()
     
-    //MARK: - view
     let view  = UIView()
-    
-    //MARK: - textFieldView
+
     let textFieldView: SenderTextFieldView
     
     //MARK: - addConstraints
@@ -56,8 +53,7 @@ struct ChatView {
         }
         textFieldView.addConstraints()
     }
-    
-    //MARK: - init
+
     init(dataSource: UITableViewDataSource, tableViewDelegate: UITableViewDelegate) {
         
         textFieldView = SenderTextFieldView()
@@ -68,5 +64,14 @@ struct ChatView {
         view.addSubview(tableView)
         view.addSubview(textFieldView.view)
 
+    }
+
+    var messageText: String?{
+        set{
+            textFieldView.sendMessageTextField.text = newValue
+        }
+        get {
+            return textFieldView.sendMessageTextField.text
+        }
     }
 }

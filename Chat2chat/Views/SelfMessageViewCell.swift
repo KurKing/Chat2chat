@@ -9,10 +9,8 @@ import UIKit
 
 class SelfMessageViewCell: UITableViewCell {
 
-    //MARK: - Views
     private var messageView: MessageView!
-    
-    //MARK: - Constraints
+
     func addConstraints(){
         
         messageView.view.snp.makeConstraints {
@@ -25,12 +23,10 @@ class SelfMessageViewCell: UITableViewCell {
         messageView.addConstraints()
     }
     
-    //MARK: - Setter
     func setMessage(_ message: Message) {
         messageView.setMessage(message)
     }
-    
-    //MARK: - init
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
