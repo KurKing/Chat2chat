@@ -79,19 +79,17 @@ class ChatViewController: UIViewController, ClearMessagesDelegate {
     
     @objc func sendButtonPressed(_ sender: UIButton){
         
-        print("OK")
-        
         guard let text = chatView.messageText else {
             return
         }
         
-        if text == "" {
-            return
+        let validatedText = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if validatedText != "" {
+            database.sendMessage(Message(text: validatedText, fromMe: true))
+            chatView.messageText = ""
         }
-        
-        database.sendMessage(Message(text: text, fromMe: true))
-        
-        chatView.messageText = ""
+
     }
     
     @objc func reloadButtonPressed(_ sender: UIButton){
@@ -173,9 +171,8 @@ extension ChatViewController {
             $0.bottom.equalToSuperview().offset(-keyboardFrame.height)
         }
         
-        chatView.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-        
         view.layoutIfNeeded()
+        chatView.tableView.scrollToRow(at: IndexPath(row: messages.count-1, section: 0), at: .top, animated: false)
     }
     @objc func keyboardWillHide(notification: NSNotification) {
         chatView.view.snp.updateConstraints {
