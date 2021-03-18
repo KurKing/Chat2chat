@@ -9,13 +9,19 @@ import UIKit
 
 struct LoadingView {
     //MARK: - Views
+    private let bluredView: UIView = {
+        return UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+    }()
+    
     
     //MARK: - addConstraints
     func addConstraints(){
-        
+        bluredView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
     
-    init() {
-        
+    var view: UIView {
+        return bluredView
     }
 }

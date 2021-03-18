@@ -25,7 +25,7 @@
 		D26610E725D7EA4A00CB7CFE /* SenderTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26610E625D7EA4A00CB7CFE /* SenderTextFieldView.swift */; };
 		D297722625D70CDC002EA547 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D297722525D70CDC002EA547 /* DataBase.swift */; };
 		D29C106425D7C186003473F3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29C106325D7C186003473F3 /* StringExtension.swift */; };
-		D2A4C5CC25F95D2800307B72 /* ClearMessagesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A4C5CB25F95D2700307B72 /* ClearMessagesDelegate.swift */; };
+		D2A4C5CC25F95D2800307B72 /* DataBaseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A4C5CB25F95D2700307B72 /* DataBaseDelegate.swift */; };
 		D96D86F0C0E3156FA350326E /* Pods_Chat2chatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8BE8A5C72B2360047DA629 /* Pods_Chat2chatTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,7 +68,7 @@
 		D297722525D70CDC002EA547 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		D29C106325D7C186003473F3 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		D2A4C5C125F93E9F00307B72 /* Chat2chat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chat2chat.entitlements; sourceTree = "<group>"; };
-		D2A4C5CB25F95D2700307B72 /* ClearMessagesDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearMessagesDelegate.swift; sourceTree = "<group>"; };
+		D2A4C5CB25F95D2700307B72 /* DataBaseDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,7 +209,7 @@
 		D2A4C5CA25F95D0200307B72 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				D2A4C5CB25F95D2700307B72 /* ClearMessagesDelegate.swift */,
+				D2A4C5CB25F95D2700307B72 /* DataBaseDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -399,7 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2A4C5CC25F95D2800307B72 /* ClearMessagesDelegate.swift in Sources */,
+				D2A4C5CC25F95D2800307B72 /* DataBaseDelegate.swift in Sources */,
 				D237341525D30E0B004098E5 /* InterlocutorMessageViewCell.swift in Sources */,
 				D237331525D1BD1B004098E5 /* Chat2chat.xcdatamodeld in Sources */,
 				D29C106425D7C186003473F3 /* StringExtension.swift in Sources */,

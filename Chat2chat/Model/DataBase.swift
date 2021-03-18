@@ -18,11 +18,14 @@ class DataBase {
     private let lastChatId = UserDefaults.standard.string(forKey: "lastChatId")
     
     private var currentChatId: String
+    private var currentDocument: DocumentReference {
+        return db.collection(chatCollection).document(currentChatId)
+    }
     
     private let addMessageComplition: ((Message)->())
-    private let delegate: ClearMessagesDelegate
+    private let delegate: DataBaseDelegate
 
-    init(delegate: ClearMessagesDelegate, complition: @escaping ((Message)->())) {
+    init(delegate: DataBaseDelegate, complition: @escaping ((Message)->())) {
         self.delegate = delegate
         
         addMessageComplition = complition
@@ -35,7 +38,7 @@ class DataBase {
         }
         
         currentChatId = userToken
-        print(userToken)
+        print("User token: \(userToken)")
     }
 
     func startChat(){
@@ -57,8 +60,10 @@ class DataBase {
     }
     
     func deleteChat(){
-        db.collection(chatCollection)
-            .document(currentChatId)
+        listener?.remove()
+        listener = nil
+        
+        currentDocument
             .collection(messageCollection)
             .getDocuments { (query, error) in
                 if let query = query {
@@ -68,11 +73,8 @@ class DataBase {
                 }
             }
             
-        db.collection(chatCollection)
-            .document(currentChatId)
+        currentDocument
             .delete()
-        listener?.remove()
-        listener = nil
     }
 
     private func createNewChat(){
@@ -122,44 +124,53 @@ class DataBase {
         
         print("Add listener to chat with id: \(id)")
         currentChatId = id
-        sendMessage(Message(text: "User \(userToken) connected", fromMe: true))
+        
+        currentDocument.getDocument { [weak self] query, error in
+            if (query?.get("isFree") as? Bool ?? false) {
+                self?.delegate.hideLoadingView()
+                self?.sendMessage(Message(text: "Hi", fromMe: true))
+            }
+        }
         
         listener = db.collection(chatCollection)
             .document(id)
             .collection(messageCollection)
             .order(by: "time")
-            .addSnapshotListener { [self] query, error in
+            .addSnapshotListener { [weak self] query, error in
                 
-                guard let query = query else {
-                    if let error = error {
-                        print(error.localizedDescription)
+                if let dataBase = self {
+                    
+                    guard let query = query else {
+                        if let error = error {
+                            print(error.localizedDescription)
+                        }
+                        return
                     }
-                    return
-                }
-                
-                query.documentChanges.forEach { diff in
-                    if (diff.type == .added) {
-                        let data = diff.document.data()
-                        addMessageComplition(
-                            Message(
-                                text: data["text"] as! String,
-                                fromMe: data["fromUser"] as! String == self.userToken
+                    
+                    query.documentChanges.forEach { diff in
+                        if (diff.type == .added) {
+                            let data = diff.document.data()
+                            dataBase.addMessageComplition(
+                                Message(
+                                    text: data["text"] as! String,
+                                    fromMe: data["fromUser"] as! String == dataBase.userToken
+                                )
                             )
-                        )
-                    } else if (diff.type == .removed){
-                        deleteChat()
-                        delegate.clearMessages()
-                        startChat()
+                        } else if (diff.type == .removed) {
+                            dataBase.deleteChat()
+                            dataBase.delegate.clearMessages()
+                        }
                     }
+                    
                 }
+                
             }
     }
     
     
     
     func sendMessage(_ message: Message){
-        db.collection(chatCollection)
-            .document(currentChatId)
+        currentDocument
             .collection(messageCollection)
             .addDocument(data: [
                 "text" : message.text,

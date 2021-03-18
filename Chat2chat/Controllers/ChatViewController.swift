@@ -8,11 +8,18 @@
 import UIKit
 import Firebase
 
-class ChatViewController: UIViewController, ClearMessagesDelegate {
+class ChatViewController: UIViewController {
     
     private var database: DataBase!
     private(set) var chatView: ChatView!
-    private(set) var messages = [Message]()
+    private(set) var loadingView: LoadingView!
+    fileprivate var messages = [Message](){
+        didSet {
+            if messages.isEmpty {
+                showLoadingView()
+            }
+        }
+    }
     
     let avatarName = "catAvatar\(Int.random(in: 1...5))"
     
@@ -22,11 +29,14 @@ class ChatViewController: UIViewController, ClearMessagesDelegate {
         super.loadView()
         
         chatView = ChatView(dataSource: self, tableViewDelegate: self)
+        loadingView = LoadingView()
         
         view.addSubview(chatView.bgImageView)
         view.addSubview(chatView.view)
+        view.addSubview(loadingView.view)
         
         chatView.addConstraints()
+        loadingView.addConstraints()
     }
     
     override func viewDidLoad() {
@@ -66,6 +76,8 @@ class ChatViewController: UIViewController, ClearMessagesDelegate {
             }
         }
         
+        showLoadingView()
+        
         DispatchQueue.global(qos: .background).async { [self] in
             self.database.startChat()
         }
@@ -95,15 +107,11 @@ class ChatViewController: UIViewController, ClearMessagesDelegate {
     @objc func reloadButtonPressed(_ sender: UIButton){
         database.deleteChat()
         messages = []
-        // TODO: loading view
         database.startChat()
     }
-        
-    func clearMessages() {
-        messages = []
-    }
-    
+            
     private func add(message: Message){
+        hideLoadingView()
         messages.append(message)
         chatView.tableView.reloadData()
         chatView.tableView.scrollToRow(at: IndexPath(row: messages.count-1, section: 0), at: .top, animated: true)
@@ -112,8 +120,8 @@ class ChatViewController: UIViewController, ClearMessagesDelegate {
     private func showDeletedChatAlert(){
         let alert = UIAlertController(title: "Your interlocutor has finished chatting", message: nil, preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: { _ in
-            print("start new chat")
+        alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: { [weak self] _ in
+            self?.database.startChat()
         }))
         
         DispatchQueue.main.async {
@@ -156,7 +164,7 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 //MARK: - Keyboard
-extension ChatViewController {
+private extension ChatViewController {
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let userInfo = notification.userInfo else { return }
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
@@ -184,4 +192,22 @@ extension ChatViewController {
         tap.cancelsTouchesInView = false
         chatView.tableView.addGestureRecognizer(tap)
     }
+}
+
+//MARK: - DataBaseDelegate
+extension ChatViewController: DataBaseDelegate {
+    func showLoadingView() {
+        loadingView.view.alpha = 1
+    }
+    
+    func hideLoadingView() {
+        loadingView.view.alpha = 0
+    }
+    
+    func clearMessages() {
+        messages = []
+        showDeletedChatAlert()
+    }
+    
+    
 }
