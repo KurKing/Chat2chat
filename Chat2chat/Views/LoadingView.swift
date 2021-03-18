@@ -5,4 +5,17 @@
 //  Created by Oleksiy on 18.03.2021.
 //
 
-import Foundation
+import UIKit
+
+struct LoadingView {
+    //MARK: - Views
+    
+    //MARK: - addConstraints
+    func addConstraints(){
+        
+    }
+    
+    init() {
+        
+    }
+}

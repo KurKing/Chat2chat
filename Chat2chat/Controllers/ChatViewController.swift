@@ -123,7 +123,7 @@ class ChatViewController: UIViewController, ClearMessagesDelegate {
 }
 
 //MARK: - Table data source
-extension ChatViewController: UITableViewDataSource {
+extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
@@ -153,11 +153,6 @@ extension ChatViewController: UITableViewDataSource {
         }
         
     }
-}
-
-//MARK: - Table delegate
-extension ChatViewController: UITableViewDelegate {
-    
 }
 
 //MARK: - Keyboard

@@ -8,27 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		87C7CED2D9429B81B7BC1C5B /* Pods_Chat2chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F98299313DCC7A980FA8CB7 /* Pods_Chat2chat.framework */; };
+		D221ACDE2603C54000DE590A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D221ACDD2603C54000DE590A /* LoadingView.swift */; };
 		D22826FF25D55DB400589766 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22826FE25D55DB400589766 /* Message.swift */; };
 		D228270325D5712600589766 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D228270225D5712600589766 /* MessageView.swift */; };
 		D228270B25D573E500589766 /* SelfMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D228270A25D573E500589766 /* SelfMessageViewCell.swift */; };
 		D237330B25D1BD1B004098E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237330A25D1BD1B004098E5 /* AppDelegate.swift */; };
 		D237330D25D1BD1B004098E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237330C25D1BD1B004098E5 /* SceneDelegate.swift */; };
-		D237330F25D1BD1B004098E5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237330E25D1BD1B004098E5 /* MainViewController.swift */; };
 		D237331525D1BD1B004098E5 /* Chat2chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D237331325D1BD1B004098E5 /* Chat2chat.xcdatamodeld */; };
 		D237331725D1BD1F004098E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D237331625D1BD1F004098E5 /* Assets.xcassets */; };
 		D237331A25D1BD1F004098E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D237331825D1BD1F004098E5 /* LaunchScreen.storyboard */; };
 		D237332525D1BD1F004098E5 /* Chat2chatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237332425D1BD1F004098E5 /* Chat2chatTests.swift */; };
 		D237334A25D1C61B004098E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D237334925D1C61B004098E5 /* GoogleService-Info.plist */; };
 		D23733DD25D27BCB004098E5 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23733DB25D27BCB004098E5 /* ChatViewController.swift */; };
-		D23733E525D27C12004098E5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23733E325D27C12004098E5 /* SettingsViewController.swift */; };
-		D23733F725D2B976004098E5 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23733F625D2B976004098E5 /* AccountViewController.swift */; };
 		D237341525D30E0B004098E5 /* InterlocutorMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237341425D30E0B004098E5 /* InterlocutorMessageViewCell.swift */; };
 		D237349425D535C9004098E5 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237349325D535C8004098E5 /* ChatView.swift */; };
 		D26610E725D7EA4A00CB7CFE /* SenderTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26610E625D7EA4A00CB7CFE /* SenderTextFieldView.swift */; };
 		D297722625D70CDC002EA547 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D297722525D70CDC002EA547 /* DataBase.swift */; };
 		D29C106425D7C186003473F3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29C106325D7C186003473F3 /* StringExtension.swift */; };
 		D2A4C5CC25F95D2800307B72 /* ClearMessagesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A4C5CB25F95D2700307B72 /* ClearMessagesDelegate.swift */; };
-		D2ED2B6125D6A1CD0031465C /* FindChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2ED2B6025D6A1CD0031465C /* FindChatViewController.swift */; };
 		D96D86F0C0E3156FA350326E /* Pods_Chat2chatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8BE8A5C72B2360047DA629 /* Pods_Chat2chatTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,13 +46,13 @@
 		8F6B4C2FD21B0222BD2B409B /* Pods-Chat2chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat2chat.debug.xcconfig"; path = "Target Support Files/Pods-Chat2chat/Pods-Chat2chat.debug.xcconfig"; sourceTree = "<group>"; };
 		A7873E3D9A9D1998F27A73A7 /* Pods-Chat2chatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat2chatTests.debug.xcconfig"; path = "Target Support Files/Pods-Chat2chatTests/Pods-Chat2chatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AF8BE8A5C72B2360047DA629 /* Pods_Chat2chatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat2chatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D221ACDD2603C54000DE590A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D22826FE25D55DB400589766 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D228270225D5712600589766 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		D228270A25D573E500589766 /* SelfMessageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfMessageViewCell.swift; sourceTree = "<group>"; };
 		D237330725D1BD1B004098E5 /* Chat2chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat2chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D237330A25D1BD1B004098E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D237330C25D1BD1B004098E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D237330E25D1BD1B004098E5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D237331425D1BD1B004098E5 /* Chat2chat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chat2chat.xcdatamodel; sourceTree = "<group>"; };
 		D237331625D1BD1F004098E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D237331925D1BD1F004098E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -65,8 +62,6 @@
 		D237332625D1BD1F004098E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D237334925D1C61B004098E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D23733DB25D27BCB004098E5 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		D23733E325D27C12004098E5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		D23733F625D2B976004098E5 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		D237341425D30E0B004098E5 /* InterlocutorMessageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlocutorMessageViewCell.swift; sourceTree = "<group>"; };
 		D237349325D535C8004098E5 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		D26610E625D7EA4A00CB7CFE /* SenderTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderTextFieldView.swift; sourceTree = "<group>"; };
@@ -74,7 +69,6 @@
 		D29C106325D7C186003473F3 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		D2A4C5C125F93E9F00307B72 /* Chat2chat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chat2chat.entitlements; sourceTree = "<group>"; };
 		D2A4C5CB25F95D2700307B72 /* ClearMessagesDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearMessagesDelegate.swift; sourceTree = "<group>"; };
-		D2ED2B6025D6A1CD0031465C /* FindChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindChatViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,10 +178,6 @@
 		D237335225D1C69C004098E5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D237330E25D1BD1B004098E5 /* MainViewController.swift */,
-				D23733F625D2B976004098E5 /* AccountViewController.swift */,
-				D23733E325D27C12004098E5 /* SettingsViewController.swift */,
-				D2ED2B6025D6A1CD0031465C /* FindChatViewController.swift */,
 				D23733DB25D27BCB004098E5 /* ChatViewController.swift */,
 			);
 			path = Controllers;
@@ -211,6 +201,7 @@
 				D228270225D5712600589766 /* MessageView.swift */,
 				D26610E625D7EA4A00CB7CFE /* SenderTextFieldView.swift */,
 				D237349325D535C8004098E5 /* ChatView.swift */,
+				D221ACDD2603C54000DE590A /* LoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -408,22 +399,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2ED2B6125D6A1CD0031465C /* FindChatViewController.swift in Sources */,
 				D2A4C5CC25F95D2800307B72 /* ClearMessagesDelegate.swift in Sources */,
 				D237341525D30E0B004098E5 /* InterlocutorMessageViewCell.swift in Sources */,
 				D237331525D1BD1B004098E5 /* Chat2chat.xcdatamodeld in Sources */,
-				D237330F25D1BD1B004098E5 /* MainViewController.swift in Sources */,
 				D29C106425D7C186003473F3 /* StringExtension.swift in Sources */,
 				D237330B25D1BD1B004098E5 /* AppDelegate.swift in Sources */,
+				D221ACDE2603C54000DE590A /* LoadingView.swift in Sources */,
 				D237349425D535C9004098E5 /* ChatView.swift in Sources */,
 				D23733DD25D27BCB004098E5 /* ChatViewController.swift in Sources */,
 				D228270325D5712600589766 /* MessageView.swift in Sources */,
 				D297722625D70CDC002EA547 /* DataBase.swift in Sources */,
 				D237330D25D1BD1B004098E5 /* SceneDelegate.swift in Sources */,
 				D22826FF25D55DB400589766 /* Message.swift in Sources */,
-				D23733E525D27C12004098E5 /* SettingsViewController.swift in Sources */,
 				D228270B25D573E500589766 /* SelfMessageViewCell.swift in Sources */,
-				D23733F725D2B976004098E5 /* AccountViewController.swift in Sources */,
 				D26610E725D7EA4A00CB7CFE /* SenderTextFieldView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
