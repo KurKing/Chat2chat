@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		87C7CED2D9429B81B7BC1C5B /* Pods_Chat2chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F98299313DCC7A980FA8CB7 /* Pods_Chat2chat.framework */; };
 		D221ACDE2603C54000DE590A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D221ACDD2603C54000DE590A /* LoadingView.swift */; };
+		D221ACE82603D77200DE590A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D221ACE72603D77200DE590A /* Constants.swift */; };
 		D22826FF25D55DB400589766 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22826FE25D55DB400589766 /* Message.swift */; };
 		D228270325D5712600589766 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D228270225D5712600589766 /* MessageView.swift */; };
 		D228270B25D573E500589766 /* SelfMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D228270A25D573E500589766 /* SelfMessageViewCell.swift */; };
@@ -47,6 +48,7 @@
 		A7873E3D9A9D1998F27A73A7 /* Pods-Chat2chatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat2chatTests.debug.xcconfig"; path = "Target Support Files/Pods-Chat2chatTests/Pods-Chat2chatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AF8BE8A5C72B2360047DA629 /* Pods_Chat2chatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat2chatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D221ACDD2603C54000DE590A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		D221ACE72603D77200DE590A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D22826FE25D55DB400589766 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D228270225D5712600589766 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		D228270A25D573E500589766 /* SelfMessageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfMessageViewCell.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				D29C106325D7C186003473F3 /* StringExtension.swift */,
 				D237331825D1BD1F004098E5 /* LaunchScreen.storyboard */,
 				D237331625D1BD1F004098E5 /* Assets.xcassets */,
+				D221ACE72603D77200DE590A /* Constants.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				D237331525D1BD1B004098E5 /* Chat2chat.xcdatamodeld in Sources */,
 				D29C106425D7C186003473F3 /* StringExtension.swift in Sources */,
 				D237330B25D1BD1B004098E5 /* AppDelegate.swift in Sources */,
+				D221ACE82603D77200DE590A /* Constants.swift in Sources */,
 				D221ACDE2603C54000DE590A /* LoadingView.swift in Sources */,
 				D237349425D535C9004098E5 /* ChatView.swift in Sources */,
 				D23733DD25D27BCB004098E5 /* ChatViewController.swift in Sources */,

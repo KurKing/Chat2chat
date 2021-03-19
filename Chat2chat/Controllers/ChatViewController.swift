@@ -11,19 +11,13 @@ import Firebase
 class ChatViewController: UIViewController {
     
     private var database: DataBase!
+    
     private(set) var chatView: ChatView!
     private(set) var loadingView: LoadingView!
-    fileprivate var messages = [Message](){
-        didSet {
-            if messages.isEmpty {
-                showLoadingView()
-            }
-        }
-    }
+    
+    fileprivate var messages = [Message]()
     
     let avatarName = "catAvatar\(Int.random(in: 1...5))"
-    
-    private var chatComplition: ((Message)->())!
     
     override func loadView() {
         super.loadView()
@@ -42,13 +36,7 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        database = DataBase(delegate: self, complition: { [weak self] (message) in
-            if let vc = self {
-                DispatchQueue.main.async {
-                    vc.add(message: message)
-                }
-            }
-        })
+        database = DataBase(delegate: self)
         
         // naviogation view
         title = "Chat2chat"
@@ -68,17 +56,8 @@ class ChatViewController: UIViewController {
         chatView.textFieldView.button.addTarget(self, action: #selector(sendButtonPressed(_:)), for: .touchUpInside)
         
         // load chat
-        chatComplition = { [weak self] (message) in
-            if let vc = self {
-                DispatchQueue.main.async {
-                    vc.add(message: message)
-                }
-            }
-        }
-        
         showLoadingView()
-        
-        DispatchQueue.global(qos: .background).async { [self] in
+        DispatchQueue.global(qos: .background).async {
             self.database.startChat()
         }
         
@@ -98,35 +77,27 @@ class ChatViewController: UIViewController {
         let validatedText = text.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if validatedText != "" {
-            database.sendMessage(Message(text: validatedText, fromMe: true))
+            DispatchQueue.global(qos: .userInteractive).async {
+                self.database.sendMessage(Message(text: validatedText, fromMe: true))
+            }
             chatView.messageText = ""
         }
-
+        
     }
     
     @objc func reloadButtonPressed(_ sender: UIButton){
-        database.deleteChat()
-        messages = []
-        database.startChat()
-    }
-            
-    private func add(message: Message){
-        hideLoadingView()
-        messages.append(message)
-        chatView.tableView.reloadData()
-        chatView.tableView.scrollToRow(at: IndexPath(row: messages.count-1, section: 0), at: .top, animated: true)
-    }
-    
-    private func showDeletedChatAlert(){
-        let alert = UIAlertController(title: "Your interlocutor has finished chatting", message: nil, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: { [weak self] _ in
-            self?.database.startChat()
-        }))
-        
-        DispatchQueue.main.async {
-            self.present(alert, animated: true)
+        DispatchQueue.global(qos: .background).async {
+            self.database.deleteChat()
         }
+        messages = []
+        chatView.tableView.reloadData()
+        showLoadingView()
+        
+        DispatchQueue.global(qos: .userInteractive).async{
+            self.database.startChat()
+        }
+        
+        dismissKeyboard()
     }
 }
 
@@ -175,7 +146,9 @@ private extension ChatViewController {
         }
         
         view.layoutIfNeeded()
-        chatView.tableView.scrollToRow(at: IndexPath(row: messages.count-1, section: 0), at: .top, animated: false)
+        if !messages.isEmpty {
+            chatView.tableView.scrollToRow(at: IndexPath(row: messages.count-1, section: 0), at: .top, animated: false)
+        }
     }
     @objc func keyboardWillHide(notification: NSNotification) {
         chatView.view.snp.updateConstraints {
@@ -197,17 +170,49 @@ private extension ChatViewController {
 //MARK: - DataBaseDelegate
 extension ChatViewController: DataBaseDelegate {
     func showLoadingView() {
-        loadingView.view.alpha = 1
+        DispatchQueue.main.async {
+            self.loadingView.view.alpha = 1
+        }
     }
     
     func hideLoadingView() {
-        loadingView.view.alpha = 0
+        DispatchQueue.main.async {
+            self.loadingView.view.alpha = 0
+        }
     }
     
     func clearMessages() {
-        messages = []
-        showDeletedChatAlert()
+        DispatchQueue.main.async {
+            self.messages = []
+            self.chatView.tableView.reloadData()
+            self.showLoadingView()
+            self.showDeletedChatAlert()
+        }
     }
     
-    
+    func addMessage(message: Message){
+        DispatchQueue.main.async {
+            self.hideLoadingView()
+            self.messages.append(message)
+            self.chatView.tableView.reloadData()
+            self.chatView.tableView.scrollToRow(at: IndexPath(row: self.messages.count-1, section: 0), at: .top, animated: true)
+        }
+    }
+}
+
+//MARK: - Alert
+extension ChatViewController {
+    private func showDeletedChatAlert(){
+        let alert = UIAlertController(title: "Your interlocutor has finished chatting", message: nil, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: { [weak self] _ in
+            DispatchQueue.global(qos: .userInteractive).async{
+                self?.database.startChat()
+            }
+        }))
+        
+        DispatchQueue.main.async {
+            self.present(alert, animated: true)
+        }
+    }
 }

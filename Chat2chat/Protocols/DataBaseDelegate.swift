@@ -11,4 +11,5 @@ protocol DataBaseDelegate {
     func hideLoadingView()
     func showLoadingView()
     func clearMessages()
+    func addMessage(message: Message)
 }
