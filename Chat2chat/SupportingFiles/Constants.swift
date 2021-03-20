@@ -10,7 +10,15 @@ import Foundation
 struct Constants {
     struct DataBase {
         static let chatCollection = "Chats"
-        static let messageCollection = "messages"
+        static let messageCollection = "Messages"
         static let userToken = "userToken"
+        
+        static let isFreeParametr = "isFree"
+        static let timeParametr = "time"
+        static let textParametr = "text"
+    }
+    
+    struct Messages {
+        static let chatStartMessage = "Chat started! Say hello to your interlocutor)"
     }
 }

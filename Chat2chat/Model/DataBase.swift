@@ -8,7 +8,7 @@
 import Firebase
 
 class DataBase {
-    let constants = Constants.DataBase.self
+    typealias DBConstants = Constants.DataBase
     
     private let db = Firestore.firestore()
     private var listener: ListenerRegistration?
@@ -17,7 +17,7 @@ class DataBase {
     private var currentChatId: String
     private var currentDocument: DocumentReference {
         return db
-            .collection(constants.chatCollection)
+            .collection(DBConstants.chatCollection)
             .document(currentChatId)
     }
     
@@ -26,11 +26,11 @@ class DataBase {
     init(delegate: DataBaseDelegate) {
         self.delegate = delegate
         
-        if let token = UserDefaults.standard.string(forKey: constants.userToken){
+        if let token = UserDefaults.standard.string(forKey: DBConstants.userToken){
             userToken = token[0..<6]
         } else {
             userToken = UUID().uuidString[0..<6]
-            UserDefaults.standard.set(userToken, forKey: constants.userToken)
+            UserDefaults.standard.set(userToken, forKey: DBConstants.userToken)
         }
         
         currentChatId = userToken
@@ -39,8 +39,8 @@ class DataBase {
     
     func startChat(){
         
-        db.collection(constants.chatCollection)
-            .whereField("isFree", isEqualTo: true)
+        db.collection(DBConstants.chatCollection)
+            .whereField(DBConstants.isFreeParametr, isEqualTo: true)
             .getDocuments { [weak self] query, error in
                 
                 if let dataBase = self {
@@ -57,11 +57,11 @@ class DataBase {
                         dataBase.currentChatId = query.documents[Int.random(in: 0..<query.documents.count)].documentID
                         
                         dataBase.db
-                            .collection(dataBase.constants.chatCollection).document(dataBase.currentChatId).updateData(["isFree" : false])
+                            .collection(DBConstants.chatCollection).document(dataBase.currentChatId).updateData([DBConstants.isFreeParametr : false])
                         
                         dataBase.delegate.hideLoadingView()
                         dataBase.sendMessage(
-                            Message(text: "User \(dataBase.userToken) connected", fromMe: true))
+                            Message(text: Constants.Messages.chatStartMessage, fromMe: true))
                         dataBase.addListenerToChat()
                         
                     }
@@ -73,7 +73,7 @@ class DataBase {
         listener?.remove()
         
         currentDocument
-            .collection(constants.messageCollection)
+            .collection(DBConstants.messageCollection)
             .getDocuments { (query, error) in
                 if let query = query {
                     for i in query.documents {
@@ -90,9 +90,9 @@ class DataBase {
         
         currentChatId = UUID().uuidString[0..<6]
         
-        db.collection(constants.chatCollection)
+        db.collection(DBConstants.chatCollection)
             .document(currentChatId)
-            .setData(["isFree": true]) {
+            .setData([DBConstants.isFreeParametr: true]) {
                 if let error = $0 {
                     print(error.localizedDescription)
                 }
@@ -106,10 +106,10 @@ class DataBase {
         listener?.remove()
         print("Add listener to chat with id: \(currentChatId)")
         
-        listener = db.collection(constants.chatCollection)
+        listener = db.collection(DBConstants.chatCollection)
             .document(currentChatId)
-            .collection(constants.messageCollection)
-            .order(by: "time")
+            .collection(DBConstants.messageCollection)
+            .order(by: DBConstants.timeParametr)
             .addSnapshotListener { [weak self] query, error in
                 
                 if let dataBase = self {
@@ -123,10 +123,11 @@ class DataBase {
                     
                     query.documentChanges.forEach { diff in
                         if (diff.type == .added) {
+        
                             let data = diff.document.data()
                             
-                            if let text = data["text"] as? String,
-                               let fromUser = data["fromUser"] as? String {
+                            if let text = data[DBConstants.textParametr] as? String,
+                               let fromUser = data[DBConstants.userToken] as? String {
                                 dataBase.delegate
                                     .addMessage(message:Message(text: text, fromMe: fromUser == dataBase.userToken))
                             }
@@ -144,11 +145,11 @@ class DataBase {
     
     func sendMessage(_ message: Message){
         currentDocument
-            .collection(constants.messageCollection)
+            .collection(DBConstants.messageCollection)
             .addDocument(data: [
-                "text" : message.text,
-                "fromUser": userToken,
-                "time" : Date().timeIntervalSince1970
+                DBConstants.textParametr : message.text,
+                DBConstants.userToken : userToken,
+                DBConstants.timeParametr : Date().timeIntervalSince1970
             ])
     }
 }
