@@ -26,6 +26,7 @@
 		D26610E725D7EA4A00CB7CFE /* SenderTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26610E625D7EA4A00CB7CFE /* SenderTextFieldView.swift */; };
 		D26F323B26066D06004A808F /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26F323A26066D06004A808F /* TableViewExtension.swift */; };
 		D26F323F26066E6E004A808F /* ReuseViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26F323E26066E6E004A808F /* ReuseViewProtocol.swift */; };
+		D26F3247260670C4004A808F /* StartedChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26F3246260670C4004A808F /* StartedChatTableViewCell.swift */; };
 		D297722625D70CDC002EA547 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D297722525D70CDC002EA547 /* DataBase.swift */; };
 		D29C106425D7C186003473F3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29C106325D7C186003473F3 /* StringExtension.swift */; };
 		D2A4C5CC25F95D2800307B72 /* DataBaseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A4C5CB25F95D2700307B72 /* DataBaseDelegate.swift */; };
@@ -71,6 +72,7 @@
 		D26610E625D7EA4A00CB7CFE /* SenderTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderTextFieldView.swift; sourceTree = "<group>"; };
 		D26F323A26066D06004A808F /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		D26F323E26066E6E004A808F /* ReuseViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseViewProtocol.swift; sourceTree = "<group>"; };
+		D26F3246260670C4004A808F /* StartedChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartedChatTableViewCell.swift; sourceTree = "<group>"; };
 		D297722525D70CDC002EA547 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		D29C106325D7C186003473F3 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		D2A4C5C125F93E9F00307B72 /* Chat2chat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chat2chat.entitlements; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				D26610E625D7EA4A00CB7CFE /* SenderTextFieldView.swift */,
 				D237349325D535C8004098E5 /* ChatView.swift */,
 				D221ACDD2603C54000DE590A /* LoadingView.swift */,
+				D26F3246260670C4004A808F /* StartedChatTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				D29C106425D7C186003473F3 /* StringExtension.swift in Sources */,
 				D237330B25D1BD1B004098E5 /* AppDelegate.swift in Sources */,
 				D221ACE82603D77200DE590A /* Constants.swift in Sources */,
+				D26F3247260670C4004A808F /* StartedChatTableViewCell.swift in Sources */,
 				D221ACDE2603C54000DE590A /* LoadingView.swift in Sources */,
 				D237349425D535C9004098E5 /* ChatView.swift in Sources */,
 				D23733DD25D27BCB004098E5 /* ChatViewController.swift in Sources */,

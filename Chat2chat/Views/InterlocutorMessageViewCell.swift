@@ -55,8 +55,8 @@ class InterlocutorMessageViewCell: UITableViewCell {
         selectionStyle = .none
         backgroundColor = .clear
         
-        addSubview(avatar)
-        addSubview(messageView.view)
+        contentView.addSubview(avatar)
+        contentView.addSubview(messageView.view)
         
         addConstraints()
     }

@@ -51,6 +51,8 @@ class ChatViewController: UIViewController {
             InterlocutorMessageViewCell.self)
         chatView.tableView.registerCell(
             SelfMessageViewCell.self)
+        chatView.tableView.registerCell(
+            StartedChatTableViewCell.self)
         
         // send button target
         chatView.textFieldView.button.addTarget(self, action: #selector(sendButtonPressed(_:)), for: .touchUpInside)
@@ -112,21 +114,24 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
         
         let message = messages[indexPath.row]
         
+        if message.text == Constants.Messages.chatStartMessage {
+            return tableView.dequeueReusableCell(type: StartedChatTableViewCell.self)
+        }
+        
         if message.fromMe {
             
             let cell = tableView.dequeueReusableCell(type: SelfMessageViewCell.self)
             cell.setMessage(message)
             return cell
             
-        } else {
-            
+        }
+        
             let cell = tableView.dequeueReusableCell(type: InterlocutorMessageViewCell.self)
             cell.setMessage(message)
             if let avatar = UIImage(named: avatarName) {
                 cell.setAvatarImage(avatar)
             }
             return cell
-        }
         
     }
 }
@@ -193,6 +198,11 @@ extension ChatViewController: DataBaseDelegate {
     
     func addMessage(message: Message){
         DispatchQueue.main.async {
+            
+            if self.messages.count == 1 && self.messages[0].text == Constants.Messages.chatStartMessage {
+                self.messages = []
+            }
+            
             self.hideLoadingView()
             self.messages.append(message)
             self.chatView.tableView.reloadData()
