@@ -24,6 +24,8 @@
 		D237341525D30E0B004098E5 /* InterlocutorMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237341425D30E0B004098E5 /* InterlocutorMessageViewCell.swift */; };
 		D237349425D535C9004098E5 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237349325D535C8004098E5 /* ChatView.swift */; };
 		D26610E725D7EA4A00CB7CFE /* SenderTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26610E625D7EA4A00CB7CFE /* SenderTextFieldView.swift */; };
+		D26F323B26066D06004A808F /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26F323A26066D06004A808F /* TableViewExtension.swift */; };
+		D26F323F26066E6E004A808F /* ReuseViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26F323E26066E6E004A808F /* ReuseViewProtocol.swift */; };
 		D297722625D70CDC002EA547 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D297722525D70CDC002EA547 /* DataBase.swift */; };
 		D29C106425D7C186003473F3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29C106325D7C186003473F3 /* StringExtension.swift */; };
 		D2A4C5CC25F95D2800307B72 /* DataBaseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A4C5CB25F95D2700307B72 /* DataBaseDelegate.swift */; };
@@ -67,6 +69,8 @@
 		D237341425D30E0B004098E5 /* InterlocutorMessageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlocutorMessageViewCell.swift; sourceTree = "<group>"; };
 		D237349325D535C8004098E5 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		D26610E625D7EA4A00CB7CFE /* SenderTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderTextFieldView.swift; sourceTree = "<group>"; };
+		D26F323A26066D06004A808F /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
+		D26F323E26066E6E004A808F /* ReuseViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseViewProtocol.swift; sourceTree = "<group>"; };
 		D297722525D70CDC002EA547 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		D29C106325D7C186003473F3 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		D2A4C5C125F93E9F00307B72 /* Chat2chat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chat2chat.entitlements; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 				D237335125D1C691004098E5 /* Model */,
 				D237341325D30DD2004098E5 /* Views */,
 				D237335225D1C69C004098E5 /* Controllers */,
+				D26F323926066CE5004A808F /* Extensions */,
 				D2A4C5CA25F95D0200307B72 /* Protocols */,
 				D23733F325D2A3DB004098E5 /* SupportingFiles */,
 				D237331B25D1BD1F004098E5 /* Info.plist */,
@@ -209,10 +214,19 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		D26F323926066CE5004A808F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D26F323A26066D06004A808F /* TableViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		D2A4C5CA25F95D0200307B72 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
 				D2A4C5CB25F95D2700307B72 /* DataBaseDelegate.swift */,
+				D26F323E26066E6E004A808F /* ReuseViewProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -405,6 +419,7 @@
 				D2A4C5CC25F95D2800307B72 /* DataBaseDelegate.swift in Sources */,
 				D237341525D30E0B004098E5 /* InterlocutorMessageViewCell.swift in Sources */,
 				D237331525D1BD1B004098E5 /* Chat2chat.xcdatamodeld in Sources */,
+				D26F323B26066D06004A808F /* TableViewExtension.swift in Sources */,
 				D29C106425D7C186003473F3 /* StringExtension.swift in Sources */,
 				D237330B25D1BD1B004098E5 /* AppDelegate.swift in Sources */,
 				D221ACE82603D77200DE590A /* Constants.swift in Sources */,
@@ -414,6 +429,7 @@
 				D228270325D5712600589766 /* MessageView.swift in Sources */,
 				D297722625D70CDC002EA547 /* DataBase.swift in Sources */,
 				D237330D25D1BD1B004098E5 /* SceneDelegate.swift in Sources */,
+				D26F323F26066E6E004A808F /* ReuseViewProtocol.swift in Sources */,
 				D22826FF25D55DB400589766 /* Message.swift in Sources */,
 				D228270B25D573E500589766 /* SelfMessageViewCell.swift in Sources */,
 				D26610E725D7EA4A00CB7CFE /* SenderTextFieldView.swift in Sources */,

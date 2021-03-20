@@ -47,10 +47,10 @@ class ChatViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadButtonPressed(_:)))
         
         // cells registration
-        chatView.tableView.register(
-            InterlocutorMessageViewCell.self, forCellReuseIdentifier: "interlocutor")
-        chatView.tableView.register(
-            SelfMessageViewCell.self, forCellReuseIdentifier: "self")
+        chatView.tableView.registerCell(
+            InterlocutorMessageViewCell.self)
+        chatView.tableView.registerCell(
+            SelfMessageViewCell.self)
         
         // send button target
         chatView.textFieldView.button.addTarget(self, action: #selector(sendButtonPressed(_:)), for: .touchUpInside)
@@ -113,22 +113,18 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
         let message = messages[indexPath.row]
         
         if message.fromMe {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "self", for: indexPath) as! SelfMessageViewCell
             
+            let cell = tableView.dequeueReusableCell(type: SelfMessageViewCell.self)
             cell.setMessage(message)
-            
             return cell
             
         } else {
-
-let cell = tableView.dequeueReusableCell(withIdentifier: "interlocutor", for: indexPath) as! InterlocutorMessageViewCell
             
+            let cell = tableView.dequeueReusableCell(type: InterlocutorMessageViewCell.self)
             cell.setMessage(message)
-            
             if let avatar = UIImage(named: avatarName) {
                 cell.setAvatarImage(avatar)
             }
-            
             return cell
         }
         
