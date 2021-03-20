@@ -20,5 +20,6 @@ struct Constants {
     
     struct Messages {
         static let chatStartMessage = "Chat started! Say hello to your interlocutor)"
+        static let endChatMessage = "Your interlocutor has finished chatting"
     }
 }

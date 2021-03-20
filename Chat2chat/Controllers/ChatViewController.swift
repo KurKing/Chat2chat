@@ -208,7 +208,7 @@ extension ChatViewController: DataBaseDelegate {
 //MARK: - Alert
 extension ChatViewController {
     private func showDeletedChatAlert(){
-        let alert = UIAlertController(title: "Your interlocutor has finished chatting", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: Constants.Messages.endChatMessage, message: nil, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: { [weak self] _ in
             DispatchQueue.global(qos: .userInteractive).async{
