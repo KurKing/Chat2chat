@@ -120,7 +120,8 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "interlocutor", for: indexPath) as! InterlocutorMessageViewCell
+
+let cell = tableView.dequeueReusableCell(withIdentifier: "interlocutor", for: indexPath) as! InterlocutorMessageViewCell
             
             cell.setMessage(message)
             
@@ -172,12 +173,16 @@ extension ChatViewController: DataBaseDelegate {
     func showLoadingView() {
         DispatchQueue.main.async {
             self.loadingView.view.alpha = 1
+            self.chatView.textFieldView.sendMessageTextField.isEnabled = false
+            self.chatView.textFieldView.button.isEnabled = false
         }
     }
     
     func hideLoadingView() {
         DispatchQueue.main.async {
             self.loadingView.view.alpha = 0
+            self.chatView.textFieldView.sendMessageTextField.isEnabled = true
+            self.chatView.textFieldView.button.isEnabled = true
         }
     }
     
