@@ -195,10 +195,9 @@
 		D23733F325D2A3DB004098E5 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				D29C106325D7C186003473F3 /* StringExtension.swift */,
+				D221ACE72603D77200DE590A /* Constants.swift */,
 				D237331825D1BD1F004098E5 /* LaunchScreen.storyboard */,
 				D237331625D1BD1F004098E5 /* Assets.xcassets */,
-				D221ACE72603D77200DE590A /* Constants.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -220,6 +219,7 @@
 		D26F323926066CE5004A808F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D29C106325D7C186003473F3 /* StringExtension.swift */,
 				D26F323A26066D06004A808F /* TableViewExtension.swift */,
 			);
 			path = Extensions;

@@ -67,12 +67,49 @@ class DataBase {
                     }
                 }
             }
+        
+        DispatchQueue.global(qos: .background).async {
+            self.db.collection(DBConstants.chatCollection)
+                .whereField(DBConstants.shouldBeDeleted, isEqualTo: true)
+                .getDocuments { [weak self] query, error in
+                    
+                    if let dataBase = self {
+                        guard let query = query else {
+                            return
+                        }
+                        
+                        if !query.isEmpty {
+                        
+                            let shouldBeDeletedChatId = query.documents[Int.random(in: 0..<query.documents.count)].documentID
+                            
+                            dataBase.deleteChat(id: shouldBeDeletedChatId)
+                        }
+                    }
+                }
+        }
     }
     
     func deleteChat(){
         listener?.remove()
+        currentDocument.setData([DBConstants.shouldBeDeleted : true])
         
+        deleteChat(id: currentChatId)
+    }
+    
+    func sendMessage(_ message: Message){
         currentDocument
+            .collection(DBConstants.messageCollection)
+            .addDocument(data: [
+                DBConstants.textParametr : message.text,
+                DBConstants.userToken : userToken,
+                DBConstants.timeParametr : Date().timeIntervalSince1970
+            ])
+    }
+    
+    private func deleteChat(id: String) {
+        db
+            .collection(DBConstants.chatCollection)
+            .document(id)
             .collection(DBConstants.messageCollection)
             .getDocuments { (query, error) in
                 if let query = query {
@@ -82,7 +119,9 @@ class DataBase {
                 }
             }
         
-        currentDocument
+        db
+            .collection(DBConstants.chatCollection)
+            .document(id)
             .delete()
     }
     
@@ -92,11 +131,10 @@ class DataBase {
         
         db.collection(DBConstants.chatCollection)
             .document(currentChatId)
-            .setData([DBConstants.isFreeParametr: true]) {
-                if let error = $0 {
-                    print(error.localizedDescription)
-                }
-            }
+            .setData([
+                DBConstants.isFreeParametr: true,
+                DBConstants.shouldBeDeleted: false
+            ])
         
         addListenerToChat()
     }
@@ -123,7 +161,7 @@ class DataBase {
                     
                     query.documentChanges.forEach { diff in
                         if (diff.type == .added) {
-        
+                            
                             let data = diff.document.data()
                             
                             if let text = data[DBConstants.textParametr] as? String,
@@ -142,15 +180,6 @@ class DataBase {
                 
             }
     }
-    
-    func sendMessage(_ message: Message){
-        currentDocument
-            .collection(DBConstants.messageCollection)
-            .addDocument(data: [
-                DBConstants.textParametr : message.text,
-                DBConstants.userToken : userToken,
-                DBConstants.timeParametr : Date().timeIntervalSince1970
-            ])
-    }
+
 }
 

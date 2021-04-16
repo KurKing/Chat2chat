@@ -11,7 +11,3 @@ struct Message {
     let text: String
     let fromMe: Bool
 }
-
-
-
-

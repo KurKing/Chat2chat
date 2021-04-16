@@ -10,16 +10,17 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var dataBase: DataBase?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let mainViewController = UINavigationController(rootViewController: ChatViewController())
+        let chatViewController = ChatViewController()
+        dataBase = DataBase(delegate: chatViewController)
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = mainViewController
+        window?.rootViewController = UINavigationController(rootViewController: chatViewController)
         window?.makeKeyAndVisible()
     }
     
@@ -28,4 +29,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
 }
-

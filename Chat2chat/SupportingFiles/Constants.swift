@@ -16,10 +16,11 @@ struct Constants {
         static let isFreeParametr = "isFree"
         static let timeParametr = "time"
         static let textParametr = "text"
+        static let shouldBeDeleted = "shouldBeDeleted"
     }
     
     struct Messages {
-        static let chatStartMessage = "Chat started! Say hello to your interlocutor)"
+        static let chatStartMessage = "Chat started! Say hello to your interlocutor"
         static let endChatMessage = "Your interlocutor has finished chatting"
     }
 }

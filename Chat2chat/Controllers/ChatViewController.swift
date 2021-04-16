@@ -10,12 +10,12 @@ import Firebase
 
 class ChatViewController: UIViewController {
     
-    private var database: DataBase!
+    private var database: DataBase?
     
     private(set) var chatView: ChatView!
     private(set) var loadingView: LoadingView!
     
-    fileprivate var messages = [Message]()
+    fileprivate(set) var messages = [Message]()
     
     let avatarName = "catAvatar\(Int.random(in: 1...5))"
     
@@ -60,7 +60,7 @@ class ChatViewController: UIViewController {
         // load chat
         showLoadingView()
         DispatchQueue.global(qos: .background).async {
-            self.database.startChat()
+            self.database?.startChat()
         }
         
         // keyboard manipulations
@@ -80,7 +80,7 @@ class ChatViewController: UIViewController {
         
         if validatedText != "" {
             DispatchQueue.global(qos: .userInteractive).async {
-                self.database.sendMessage(Message(text: validatedText, fromMe: true))
+                self.database?.sendMessage(Message(text: validatedText, fromMe: true))
             }
             chatView.messageText = ""
         }
@@ -89,18 +89,19 @@ class ChatViewController: UIViewController {
     
     @objc func reloadButtonPressed(_ sender: UIButton){
         DispatchQueue.global(qos: .background).async {
-            self.database.deleteChat()
+            self.database?.deleteChat()
         }
         messages = []
         chatView.tableView.reloadData()
         showLoadingView()
         
         DispatchQueue.global(qos: .userInteractive).async{
-            self.database.startChat()
+            self.database?.startChat()
         }
         
         dismissKeyboard()
     }
+
 }
 
 //MARK: - Table data source
@@ -126,12 +127,12 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
             
         }
         
-            let cell = tableView.dequeueReusableCell(type: InterlocutorMessageViewCell.self)
-            cell.setMessage(message)
-            if let avatar = UIImage(named: avatarName) {
-                cell.setAvatarImage(avatar)
-            }
-            return cell
+        let cell = tableView.dequeueReusableCell(type: InterlocutorMessageViewCell.self)
+        cell.setMessage(message)
+        if let avatar = UIImage(named: avatarName) {
+            cell.setAvatarImage(avatar)
+        }
+        return cell
         
     }
 }
@@ -198,7 +199,6 @@ extension ChatViewController: DataBaseDelegate {
     
     func addMessage(message: Message){
         DispatchQueue.main.async {
-            
             if self.messages.count == 1 && self.messages[0].text == Constants.Messages.chatStartMessage {
                 self.messages = []
             }
@@ -218,7 +218,7 @@ extension ChatViewController {
         
         alert.addAction(UIAlertAction(title: "Ok", style: .destructive, handler: { [weak self] _ in
             DispatchQueue.global(qos: .userInteractive).async{
-                self?.database.startChat()
+                self?.database?.startChat()
             }
         }))
         
