@@ -10,27 +10,21 @@ import Firebase
 
 class ChatViewController: UIViewController {
     
-    private var database: DataBase?
-    
-    private(set) var chatView: ChatView!
-    private(set) var loadingView: LoadingView!
-    
-    fileprivate(set) var messages = [Message]()
-    
     let avatarName = "catAvatar\(Int.random(in: 1...5))"
+    
+    private var database: DataBase?
+    private(set) var chatView: ChatView!
+    fileprivate(set) var messages = [Message]()
     
     override func loadView() {
         super.loadView()
         
         chatView = ChatView(dataSource: self, tableViewDelegate: self)
-        loadingView = LoadingView()
         
         view.addSubview(chatView.bgImageView)
         view.addSubview(chatView.view)
-        view.addSubview(loadingView.view)
-        
+
         chatView.addConstraints()
-        loadingView.addConstraints()
     }
     
     override func viewDidLoad() {
@@ -174,17 +168,13 @@ private extension ChatViewController {
 extension ChatViewController: DataBaseDelegate {
     func showLoadingView() {
         DispatchQueue.main.async {
-            self.loadingView.view.alpha = 1
-            self.chatView.textFieldView.sendMessageTextField.isEnabled = false
-            self.chatView.textFieldView.button.isEnabled = false
+            self.chatView.showLoadingView()
         }
     }
     
     func hideLoadingView() {
         DispatchQueue.main.async {
-            self.loadingView.view.alpha = 0
-            self.chatView.textFieldView.sendMessageTextField.isEnabled = true
-            self.chatView.textFieldView.button.isEnabled = true
+            self.chatView.hideLoadingView()
         }
     }
     

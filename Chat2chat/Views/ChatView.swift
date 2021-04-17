@@ -8,8 +8,7 @@
 import UIKit
 
 struct ChatView {
-
-    //MARK: - Views
+    
     let bgImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "chatBg"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -28,8 +27,42 @@ struct ChatView {
     }()
     
     let view  = UIView()
-
     let textFieldView: SenderTextFieldView
+    let loadingView = LoadingView()
+    
+    var messageText: String? {
+        set{
+            textFieldView.sendMessageTextField.text = newValue
+        }
+        get {
+            return textFieldView.sendMessageTextField.text
+        }
+    }
+
+    init(dataSource: UITableViewDataSource, tableViewDelegate: UITableViewDelegate) {
+        
+        textFieldView = SenderTextFieldView()
+        
+        tableView.dataSource = dataSource
+        tableView.delegate = tableViewDelegate
+        
+        view.addSubview(tableView)
+        view.addSubview(textFieldView.view)
+        view.addSubview(loadingView.view)
+
+    }
+    
+    func showLoadingView() {
+        loadingView.view.alpha = 1
+        textFieldView.sendMessageTextField.isEnabled = false
+        textFieldView.button.isEnabled = false
+    }
+    
+    func hideLoadingView() {
+        loadingView.view.alpha = 0
+        textFieldView.sendMessageTextField.isEnabled = true
+        textFieldView.button.isEnabled = true
+    }
     
     //MARK: - addConstraints
     func addConstraints(){
@@ -52,26 +85,6 @@ struct ChatView {
             $0.trailing.equalToSuperview()
         }
         textFieldView.addConstraints()
-    }
-
-    init(dataSource: UITableViewDataSource, tableViewDelegate: UITableViewDelegate) {
-        
-        textFieldView = SenderTextFieldView()
-        
-        tableView.dataSource = dataSource
-        tableView.delegate = tableViewDelegate
-        
-        view.addSubview(tableView)
-        view.addSubview(textFieldView.view)
-
-    }
-
-    var messageText: String?{
-        set{
-            textFieldView.sendMessageTextField.text = newValue
-        }
-        get {
-            return textFieldView.sendMessageTextField.text
-        }
+        loadingView.addConstraints()
     }
 }
