@@ -8,6 +8,8 @@
 import Foundation
 
 struct Constants {
+    static let title = "Chat2chat"
+    
     struct DataBase {
         static let chatCollection = "Chats"
         static let messageCollection = "Messages"

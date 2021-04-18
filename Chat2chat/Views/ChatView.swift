@@ -64,6 +64,14 @@ struct ChatView {
         textFieldView.button.isEnabled = true
     }
     
+    func clearMessageTextField() {
+        textFieldView.clear()
+    }
+    
+    var isLoadingViewHidden: Bool {
+        return loadingView.view.alpha == 0
+    }
+    
     //MARK: - addConstraints
     func addConstraints(){
         bgImageView.snp.makeConstraints {

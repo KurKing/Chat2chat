@@ -8,7 +8,6 @@
 import UIKit
 
 struct SenderTextFieldView {
-    //MARK: - Views
     let sendMessageTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = UIColor(named: "BackgroundColor")
@@ -27,6 +26,10 @@ struct SenderTextFieldView {
         
         return uiButton
     }()
+    
+    var view: UIView {
+        return sendMessageTextFieldView
+    }
 
     private let sendMessageTextFieldView: UIView = {
         let uiView = UIView()
@@ -34,6 +37,16 @@ struct SenderTextFieldView {
         
         return uiView
     }()
+    
+    init() {
+        sendMessageTextFieldView.addSubview(sendMessageTextField)
+        sendMessageTextFieldView
+            .addSubview(button)
+    }
+    
+    func clear() {
+        sendMessageTextField.text = ""
+    }
     
     //MARK: - addConstraints
     func addConstraints(){
@@ -50,15 +63,5 @@ struct SenderTextFieldView {
             $0.bottom.equalToSuperview().offset(-15)
             $0.trailing.equalToSuperview().offset(-5)
         }
-    }
-    
-    init() {
-        sendMessageTextFieldView.addSubview(sendMessageTextField)
-        sendMessageTextFieldView
-            .addSubview(button)
-    }
-
-    var view: UIView {
-        return sendMessageTextFieldView
     }
 }

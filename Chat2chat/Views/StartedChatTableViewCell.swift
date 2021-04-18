@@ -23,7 +23,7 @@ class StartedChatTableViewCell: UITableViewCell {
         messageView.addConstraints()
     }
     
-    func setMessage(_ message: Message) {
+    func setMessage(_ message: MessageViewModel) {
         messageView.setMessage(message)
     }
 

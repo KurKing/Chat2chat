@@ -7,9 +7,8 @@
 
 import Foundation
 
-protocol DataBaseDelegate {
-    func hideLoadingView()
-    func showLoadingView()
+protocol DataBaseDelegate: class {
+    var chatId: String { set get }
     func clearMessages()
-    func addMessage(message: Message)
+    func addMessage(message: MessageDBEntity)
 }

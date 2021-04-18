@@ -39,7 +39,7 @@ struct MessageView {
         }
     }
 
-    func setMessage(_ message: Message) {
+    func setMessage(_ message: MessageViewModel) {
         label.text = message.text
     }
     
