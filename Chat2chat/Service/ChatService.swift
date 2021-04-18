@@ -39,10 +39,12 @@ class ChatService: DataBaseDelegate {
     }
     
     func endChat() {
-        messageContainer.clearMessages()
-        delegate?.messages = messageContainer.messages
-        dataBase.endChat(delegate: self, chatId: chatId)
-        startChat()
+        if !chatId.isEmpty {
+            messageContainer.clearMessages()
+            delegate?.messages = messageContainer.messages
+            dataBase.endChat(delegate: self, chatId: chatId)
+            startChat()
+        }        
     }
     
     func sendMessage(text: String) {

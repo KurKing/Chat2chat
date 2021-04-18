@@ -30,7 +30,6 @@ class FirestoreDataBase: DataBase {
                             .document(chatId)
                             .setData([
                                 DBConstants.isFreeParametr: true,
-                                DBConstants.shouldBeDeleted: false,
                                 "User1": userToken,
                                 "User2": "-",
                                 DBConstants.timeParametr: Date().timeIntervalSince1970
@@ -62,10 +61,6 @@ class FirestoreDataBase: DataBase {
     
     func endChat(delegate: DataBaseDelegate, chatId: String) {
         listener?.remove()
-        
-        db.collection(DBConstants.chatCollection)
-            .document(chatId)
-            .setData([DBConstants.shouldBeDeleted : true])
         
         db.collection(DBConstants.chatCollection)
             .document(chatId)
