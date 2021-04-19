@@ -8,9 +8,9 @@
 import Foundation
 
 protocol ChatServiceDelegate: class {
-    var messages: [MessageViewModel] { set get }
     func showLoadingView()
     func hideLoadingView()
     func clearMessageTextField()
+    func reloadData()
     func showDeletedChatAlert(action: @escaping ()->())
 }

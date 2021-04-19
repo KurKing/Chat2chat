@@ -25,7 +25,7 @@ class MessageContainer {
     }
     
     private func removeIfNeedFirstMessage() {
-        if messages[0].text == Constants.Messages.chatStartMessage {
+        if messages.count > 0 && messages[0].text == Constants.Messages.chatStartMessage {
             messages.remove(at: 0)
         }
     }

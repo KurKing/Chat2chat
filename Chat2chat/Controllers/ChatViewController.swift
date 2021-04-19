@@ -7,18 +7,17 @@
 
 import UIKit
 
-class ChatViewController: UIViewController, ChatServiceDelegate {
-   
+class ChatViewController: UIViewController  {
+    
     let avatarName = "catAvatar\(Int.random(in: 1...5))"
-    var messages = [MessageViewModel]() {
-        didSet {
-            chatView.tableView.reloadData()
-        }
+    
+    private(set) var service: ChatService!
+    var chatView: ChatView!
+    
+    func setService(service: ChatService) {
+        self.service = service
     }
-    
-    var service: ChatService?
-    private var chatView: ChatView!
-    
+        
     override func loadView() {
         super.loadView()
         
@@ -26,13 +25,13 @@ class ChatViewController: UIViewController, ChatServiceDelegate {
         
         view.addSubview(chatView.bgImageView)
         view.addSubview(chatView.view)
-
+        
         chatView.addConstraints()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // naviogation view
         title = Constants.title
         navigationController?.navigationBar.barTintColor = UIColor(named: "BackgroundColor")
@@ -51,7 +50,7 @@ class ChatViewController: UIViewController, ChatServiceDelegate {
         
         // send button target
         chatView.textFieldView.button.addTarget(self, action: #selector(sendButtonPressed(_:)), for: .touchUpInside)
-
+        
         // keyboard manipulations
         hideKeyboardWhenTappedAround()
         
@@ -70,19 +69,19 @@ class ChatViewController: UIViewController, ChatServiceDelegate {
             dismissKeyboard()
         }
     }
-
+    
 }
 
 //MARK: - Table data source
 extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        return service.messagesCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let message = messages[indexPath.row]
+        let message = service.getMessage(index: indexPath.row)
         
         if message.text == Constants.Messages.chatStartMessage {
             return tableView.dequeueReusableCell(type: StartedChatTableViewCell.self)
@@ -118,8 +117,8 @@ private extension ChatViewController {
         }
         
         view.layoutIfNeeded()
-        if !messages.isEmpty {
-            chatView.tableView.scrollToRow(at: IndexPath(row: messages.count-1, section: 0), at: .top, animated: false)
+        if !service.isMessagesEmpty {
+            chatView.tableView.scrollToRow(at: IndexPath(row: service.messagesCount-1, section: 0), at: .top, animated: false)
         }
     }
     @objc func keyboardWillHide(notification: NSNotification) {
@@ -140,7 +139,13 @@ private extension ChatViewController {
 }
 
 //MARK: - ChatServiceDelegate
-extension ChatViewController {
+extension ChatViewController: ChatServiceDelegate {
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.chatView.tableView.reloadData()
+        }
+    }
+    
     func showLoadingView() {
         DispatchQueue.main.async {
             self.chatView.showLoadingView()
@@ -158,7 +163,7 @@ extension ChatViewController {
             self.chatView.clearMessageTextField()
         }
     }
-
+    
     func showDeletedChatAlert(action: @escaping ()->()){
         let alert = UIAlertController(title: Constants.Messages.endChatMessage, message: nil, preferredStyle: .alert)
         

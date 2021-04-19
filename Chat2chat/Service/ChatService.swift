@@ -13,13 +13,13 @@ class ChatService: DataBaseDelegate {
 
     private let dataBase: DataBase
     private weak var delegate: ChatServiceDelegate?
-    private let messageContainer: MessageViewModelsContainer
+    private let messageContainer: MessageContainer
     private let userToken: String
     
     init(delegate: ChatServiceDelegate, dataBase: DataBase) {
         self.delegate = delegate
         self.dataBase = dataBase
-        messageContainer = MessageViewModelsContainer()
+        messageContainer = MessageContainer()
         
         if let token = UserDefaults.standard.string(forKey: Constants.DataBase.userToken){
             userToken = token[0..<6]
@@ -33,6 +33,18 @@ class ChatService: DataBaseDelegate {
         dataBase.startChat(delegate: self, userToken: userToken)
     }
     
+    var messagesCount: Int {
+        return messageContainer.messages.count
+    }
+    
+    var isMessagesEmpty: Bool {
+        return messageContainer.messages.isEmpty
+    }
+    
+    func getMessage(index: Int) -> MessageViewModel {
+        return messageContainer.messages[index]
+    }
+    
     func startChat() {
         delegate?.showLoadingView()
         dataBase.startChat(delegate: self, userToken: userToken)
@@ -41,7 +53,7 @@ class ChatService: DataBaseDelegate {
     func endChat() {
         if !chatId.isEmpty {
             messageContainer.clearMessages()
-            delegate?.messages = messageContainer.messages
+            delegate?.reloadData()
             dataBase.endChat(delegate: self, chatId: chatId)
             startChat()
         }        
@@ -62,13 +74,13 @@ extension ChatService {
         delegate?.showDeletedChatAlert {
             [weak self] in self?.startChat()
         }
-        delegate?.messages = messageContainer.messages
+        delegate?.reloadData()
     }
     func addMessage(message: MessageDBEntity) {
         delegate?.hideLoadingView()
         messageContainer.addMessage(
             MessageViewModel(text: message.text, fromMe: message.userToken==userToken)
         )
-        delegate?.messages = messageContainer.messages
+        delegate?.reloadData()
     }
 }
