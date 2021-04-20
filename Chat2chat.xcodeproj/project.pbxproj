@@ -23,7 +23,7 @@
 		D23733DD25D27BCB004098E5 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23733DB25D27BCB004098E5 /* ChatViewController.swift */; };
 		D237341525D30E0B004098E5 /* InterlocutorMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237341425D30E0B004098E5 /* InterlocutorMessageViewCell.swift */; };
 		D237349425D535C9004098E5 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237349325D535C8004098E5 /* ChatView.swift */; };
-		D24B00C8262B5B5E00AEA3D3 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B00C7262B5B5E00AEA3D3 /* ChatService.swift */; };
+		D24B00C8262B5B5E00AEA3D3 /* ChatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B00C7262B5B5E00AEA3D3 /* ChatPresenter.swift */; };
 		D24B00DF262B5E1C00AEA3D3 /* ChatServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B00DE262B5E1C00AEA3D3 /* ChatServiceDelegate.swift */; };
 		D24B00FD262C1D5000AEA3D3 /* MessageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B00FC262C1D5000AEA3D3 /* MessageContainer.swift */; };
 		D26610E725D7EA4A00CB7CFE /* SenderTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26610E625D7EA4A00CB7CFE /* SenderTextFieldView.swift */; };
@@ -74,7 +74,7 @@
 		D23733DB25D27BCB004098E5 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		D237341425D30E0B004098E5 /* InterlocutorMessageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlocutorMessageViewCell.swift; sourceTree = "<group>"; };
 		D237349325D535C8004098E5 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
-		D24B00C7262B5B5E00AEA3D3 /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
+		D24B00C7262B5B5E00AEA3D3 /* ChatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresenter.swift; sourceTree = "<group>"; };
 		D24B00DE262B5E1C00AEA3D3 /* ChatServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatServiceDelegate.swift; sourceTree = "<group>"; };
 		D24B00FC262C1D5000AEA3D3 /* MessageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageContainer.swift; sourceTree = "<group>"; };
 		D26610E625D7EA4A00CB7CFE /* SenderTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderTextFieldView.swift; sourceTree = "<group>"; };
@@ -156,7 +156,7 @@
 				D237334E25D1C689004098E5 /* App */,
 				D237335125D1C691004098E5 /* Model */,
 				D24B00FB262C1D3F00AEA3D3 /* DataAccess */,
-				D24B00C6262B5B3D00AEA3D3 /* Service */,
+				D24B00C6262B5B3D00AEA3D3 /* Presenter */,
 				D237341325D30DD2004098E5 /* Views */,
 				D237335225D1C69C004098E5 /* Controllers */,
 				D26F323926066CE5004A808F /* Extensions */,
@@ -228,12 +228,12 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		D24B00C6262B5B3D00AEA3D3 /* Service */ = {
+		D24B00C6262B5B3D00AEA3D3 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				D24B00C7262B5B5E00AEA3D3 /* ChatService.swift */,
+				D24B00C7262B5B5E00AEA3D3 /* ChatPresenter.swift */,
 			);
-			path = Service;
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		D24B00FB262C1D3F00AEA3D3 /* DataAccess */ = {
@@ -458,7 +458,7 @@
 				D24B00FD262C1D5000AEA3D3 /* MessageContainer.swift in Sources */,
 				D237330B25D1BD1B004098E5 /* AppDelegate.swift in Sources */,
 				D24B00DF262B5E1C00AEA3D3 /* ChatServiceDelegate.swift in Sources */,
-				D24B00C8262B5B5E00AEA3D3 /* ChatService.swift in Sources */,
+				D24B00C8262B5B5E00AEA3D3 /* ChatPresenter.swift in Sources */,
 				D221ACE82603D77200DE590A /* Constants.swift in Sources */,
 				D26F3247260670C4004A808F /* StartedChatTableViewCell.swift in Sources */,
 				D221ACDE2603C54000DE590A /* LoadingView.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  ChatService.swift
+//  ChatPresenter.swift
 //  Chat2chat
 //
 //  Created by Oleksiy on 17.04.2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ChatService: DataBaseDelegate {
+class ChatPresenter: DataBaseDelegate {
     
     var chatId = ""
 
@@ -68,7 +68,7 @@ class ChatService: DataBaseDelegate {
 }
 
 //MARK: - DataBaseDelegate
-extension ChatService {
+extension ChatPresenter {
     func clearMessages() {
         messageContainer.clearMessages()
         delegate?.showDeletedChatAlert {

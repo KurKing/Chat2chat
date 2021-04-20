@@ -11,10 +11,10 @@ class ChatViewController: UIViewController  {
     
     let avatarName = "catAvatar\(Int.random(in: 1...5))"
     
-    private(set) var service: ChatService!
+    private(set) var service: ChatPresenter!
     var chatView: ChatView!
     
-    func setService(service: ChatService) {
+    func setService(service: ChatPresenter) {
         self.service = service
     }
         
