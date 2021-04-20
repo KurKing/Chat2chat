@@ -60,9 +60,6 @@ class ChatPresenter: DataBaseDelegate {
     }
     
     func sendMessage(text: String) {
-        let text = text.trimmingCharacters(in: .whitespacesAndNewlines)
-        if text.isEmpty { return }
-        delegate?.clearMessageTextField()
         dataBase.sendMessage(message: MessageDBEntity(text: text, time: Date().timeIntervalSince1970, userToken: userToken), chatId: chatId)
     }
 }

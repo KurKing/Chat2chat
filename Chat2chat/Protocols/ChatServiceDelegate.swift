@@ -10,7 +10,6 @@ import Foundation
 protocol ChatServiceDelegate: class {
     func showLoadingView()
     func hideLoadingView()
-    func clearMessageTextField()
     func reloadData()
     func showDeletedChatAlert(action: @escaping ()->())
 }

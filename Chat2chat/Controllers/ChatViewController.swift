@@ -59,8 +59,11 @@ class ChatViewController: UIViewController  {
     }
     
     @objc func sendButtonPressed(_ sender: UIButton){
-        guard let text = chatView.messageText else { return }
+        guard let text = Validator.validate(string: chatView.messageText)
+        else { return }
         service?.sendMessage(text: text)
+        chatView.clearMessageTextField()
+        
     }
     
     @objc func reloadButtonPressed(_ sender: UIButton){
@@ -155,12 +158,6 @@ extension ChatViewController: ChatServiceDelegate {
     func hideLoadingView() {
         DispatchQueue.main.async {
             self.chatView.hideLoadingView()
-        }
-    }
-    
-    func clearMessageTextField() {
-        DispatchQueue.main.async {
-            self.chatView.clearMessageTextField()
         }
     }
     

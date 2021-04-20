@@ -13,6 +13,7 @@
 		D22826FF25D55DB400589766 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22826FE25D55DB400589766 /* MessageViewModel.swift */; };
 		D228270325D5712600589766 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D228270225D5712600589766 /* MessageView.swift */; };
 		D228270B25D573E500589766 /* SelfMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D228270A25D573E500589766 /* SelfMessageViewCell.swift */; };
+		D22BBAD7262EC1EC00CBEC02 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22BBAD6262EC1EC00CBEC02 /* Validator.swift */; };
 		D237330B25D1BD1B004098E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237330A25D1BD1B004098E5 /* AppDelegate.swift */; };
 		D237330D25D1BD1B004098E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237330C25D1BD1B004098E5 /* SceneDelegate.swift */; };
 		D237331525D1BD1B004098E5 /* Chat2chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D237331325D1BD1B004098E5 /* Chat2chat.xcdatamodeld */; };
@@ -60,6 +61,7 @@
 		D22826FE25D55DB400589766 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		D228270225D5712600589766 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		D228270A25D573E500589766 /* SelfMessageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfMessageViewCell.swift; sourceTree = "<group>"; };
+		D22BBAD6262EC1EC00CBEC02 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		D237330725D1BD1B004098E5 /* Chat2chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat2chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D237330A25D1BD1B004098E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D237330C25D1BD1B004098E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				D221ACE72603D77200DE590A /* Constants.swift */,
 				D237331825D1BD1F004098E5 /* LaunchScreen.storyboard */,
 				D237331625D1BD1F004098E5 /* Assets.xcassets */,
+				D22BBAD6262EC1EC00CBEC02 /* Validator.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				D23733DD25D27BCB004098E5 /* ChatViewController.swift in Sources */,
 				D228270325D5712600589766 /* MessageView.swift in Sources */,
 				D29B8C3C262C2D1900D8B103 /* MessageDBEntity.swift in Sources */,
+				D22BBAD7262EC1EC00CBEC02 /* Validator.swift in Sources */,
 				D297722625D70CDC002EA547 /* FirestoreDataBase.swift in Sources */,
 				D237330D25D1BD1B004098E5 /* SceneDelegate.swift in Sources */,
 				D26F323F26066E6E004A808F /* ReuseViewProtocol.swift in Sources */,
