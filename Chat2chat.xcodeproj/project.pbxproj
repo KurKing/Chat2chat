@@ -16,7 +16,6 @@
 		D22BBAD7262EC1EC00CBEC02 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22BBAD6262EC1EC00CBEC02 /* Validator.swift */; };
 		D237330B25D1BD1B004098E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237330A25D1BD1B004098E5 /* AppDelegate.swift */; };
 		D237330D25D1BD1B004098E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237330C25D1BD1B004098E5 /* SceneDelegate.swift */; };
-		D237331525D1BD1B004098E5 /* Chat2chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D237331325D1BD1B004098E5 /* Chat2chat.xcdatamodeld */; };
 		D237331725D1BD1F004098E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D237331625D1BD1F004098E5 /* Assets.xcassets */; };
 		D237331A25D1BD1F004098E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D237331825D1BD1F004098E5 /* LaunchScreen.storyboard */; };
 		D237332525D1BD1F004098E5 /* Chat2chatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237332425D1BD1F004098E5 /* Chat2chatTests.swift */; };
@@ -31,11 +30,11 @@
 		D26F323B26066D06004A808F /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26F323A26066D06004A808F /* TableViewExtension.swift */; };
 		D26F323F26066E6E004A808F /* ReuseViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26F323E26066E6E004A808F /* ReuseViewProtocol.swift */; };
 		D26F3247260670C4004A808F /* StartedChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26F3246260670C4004A808F /* StartedChatTableViewCell.swift */; };
-		D297722625D70CDC002EA547 /* FirestoreDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D297722525D70CDC002EA547 /* FirestoreDataBase.swift */; };
-		D29B8C38262C1F2500D8B103 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29B8C37262C1F2500D8B103 /* DataBase.swift */; };
+		D297722625D70CDC002EA547 /* FirestoreChatDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D297722525D70CDC002EA547 /* FirestoreChatDataBase.swift */; };
+		D29B8C38262C1F2500D8B103 /* ChatDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29B8C37262C1F2500D8B103 /* ChatDataBase.swift */; };
 		D29B8C3C262C2D1900D8B103 /* MessageDBEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29B8C3B262C2D1900D8B103 /* MessageDBEntity.swift */; };
 		D29C106425D7C186003473F3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29C106325D7C186003473F3 /* StringExtension.swift */; };
-		D2A4C5CC25F95D2800307B72 /* DataBaseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A4C5CB25F95D2700307B72 /* DataBaseDelegate.swift */; };
+		D2A4C5CC25F95D2800307B72 /* ChatDataBaseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A4C5CB25F95D2700307B72 /* ChatDataBaseDelegate.swift */; };
 		D96D86F0C0E3156FA350326E /* Pods_Chat2chatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8BE8A5C72B2360047DA629 /* Pods_Chat2chatTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +64,6 @@
 		D237330725D1BD1B004098E5 /* Chat2chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat2chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D237330A25D1BD1B004098E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D237330C25D1BD1B004098E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D237331425D1BD1B004098E5 /* Chat2chat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chat2chat.xcdatamodel; sourceTree = "<group>"; };
 		D237331625D1BD1F004098E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D237331925D1BD1F004098E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D237331B25D1BD1F004098E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,12 +81,12 @@
 		D26F323A26066D06004A808F /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		D26F323E26066E6E004A808F /* ReuseViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseViewProtocol.swift; sourceTree = "<group>"; };
 		D26F3246260670C4004A808F /* StartedChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartedChatTableViewCell.swift; sourceTree = "<group>"; };
-		D297722525D70CDC002EA547 /* FirestoreDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreDataBase.swift; sourceTree = "<group>"; };
-		D29B8C37262C1F2500D8B103 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
+		D297722525D70CDC002EA547 /* FirestoreChatDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreChatDataBase.swift; sourceTree = "<group>"; };
+		D29B8C37262C1F2500D8B103 /* ChatDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataBase.swift; sourceTree = "<group>"; };
 		D29B8C3B262C2D1900D8B103 /* MessageDBEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDBEntity.swift; sourceTree = "<group>"; };
 		D29C106325D7C186003473F3 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		D2A4C5C125F93E9F00307B72 /* Chat2chat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chat2chat.entitlements; sourceTree = "<group>"; };
-		D2A4C5CB25F95D2700307B72 /* DataBaseDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseDelegate.swift; sourceTree = "<group>"; };
+		D2A4C5CB25F95D2700307B72 /* ChatDataBaseDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataBaseDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,13 +154,9 @@
 			children = (
 				D2A4C5C125F93E9F00307B72 /* Chat2chat.entitlements */,
 				D237334E25D1C689004098E5 /* App */,
-				D237335125D1C691004098E5 /* Model */,
-				D24B00FB262C1D3F00AEA3D3 /* DataAccess */,
-				D24B00C6262B5B3D00AEA3D3 /* Presenter */,
-				D237341325D30DD2004098E5 /* Views */,
-				D237335225D1C69C004098E5 /* Controllers */,
+				D269ED08263571C2005BE0E8 /* Chat */,
+				D2B2214C263573E70084F152 /* Protocols */,
 				D26F323926066CE5004A808F /* Extensions */,
-				D2A4C5CA25F95D0200307B72 /* Protocols */,
 				D23733F325D2A3DB004098E5 /* SupportingFiles */,
 				D237331B25D1BD1F004098E5 /* Info.plist */,
 				D237334925D1C61B004098E5 /* GoogleService-Info.plist */,
@@ -191,7 +185,6 @@
 		D237335125D1C691004098E5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D237331325D1BD1B004098E5 /* Chat2chat.xcdatamodeld */,
 				D22826FE25D55DB400589766 /* MessageViewModel.swift */,
 				D29B8C3B262C2D1900D8B103 /* MessageDBEntity.swift */,
 			);
@@ -217,7 +210,7 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		D237341325D30DD2004098E5 /* Views */ = {
+		D237341325D30DD2004098E5 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				D228270A25D573E500589766 /* SelfMessageViewCell.swift */,
@@ -228,7 +221,7 @@
 				D221ACDD2603C54000DE590A /* LoadingView.swift */,
 				D26F3246260670C4004A808F /* StartedChatTableViewCell.swift */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
 		D24B00C6262B5B3D00AEA3D3 /* Presenter */ = {
@@ -242,10 +235,23 @@
 		D24B00FB262C1D3F00AEA3D3 /* DataAccess */ = {
 			isa = PBXGroup;
 			children = (
-				D297722525D70CDC002EA547 /* FirestoreDataBase.swift */,
+				D297722525D70CDC002EA547 /* FirestoreChatDataBase.swift */,
 				D24B00FC262C1D5000AEA3D3 /* MessageContainer.swift */,
 			);
 			path = DataAccess;
+			sourceTree = "<group>";
+		};
+		D269ED08263571C2005BE0E8 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				D237335125D1C691004098E5 /* Model */,
+				D237341325D30DD2004098E5 /* View */,
+				D24B00C6262B5B3D00AEA3D3 /* Presenter */,
+				D24B00FB262C1D3F00AEA3D3 /* DataAccess */,
+				D2A4C5CA25F95D0200307B72 /* Protocols */,
+				D237335225D1C69C004098E5 /* Controllers */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		D26F323926066CE5004A808F /* Extensions */ = {
@@ -260,10 +266,17 @@
 		D2A4C5CA25F95D0200307B72 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				D2A4C5CB25F95D2700307B72 /* DataBaseDelegate.swift */,
-				D26F323E26066E6E004A808F /* ReuseViewProtocol.swift */,
+				D2A4C5CB25F95D2700307B72 /* ChatDataBaseDelegate.swift */,
 				D24B00DE262B5E1C00AEA3D3 /* ChatServiceDelegate.swift */,
-				D29B8C37262C1F2500D8B103 /* DataBase.swift */,
+				D29B8C37262C1F2500D8B103 /* ChatDataBase.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D2B2214C263573E70084F152 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D26F323E26066E6E004A808F /* ReuseViewProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -453,9 +466,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2A4C5CC25F95D2800307B72 /* DataBaseDelegate.swift in Sources */,
+				D2A4C5CC25F95D2800307B72 /* ChatDataBaseDelegate.swift in Sources */,
 				D237341525D30E0B004098E5 /* InterlocutorMessageViewCell.swift in Sources */,
-				D237331525D1BD1B004098E5 /* Chat2chat.xcdatamodeld in Sources */,
 				D26F323B26066D06004A808F /* TableViewExtension.swift in Sources */,
 				D29C106425D7C186003473F3 /* StringExtension.swift in Sources */,
 				D24B00FD262C1D5000AEA3D3 /* MessageContainer.swift in Sources */,
@@ -470,11 +482,11 @@
 				D228270325D5712600589766 /* MessageView.swift in Sources */,
 				D29B8C3C262C2D1900D8B103 /* MessageDBEntity.swift in Sources */,
 				D22BBAD7262EC1EC00CBEC02 /* Validator.swift in Sources */,
-				D297722625D70CDC002EA547 /* FirestoreDataBase.swift in Sources */,
+				D297722625D70CDC002EA547 /* FirestoreChatDataBase.swift in Sources */,
 				D237330D25D1BD1B004098E5 /* SceneDelegate.swift in Sources */,
 				D26F323F26066E6E004A808F /* ReuseViewProtocol.swift in Sources */,
 				D22826FF25D55DB400589766 /* MessageViewModel.swift in Sources */,
-				D29B8C38262C1F2500D8B103 /* DataBase.swift in Sources */,
+				D29B8C38262C1F2500D8B103 /* ChatDataBase.swift in Sources */,
 				D228270B25D573E500589766 /* SelfMessageViewCell.swift in Sources */,
 				D26610E725D7EA4A00CB7CFE /* SenderTextFieldView.swift in Sources */,
 			);
@@ -751,19 +763,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		D237331325D1BD1B004098E5 /* Chat2chat.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D237331425D1BD1B004098E5 /* Chat2chat.xcdatamodel */,
-			);
-			currentVersion = D237331425D1BD1B004098E5 /* Chat2chat.xcdatamodel */;
-			path = Chat2chat.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = D23732FF25D1BD1B004098E5 /* Project object */;
 }

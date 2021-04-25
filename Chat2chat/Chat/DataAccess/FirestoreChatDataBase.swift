@@ -1,5 +1,5 @@
 //
-//  FirestoreDataBase.swift
+//  FirestoreChatDataBase.swift
 //  Chat2chat
 //
 //  Created by Oleksiy on 12.02.2021.
@@ -7,13 +7,13 @@
 
 import Firebase
 
-class FirestoreDataBase: DataBase {
+class FirestoreChatDataBase: ChatDataBase {
     typealias DBConstants = Constants.DataBase
     
     private let db = Firestore.firestore()
     private var listener: ListenerRegistration?
     
-    func startChat(delegate: DataBaseDelegate, userToken: String) {
+    func startChat(delegate: ChatDataBaseDelegate, userToken: String) {
         db.collection(DBConstants.chatCollection)
             .whereField(DBConstants.isFreeParametr, isEqualTo: true)
             .getDocuments { [weak self] query, error in
@@ -59,7 +59,7 @@ class FirestoreDataBase: DataBase {
             }
     }
     
-    func endChat(delegate: DataBaseDelegate, chatId: String) {
+    func endChat(delegate: ChatDataBaseDelegate, chatId: String) {
         listener?.remove()
         
         db.collection(DBConstants.chatCollection)
@@ -89,7 +89,7 @@ class FirestoreDataBase: DataBase {
             ])
     }
     
-    private func addListenerToChat(delegate: DataBaseDelegate, chatId: String) {
+    private func addListenerToChat(delegate: ChatDataBaseDelegate, chatId: String) {
         listener?.remove()
         print("Add listener to chat with id: \(chatId)")
         

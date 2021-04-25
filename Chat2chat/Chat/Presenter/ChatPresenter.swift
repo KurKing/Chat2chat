@@ -7,16 +7,16 @@
 
 import Foundation
 
-class ChatPresenter: DataBaseDelegate {
+class ChatPresenter: ChatDataBaseDelegate {
     
     var chatId = ""
 
-    private let dataBase: DataBase
+    private let dataBase: ChatDataBase
     private weak var delegate: ChatServiceDelegate?
     private let messageContainer: MessageContainer
     private let userToken: String
     
-    init(delegate: ChatServiceDelegate, dataBase: DataBase) {
+    init(delegate: ChatServiceDelegate, dataBase: ChatDataBase) {
         self.delegate = delegate
         self.dataBase = dataBase
         messageContainer = MessageContainer()
@@ -64,7 +64,7 @@ class ChatPresenter: DataBaseDelegate {
     }
 }
 
-//MARK: - DataBaseDelegate
+//MARK: - ChatDataBaseDelegate
 extension ChatPresenter {
     func clearMessages() {
         messageContainer.clearMessages()

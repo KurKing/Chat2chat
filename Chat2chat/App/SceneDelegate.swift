@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let chatViewController = ChatViewController()
         chatViewController.setService(service: ChatPresenter(
-            delegate: chatViewController, dataBase: FirestoreDataBase()
+            delegate: chatViewController, dataBase: FirestoreChatDataBase()
         ))
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
