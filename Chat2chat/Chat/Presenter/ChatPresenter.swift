@@ -12,11 +12,11 @@ class ChatPresenter: ChatDataBaseDelegate {
     var chatId = ""
 
     private let dataBase: ChatDataBase
-    private weak var delegate: ChatServiceDelegate?
+    private weak var delegate: ChatPresenterDelegate?
     private let messageContainer: MessageContainer
     private let userToken: String
     
-    init(delegate: ChatServiceDelegate, dataBase: ChatDataBase) {
+    init(delegate: ChatPresenterDelegate, dataBase: ChatDataBase) {
         self.delegate = delegate
         self.dataBase = dataBase
         messageContainer = MessageContainer()

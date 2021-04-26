@@ -9,11 +9,13 @@ target 'Chat2chat' do
   # Pods for Chat2chat
   pod 'Firebase/Firestore'
   pod 'SnapKit', '~> 5.0.0'
+  pod 'Firebase/Auth'
 
   target 'Chat2chatTests' do
      inherit! :search_paths
      pod 'Firebase/Firestore'
      pod 'SnapKit', '~> 5.0.0'
+     pod 'Firebase/Auth'
   end
 
 end

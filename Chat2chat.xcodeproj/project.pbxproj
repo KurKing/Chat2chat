@@ -24,7 +24,7 @@
 		D237341525D30E0B004098E5 /* InterlocutorMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237341425D30E0B004098E5 /* InterlocutorMessageViewCell.swift */; };
 		D237349425D535C9004098E5 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237349325D535C8004098E5 /* ChatView.swift */; };
 		D24B00C8262B5B5E00AEA3D3 /* ChatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B00C7262B5B5E00AEA3D3 /* ChatPresenter.swift */; };
-		D24B00DF262B5E1C00AEA3D3 /* ChatServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B00DE262B5E1C00AEA3D3 /* ChatServiceDelegate.swift */; };
+		D24B00DF262B5E1C00AEA3D3 /* ChatPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B00DE262B5E1C00AEA3D3 /* ChatPresenterDelegate.swift */; };
 		D24B00FD262C1D5000AEA3D3 /* MessageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24B00FC262C1D5000AEA3D3 /* MessageContainer.swift */; };
 		D26610E725D7EA4A00CB7CFE /* SenderTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26610E625D7EA4A00CB7CFE /* SenderTextFieldView.swift */; };
 		D26F323B26066D06004A808F /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26F323A26066D06004A808F /* TableViewExtension.swift */; };
@@ -35,6 +35,10 @@
 		D29B8C3C262C2D1900D8B103 /* MessageDBEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29B8C3B262C2D1900D8B103 /* MessageDBEntity.swift */; };
 		D29C106425D7C186003473F3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29C106325D7C186003473F3 /* StringExtension.swift */; };
 		D2A4C5CC25F95D2800307B72 /* ChatDataBaseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A4C5CB25F95D2700307B72 /* ChatDataBaseDelegate.swift */; };
+		D2B2215126357D360084F152 /* Chat2chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2B2214F26357D360084F152 /* Chat2chat.xcdatamodeld */; };
+		D2B22177263724810084F152 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B22176263724810084F152 /* LoginViewController.swift */; };
+		D2B22186263725350084F152 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B22185263725350084F152 /* SignUpViewController.swift */; };
+		D2B2218A2637275D0084F152 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B221892637275D0084F152 /* AuthTextField.swift */; };
 		D96D86F0C0E3156FA350326E /* Pods_Chat2chatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8BE8A5C72B2360047DA629 /* Pods_Chat2chatTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,7 +79,7 @@
 		D237341425D30E0B004098E5 /* InterlocutorMessageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterlocutorMessageViewCell.swift; sourceTree = "<group>"; };
 		D237349325D535C8004098E5 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		D24B00C7262B5B5E00AEA3D3 /* ChatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresenter.swift; sourceTree = "<group>"; };
-		D24B00DE262B5E1C00AEA3D3 /* ChatServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatServiceDelegate.swift; sourceTree = "<group>"; };
+		D24B00DE262B5E1C00AEA3D3 /* ChatPresenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresenterDelegate.swift; sourceTree = "<group>"; };
 		D24B00FC262C1D5000AEA3D3 /* MessageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageContainer.swift; sourceTree = "<group>"; };
 		D26610E625D7EA4A00CB7CFE /* SenderTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderTextFieldView.swift; sourceTree = "<group>"; };
 		D26F323A26066D06004A808F /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
@@ -87,6 +91,10 @@
 		D29C106325D7C186003473F3 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		D2A4C5C125F93E9F00307B72 /* Chat2chat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chat2chat.entitlements; sourceTree = "<group>"; };
 		D2A4C5CB25F95D2700307B72 /* ChatDataBaseDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataBaseDelegate.swift; sourceTree = "<group>"; };
+		D2B2215026357D360084F152 /* Chat2chat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chat2chat.xcdatamodel; sourceTree = "<group>"; };
+		D2B22176263724810084F152 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D2B22185263725350084F152 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		D2B221892637275D0084F152 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +163,7 @@
 				D2A4C5C125F93E9F00307B72 /* Chat2chat.entitlements */,
 				D237334E25D1C689004098E5 /* App */,
 				D269ED08263571C2005BE0E8 /* Chat */,
+				D2B2216F2637217E0084F152 /* Auth */,
 				D2B2214C263573E70084F152 /* Protocols */,
 				D26F323926066CE5004A808F /* Extensions */,
 				D23733F325D2A3DB004098E5 /* SupportingFiles */,
@@ -191,12 +200,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		D237335225D1C69C004098E5 /* Controllers */ = {
+		D237335225D1C69C004098E5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				D23733DB25D27BCB004098E5 /* ChatViewController.swift */,
 			);
-			path = Controllers;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		D23733F325D2A3DB004098E5 /* SupportingFiles */ = {
@@ -206,6 +215,7 @@
 				D237331825D1BD1F004098E5 /* LaunchScreen.storyboard */,
 				D237331625D1BD1F004098E5 /* Assets.xcassets */,
 				D22BBAD6262EC1EC00CBEC02 /* Validator.swift */,
+				D2B2214F26357D360084F152 /* Chat2chat.xcdatamodeld */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -213,13 +223,8 @@
 		D237341325D30DD2004098E5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D228270A25D573E500589766 /* SelfMessageViewCell.swift */,
-				D237341425D30E0B004098E5 /* InterlocutorMessageViewCell.swift */,
-				D228270225D5712600589766 /* MessageView.swift */,
-				D26610E625D7EA4A00CB7CFE /* SenderTextFieldView.swift */,
-				D237349325D535C8004098E5 /* ChatView.swift */,
-				D221ACDD2603C54000DE590A /* LoadingView.swift */,
-				D26F3246260670C4004A808F /* StartedChatTableViewCell.swift */,
+				D237335225D1C69C004098E5 /* Controller */,
+				D2B22154263582C40084F152 /* View */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -249,7 +254,6 @@
 				D24B00C6262B5B3D00AEA3D3 /* Presenter */,
 				D24B00FB262C1D3F00AEA3D3 /* DataAccess */,
 				D2A4C5CA25F95D0200307B72 /* Protocols */,
-				D237335225D1C69C004098E5 /* Controllers */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -267,7 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				D2A4C5CB25F95D2700307B72 /* ChatDataBaseDelegate.swift */,
-				D24B00DE262B5E1C00AEA3D3 /* ChatServiceDelegate.swift */,
+				D24B00DE262B5E1C00AEA3D3 /* ChatPresenterDelegate.swift */,
 				D29B8C37262C1F2500D8B103 /* ChatDataBase.swift */,
 			);
 			path = Protocols;
@@ -279,6 +283,70 @@
 				D26F323E26066E6E004A808F /* ReuseViewProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D2B22154263582C40084F152 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D228270A25D573E500589766 /* SelfMessageViewCell.swift */,
+				D237341425D30E0B004098E5 /* InterlocutorMessageViewCell.swift */,
+				D228270225D5712600589766 /* MessageView.swift */,
+				D26610E625D7EA4A00CB7CFE /* SenderTextFieldView.swift */,
+				D237349325D535C8004098E5 /* ChatView.swift */,
+				D221ACDD2603C54000DE590A /* LoadingView.swift */,
+				D26F3246260670C4004A808F /* StartedChatTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D2B2216F2637217E0084F152 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				D2B22171263724230084F152 /* Model */,
+				D2B22172263724290084F152 /* View */,
+				D2B22173263724410084F152 /* Presenter */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		D2B22171263724230084F152 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D2B22172263724290084F152 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2B22175263724630084F152 /* Controller */,
+				D2B221742637245D0084F152 /* View */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D2B22173263724410084F152 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		D2B221742637245D0084F152 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2B221892637275D0084F152 /* AuthTextField.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D2B22175263724630084F152 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D2B22176263724810084F152 /* LoginViewController.swift */,
+				D2B22185263725350084F152 /* SignUpViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -466,18 +534,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2B2215126357D360084F152 /* Chat2chat.xcdatamodeld in Sources */,
 				D2A4C5CC25F95D2800307B72 /* ChatDataBaseDelegate.swift in Sources */,
 				D237341525D30E0B004098E5 /* InterlocutorMessageViewCell.swift in Sources */,
 				D26F323B26066D06004A808F /* TableViewExtension.swift in Sources */,
 				D29C106425D7C186003473F3 /* StringExtension.swift in Sources */,
 				D24B00FD262C1D5000AEA3D3 /* MessageContainer.swift in Sources */,
+				D2B2218A2637275D0084F152 /* AuthTextField.swift in Sources */,
 				D237330B25D1BD1B004098E5 /* AppDelegate.swift in Sources */,
-				D24B00DF262B5E1C00AEA3D3 /* ChatServiceDelegate.swift in Sources */,
+				D24B00DF262B5E1C00AEA3D3 /* ChatPresenterDelegate.swift in Sources */,
 				D24B00C8262B5B5E00AEA3D3 /* ChatPresenter.swift in Sources */,
 				D221ACE82603D77200DE590A /* Constants.swift in Sources */,
 				D26F3247260670C4004A808F /* StartedChatTableViewCell.swift in Sources */,
 				D221ACDE2603C54000DE590A /* LoadingView.swift in Sources */,
 				D237349425D535C9004098E5 /* ChatView.swift in Sources */,
+				D2B22177263724810084F152 /* LoginViewController.swift in Sources */,
 				D23733DD25D27BCB004098E5 /* ChatViewController.swift in Sources */,
 				D228270325D5712600589766 /* MessageView.swift in Sources */,
 				D29B8C3C262C2D1900D8B103 /* MessageDBEntity.swift in Sources */,
@@ -488,6 +559,7 @@
 				D22826FF25D55DB400589766 /* MessageViewModel.swift in Sources */,
 				D29B8C38262C1F2500D8B103 /* ChatDataBase.swift in Sources */,
 				D228270B25D573E500589766 /* SelfMessageViewCell.swift in Sources */,
+				D2B22186263725350084F152 /* SignUpViewController.swift in Sources */,
 				D26610E725D7EA4A00CB7CFE /* SenderTextFieldView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -763,6 +835,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D2B2214F26357D360084F152 /* Chat2chat.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D2B2215026357D360084F152 /* Chat2chat.xcdatamodel */,
+			);
+			currentVersion = D2B2215026357D360084F152 /* Chat2chat.xcdatamodel */;
+			path = Chat2chat.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D23732FF25D1BD1B004098E5 /* Project object */;
 }

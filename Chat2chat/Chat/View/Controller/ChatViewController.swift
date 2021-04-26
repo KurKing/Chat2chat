@@ -11,11 +11,11 @@ class ChatViewController: UIViewController  {
     
     let avatarName = "catAvatar\(Int.random(in: 1...5))"
     
-    private(set) var service: ChatPresenter!
+    private(set) var presenter: ChatPresenter!
     var chatView: ChatView!
     
-    func setService(service: ChatPresenter) {
-        self.service = service
+    func setPresenter(presenter: ChatPresenter) {
+        self.presenter = presenter
     }
         
     override func loadView() {
@@ -59,16 +59,14 @@ class ChatViewController: UIViewController  {
     }
     
     @objc func sendButtonPressed(_ sender: UIButton){
-        guard let text = Validator.validate(string: chatView.messageText)
-        else { return }
-        service?.sendMessage(text: text)
+        guard let text = Validator.validate(string: chatView.messageText) else { return }
+        presenter?.sendMessage(text: text)
         chatView.clearMessageTextField()
-        
     }
     
     @objc func reloadButtonPressed(_ sender: UIButton){
         if chatView.isLoadingViewHidden {
-            service?.endChat()
+            presenter?.endChat()
             dismissKeyboard()
         }
     }
@@ -79,12 +77,12 @@ class ChatViewController: UIViewController  {
 extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return service.messagesCount
+        return presenter.messagesCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let message = service.getMessage(index: indexPath.row)
+        let message = presenter.getMessage(index: indexPath.row)
         
         if message.text == Constants.Messages.chatStartMessage {
             return tableView.dequeueReusableCell(type: StartedChatTableViewCell.self)
@@ -120,8 +118,8 @@ private extension ChatViewController {
         }
         
         view.layoutIfNeeded()
-        if !service.isMessagesEmpty {
-            chatView.tableView.scrollToRow(at: IndexPath(row: service.messagesCount-1, section: 0), at: .top, animated: false)
+        if !presenter.isMessagesEmpty {
+            chatView.tableView.scrollToRow(at: IndexPath(row: presenter.messagesCount-1, section: 0), at: .top, animated: false)
         }
     }
     @objc func keyboardWillHide(notification: NSNotification) {
@@ -141,8 +139,8 @@ private extension ChatViewController {
     }
 }
 
-//MARK: - ChatServiceDelegate
-extension ChatViewController: ChatServiceDelegate {
+//MARK: - ChatPresenterDelegate
+extension ChatViewController: ChatPresenterDelegate {
     func reloadData() {
         DispatchQueue.main.async {
             self.chatView.tableView.reloadData()
