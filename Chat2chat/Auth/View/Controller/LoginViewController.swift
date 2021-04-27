@@ -7,16 +7,22 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: AuthViewController {
+    let loginView = LoginView()
+    
+    override var authView: AuthView {
+        return loginView
+    }
     
     override func loadView() {
         super.loadView()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
-
-
+    
+    override func buttonPressed() {
+        
+    }
 }

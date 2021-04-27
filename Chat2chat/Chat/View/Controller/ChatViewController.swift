@@ -48,7 +48,7 @@ class ChatViewController: UIViewController  {
         chatView.tableView.registerCell(
             StartedChatTableViewCell.self)
         
-        // send button target
+        // send authButton target
         chatView.textFieldView.button.addTarget(self, action: #selector(sendButtonPressed(_:)), for: .touchUpInside)
         
         // keyboard manipulations

@@ -34,6 +34,9 @@
 		D29B8C38262C1F2500D8B103 /* ChatDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29B8C37262C1F2500D8B103 /* ChatDataBase.swift */; };
 		D29B8C3C262C2D1900D8B103 /* MessageDBEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29B8C3B262C2D1900D8B103 /* MessageDBEntity.swift */; };
 		D29C106425D7C186003473F3 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29C106325D7C186003473F3 /* StringExtension.swift */; };
+		D2A3A80D26380AF100E79C87 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A80C26380AF100E79C87 /* LoginView.swift */; };
+		D2A3A81126380E7900E79C87 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A81026380E7900E79C87 /* AuthView.swift */; };
+		D2A3A827263810AB00E79C87 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3A826263810AB00E79C87 /* AuthViewController.swift */; };
 		D2A4C5CC25F95D2800307B72 /* ChatDataBaseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A4C5CB25F95D2700307B72 /* ChatDataBaseDelegate.swift */; };
 		D2B2215126357D360084F152 /* Chat2chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2B2214F26357D360084F152 /* Chat2chat.xcdatamodeld */; };
 		D2B22177263724810084F152 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B22176263724810084F152 /* LoginViewController.swift */; };
@@ -92,6 +95,9 @@
 		D29B8C37262C1F2500D8B103 /* ChatDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataBase.swift; sourceTree = "<group>"; };
 		D29B8C3B262C2D1900D8B103 /* MessageDBEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDBEntity.swift; sourceTree = "<group>"; };
 		D29C106325D7C186003473F3 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		D2A3A80C26380AF100E79C87 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D2A3A81026380E7900E79C87 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		D2A3A826263810AB00E79C87 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		D2A4C5C125F93E9F00307B72 /* Chat2chat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chat2chat.entitlements; sourceTree = "<group>"; };
 		D2A4C5CB25F95D2700307B72 /* ChatDataBaseDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataBaseDelegate.swift; sourceTree = "<group>"; };
 		D2B2215026357D360084F152 /* Chat2chat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chat2chat.xcdatamodel; sourceTree = "<group>"; };
@@ -288,6 +294,7 @@
 			children = (
 				D26F323E26066E6E004A808F /* ReuseViewProtocol.swift */,
 				D2B22192263737310084F152 /* AuthButtonDelegate.swift */,
+				D2A3A81026380E7900E79C87 /* AuthView.swift */,
 			);
 			name = Protocols;
 			path = ../Protocols;
@@ -347,6 +354,7 @@
 				D2B221892637275D0084F152 /* AuthTextField.swift */,
 				D2B2218D263736D50084F152 /* AuthButton.swift */,
 				D2B2219626373DC30084F152 /* SignUpView.swift */,
+				D2A3A80C26380AF100E79C87 /* LoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -356,6 +364,7 @@
 			children = (
 				D2B22176263724810084F152 /* LoginViewController.swift */,
 				D2B22185263725350084F152 /* SignUpViewController.swift */,
+				D2A3A826263810AB00E79C87 /* AuthViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -575,6 +584,9 @@
 				D228270325D5712600589766 /* MessageView.swift in Sources */,
 				D29B8C3C262C2D1900D8B103 /* MessageDBEntity.swift in Sources */,
 				D22BBAD7262EC1EC00CBEC02 /* Validator.swift in Sources */,
+				D2A3A827263810AB00E79C87 /* AuthViewController.swift in Sources */,
+				D2A3A81126380E7900E79C87 /* AuthView.swift in Sources */,
+				D2A3A80D26380AF100E79C87 /* LoginView.swift in Sources */,
 				D297722625D70CDC002EA547 /* FirestoreChatDataBase.swift in Sources */,
 				D237330D25D1BD1B004098E5 /* SceneDelegate.swift in Sources */,
 				D26F323F26066E6E004A808F /* ReuseViewProtocol.swift in Sources */,

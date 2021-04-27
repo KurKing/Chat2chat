@@ -1,17 +1,16 @@
 //
-//  SignUpView.swift
+//  LoginView.swift
 //  Chat2chat
 //
-//  Created by Oleksiy on 26.04.2021.
+//  Created by Oleksiy on 27.04.2021.
 //
 
 import UIKit
 
-struct SignUpView: AuthView {
-    let nameTextField = AuthTextField(image: UIImage(systemName: "person") ?? UIImage(), placeHolder: "Name")
+struct LoginView: AuthView {
     let emailTextField = AuthTextField(image: UIImage(systemName: "envelope") ?? UIImage(), placeHolder: "Email")
     let passwordTextField = AuthTextField(image: UIImage(systemName: "lock") ?? UIImage(), placeHolder: "Password")
-    let button = AuthButton(type: .signup)
+    let button = AuthButton(type: .login)
     
     let view = UIView()
     
@@ -22,20 +21,17 @@ struct SignUpView: AuthView {
     init() {
         view.backgroundColor = UIColor(named: "BackgroundColor")
         
-        view.addSubview(nameTextField.view)
         view.addSubview(emailTextField.view)
         view.addSubview(passwordTextField.view)
         view.addSubview(button.button)
-        
-        nameTextField.textField.tag = 0
-        emailTextField.textField.tag = 1
-        passwordTextField.textField.tag = 2
+
+        emailTextField.textField.tag = 0
+        passwordTextField.textField.tag = 1
         
         passwordTextField.textField.isSecureTextEntry = true
     }
     
     func setTextFieldDelegate(delegate: UITextFieldDelegate) {
-        nameTextField.textField.delegate = delegate
         emailTextField.textField.delegate = delegate
         passwordTextField.textField.delegate = delegate
     }
@@ -43,10 +39,8 @@ struct SignUpView: AuthView {
     func getTextField(tag: Int) -> UITextField? {
         switch tag {
         case 0:
-            return nameTextField.textField
-        case 1:
             return emailTextField.textField
-        case 2:
+        case 1:
             return passwordTextField.textField
         default:
             return nil
@@ -60,9 +54,6 @@ struct SignUpView: AuthView {
             $0.bottom.equalToSuperview()
             $0.centerX.equalToSuperview()
         }
-        nameTextField.view.snp.makeConstraints {
-            $0.centerY.equalToSuperview().offset(-130)
-        }
         emailTextField.view.snp.makeConstraints {
             $0.centerY.equalToSuperview().offset(-65)
         }
@@ -74,7 +65,6 @@ struct SignUpView: AuthView {
         }
         
         button.addConstains()
-        nameTextField.addConstrains()
         emailTextField.addConstrains()
         passwordTextField.addConstrains()
     }
