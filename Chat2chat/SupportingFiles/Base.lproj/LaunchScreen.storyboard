@@ -16,13 +16,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chatBg" translatesAutoresizingMaskIntoConstraints="NO" id="RpG-GP-dD3">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatBg" translatesAutoresizingMaskIntoConstraints="NO" id="RpG-GP-dD3">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RpG-GP-dD3" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="5L6-bN-ZX1"/>
+                            <constraint firstAttribute="bottom" secondItem="RpG-GP-dD3" secondAttribute="bottom" id="Ros-xR-pC5"/>
+                            <constraint firstItem="RpG-GP-dD3" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="akU-VA-bPV"/>
+                            <constraint firstItem="RpG-GP-dD3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ffD-8Z-e2d"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>

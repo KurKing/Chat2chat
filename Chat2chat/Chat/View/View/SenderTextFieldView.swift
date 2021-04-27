@@ -40,8 +40,7 @@ struct SenderTextFieldView {
     
     init() {
         sendMessageTextFieldView.addSubview(sendMessageTextField)
-        sendMessageTextFieldView
-            .addSubview(button)
+        sendMessageTextFieldView.addSubview(button)
     }
     
     func clear() {

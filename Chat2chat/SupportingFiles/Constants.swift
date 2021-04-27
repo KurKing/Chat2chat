@@ -19,6 +19,9 @@ struct Constants {
         static let timeParametr = "time"
         static let textParametr = "text"
         static let shouldBeDeleted = "shouldBeDeleted"
+        
+        static let user1 = "User1"
+        static let user2 = "User2"
     }
     
     struct Messages {

@@ -39,6 +39,9 @@
 		D2B22177263724810084F152 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B22176263724810084F152 /* LoginViewController.swift */; };
 		D2B22186263725350084F152 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B22185263725350084F152 /* SignUpViewController.swift */; };
 		D2B2218A2637275D0084F152 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B221892637275D0084F152 /* AuthTextField.swift */; };
+		D2B2218E263736D50084F152 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2218D263736D50084F152 /* AuthButton.swift */; };
+		D2B22193263737310084F152 /* AuthButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B22192263737310084F152 /* AuthButtonDelegate.swift */; };
+		D2B2219726373DC30084F152 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2219626373DC30084F152 /* SignUpView.swift */; };
 		D96D86F0C0E3156FA350326E /* Pods_Chat2chatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8BE8A5C72B2360047DA629 /* Pods_Chat2chatTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +98,9 @@
 		D2B22176263724810084F152 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D2B22185263725350084F152 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		D2B221892637275D0084F152 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
+		D2B2218D263736D50084F152 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
+		D2B22192263737310084F152 /* AuthButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButtonDelegate.swift; sourceTree = "<group>"; };
+		D2B2219626373DC30084F152 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +170,7 @@
 				D237334E25D1C689004098E5 /* App */,
 				D269ED08263571C2005BE0E8 /* Chat */,
 				D2B2216F2637217E0084F152 /* Auth */,
-				D2B2214C263573E70084F152 /* Protocols */,
+				D2B22191263737180084F152 /* Protocols */,
 				D26F323926066CE5004A808F /* Extensions */,
 				D23733F325D2A3DB004098E5 /* SupportingFiles */,
 				D237331B25D1BD1F004098E5 /* Info.plist */,
@@ -281,8 +287,10 @@
 			isa = PBXGroup;
 			children = (
 				D26F323E26066E6E004A808F /* ReuseViewProtocol.swift */,
+				D2B22192263737310084F152 /* AuthButtonDelegate.swift */,
 			);
-			path = Protocols;
+			name = Protocols;
+			path = ../Protocols;
 			sourceTree = "<group>";
 		};
 		D2B22154263582C40084F152 /* View */ = {
@@ -305,6 +313,7 @@
 				D2B22171263724230084F152 /* Model */,
 				D2B22172263724290084F152 /* View */,
 				D2B22173263724410084F152 /* Presenter */,
+				D2B2214C263573E70084F152 /* Protocols */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -336,6 +345,8 @@
 			isa = PBXGroup;
 			children = (
 				D2B221892637275D0084F152 /* AuthTextField.swift */,
+				D2B2218D263736D50084F152 /* AuthButton.swift */,
+				D2B2219626373DC30084F152 /* SignUpView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -347,6 +358,14 @@
 				D2B22185263725350084F152 /* SignUpViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		D2B22191263737180084F152 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Protocols;
+			path = Auth/Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -535,6 +554,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B2215126357D360084F152 /* Chat2chat.xcdatamodeld in Sources */,
+				D2B2218E263736D50084F152 /* AuthButton.swift in Sources */,
 				D2A4C5CC25F95D2800307B72 /* ChatDataBaseDelegate.swift in Sources */,
 				D237341525D30E0B004098E5 /* InterlocutorMessageViewCell.swift in Sources */,
 				D26F323B26066D06004A808F /* TableViewExtension.swift in Sources */,
@@ -545,11 +565,13 @@
 				D24B00DF262B5E1C00AEA3D3 /* ChatPresenterDelegate.swift in Sources */,
 				D24B00C8262B5B5E00AEA3D3 /* ChatPresenter.swift in Sources */,
 				D221ACE82603D77200DE590A /* Constants.swift in Sources */,
+				D2B22193263737310084F152 /* AuthButtonDelegate.swift in Sources */,
 				D26F3247260670C4004A808F /* StartedChatTableViewCell.swift in Sources */,
 				D221ACDE2603C54000DE590A /* LoadingView.swift in Sources */,
 				D237349425D535C9004098E5 /* ChatView.swift in Sources */,
 				D2B22177263724810084F152 /* LoginViewController.swift in Sources */,
 				D23733DD25D27BCB004098E5 /* ChatViewController.swift in Sources */,
+				D2B2219726373DC30084F152 /* SignUpView.swift in Sources */,
 				D228270325D5712600589766 /* MessageView.swift in Sources */,
 				D29B8C3C262C2D1900D8B103 /* MessageDBEntity.swift in Sources */,
 				D22BBAD7262EC1EC00CBEC02 /* Validator.swift in Sources */,

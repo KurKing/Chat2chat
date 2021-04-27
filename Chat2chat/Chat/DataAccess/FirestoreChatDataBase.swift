@@ -16,6 +16,7 @@ class FirestoreChatDataBase: ChatDataBase {
     func startChat(delegate: ChatDataBaseDelegate, userToken: String) {
         db.collection(DBConstants.chatCollection)
             .whereField(DBConstants.isFreeParametr, isEqualTo: true)
+            .whereField(DBConstants.user1, isNotEqualTo: userToken)
             .getDocuments { [weak self] query, error in
                 if let self = self {
                     
@@ -35,6 +36,7 @@ class FirestoreChatDataBase: ChatDataBase {
                                 DBConstants.timeParametr: Date().timeIntervalSince1970
                             ])
                         delegate.chatId = chatId
+                        print("Create new chat with id: \(chatId)")
                         self.addListenerToChat(delegate: delegate, chatId: chatId)
 
                         
