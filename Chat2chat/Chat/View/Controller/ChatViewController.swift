@@ -11,12 +11,8 @@ class ChatViewController: UIViewController  {
     
     let avatarName = "catAvatar\(Int.random(in: 1...5))"
     
-    private(set) var presenter: ChatPresenter!
+    weak var presenter: ChatPresenter?
     var chatView: ChatView!
-    
-    func setPresenter(presenter: ChatPresenter) {
-        self.presenter = presenter
-    }
         
     override func loadView() {
         super.loadView()
@@ -77,12 +73,14 @@ class ChatViewController: UIViewController  {
 extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.messagesCount
+        return presenter?.messagesCount ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let message = presenter.getMessage(index: indexPath.row)
+        guard let message = presenter?.getMessage(index: indexPath.row) else {
+            return UITableViewCell()
+        }
         
         if message.text == Constants.Messages.chatStartMessage {
             return tableView.dequeueReusableCell(type: StartedChatTableViewCell.self)
@@ -118,8 +116,8 @@ private extension ChatViewController {
         }
         
         view.layoutIfNeeded()
-        if !presenter.isMessagesEmpty {
-            chatView.tableView.scrollToRow(at: IndexPath(row: presenter.messagesCount-1, section: 0), at: .top, animated: false)
+        if !(presenter?.isMessagesEmpty ?? true) {
+            chatView.tableView.scrollToRow(at: IndexPath(row: (presenter?.messagesCount ?? 0) - 1, section: 0), at: .top, animated: false)
         }
     }
     @objc func keyboardWillHide(notification: NSNotification) {

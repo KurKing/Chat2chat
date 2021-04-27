@@ -9,16 +9,19 @@ import Foundation
 
 class ChatPresenter: ChatDataBaseDelegate {
     
+    let chatViewController: ChatViewController
     var chatId = ""
+    var delegate: ChatPresenterDelegate {
+        return chatViewController
+    }
 
     private let dataBase: ChatDataBase
-    private weak var delegate: ChatPresenterDelegate?
     private let messageContainer: MessageContainer
     private let userToken: String
     
-    init(delegate: ChatPresenterDelegate, dataBase: ChatDataBase) {
-        self.delegate = delegate
-        self.dataBase = dataBase
+    init() {
+        chatViewController = ChatViewController()
+        dataBase = FirestoreChatDataBase()
         messageContainer = MessageContainer()
         
         if let token = UserDefaults.standard.string(forKey: Constants.DataBase.userToken){
@@ -28,9 +31,6 @@ class ChatPresenter: ChatDataBaseDelegate {
             UserDefaults.standard.set(userToken, forKey: Constants.DataBase.userToken)
         }
         print("User token: \(userToken)")
-        
-        delegate.showLoadingView()
-        dataBase.startChat(delegate: self, userToken: userToken)
     }
     
     var messagesCount: Int {
@@ -46,14 +46,14 @@ class ChatPresenter: ChatDataBaseDelegate {
     }
     
     func startChat() {
-        delegate?.showLoadingView()
+        delegate.showLoadingView()
         dataBase.startChat(delegate: self, userToken: userToken)
     }
     
     func endChat() {
         if !chatId.isEmpty {
             messageContainer.clearMessages()
-            delegate?.reloadData()
+            delegate.reloadData()
             dataBase.endChat(delegate: self, chatId: chatId)
             startChat()
         }        
@@ -68,16 +68,16 @@ class ChatPresenter: ChatDataBaseDelegate {
 extension ChatPresenter {
     func clearMessages() {
         messageContainer.clearMessages()
-        delegate?.showDeletedChatAlert {
+        delegate.showDeletedChatAlert {
             [weak self] in self?.startChat()
         }
-        delegate?.reloadData()
+        delegate.reloadData()
     }
     func addMessage(message: MessageDBEntity) {
-        delegate?.hideLoadingView()
+        delegate.hideLoadingView()
         messageContainer.addMessage(
             MessageViewModel(text: message.text, fromMe: message.userToken==userToken)
         )
-        delegate?.reloadData()
+        delegate.reloadData()
     }
 }
