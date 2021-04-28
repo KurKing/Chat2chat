@@ -10,12 +10,13 @@ import UIKit
 struct LoginView: AuthView {
     let emailTextField = AuthTextField(image: UIImage(systemName: "envelope") ?? UIImage(), placeHolder: "Email")
     let passwordTextField = AuthTextField(image: UIImage(systemName: "lock") ?? UIImage(), placeHolder: "Password")
-    let button = AuthButton(type: .login)
+    let loginButton = AuthButton(type: .login)
+    let signupButton = AuthButton(type: .signup)
     
     let view = UIView()
     
     var authButton: UIButton {
-        return button.button
+        return loginButton.button
     }
     
     init() {
@@ -23,7 +24,8 @@ struct LoginView: AuthView {
         
         view.addSubview(emailTextField.view)
         view.addSubview(passwordTextField.view)
-        view.addSubview(button.button)
+        view.addSubview(loginButton.button)
+        view.addSubview(signupButton.button)
 
         emailTextField.textField.tag = 0
         passwordTextField.textField.tag = 1
@@ -55,16 +57,22 @@ struct LoginView: AuthView {
             $0.centerX.equalToSuperview()
         }
         emailTextField.view.snp.makeConstraints {
-            $0.centerY.equalToSuperview().offset(-65)
+            $0.centerY.equalToSuperview().offset(-130)
         }
         passwordTextField.view.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(-65)
         }
-        button.button.snp.makeConstraints {
+        loginButton.button.snp.makeConstraints {
             $0.centerY.equalToSuperview().offset(200)
+            $0.centerX.equalToSuperview().offset(-90)
+        }
+        signupButton.button.snp.makeConstraints {
+            $0.centerY.equalToSuperview().offset(200)
+            $0.centerX.equalToSuperview().offset(90)
         }
         
-        button.addConstains()
+        loginButton.addConstains()
+        signupButton.addConstains()
         emailTextField.addConstrains()
         passwordTextField.addConstrains()
     }

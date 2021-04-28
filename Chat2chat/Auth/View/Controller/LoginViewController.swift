@@ -9,6 +9,7 @@ import UIKit
 
 class LoginViewController: AuthViewController {
     let loginView = LoginView()
+    weak var presenter: LoginViewControllerPresenter?
     
     override var authView: AuthView {
         return loginView
@@ -20,9 +21,37 @@ class LoginViewController: AuthViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loginView.signupButton.button.addTarget(self, action: #selector(signUpButtonPressed(_:)), for: .touchUpInside)
+        
+        // naviogation view
+        title = "Log in"
+        navigationController?.navigationBar.barTintColor = UIColor(named: "BackgroundColor")
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
     override func buttonPressed() {
+        if let data = getAuthData() {
+            presenter?.loginButtonPressed(authData: data)
+        }
+    }
+    
+    func clearTextFields() {
+        loginView.passwordTextField.clear()
+        loginView.emailTextField.clear()
+    }
+    
+    @objc private func signUpButtonPressed(_ sender: UIButton) {
+        presenter?.signupButtonPressed()
+    }
+    
+    private func getAuthData() -> AuthData? {
+        guard let email = getString(from: loginView.emailTextField)
+        else { return nil }
         
+        guard let password = getString(from: loginView.passwordTextField)
+        else { return nil }
+        
+        return AuthData(email: email, password: password)
     }
 }

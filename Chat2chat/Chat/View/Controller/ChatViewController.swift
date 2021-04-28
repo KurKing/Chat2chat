@@ -33,6 +33,7 @@ class ChatViewController: UIViewController  {
         navigationController?.navigationBar.barTintColor = UIColor(named: "BackgroundColor")
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationItem.hidesBackButton = true
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadButtonPressed(_:)))
         

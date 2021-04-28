@@ -27,6 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
     
+    func applicationWillTerminate(_ application: UIApplication) {
+        do {
+            try Auth.auth().signOut()
+        } catch let e {
+            print(e.localizedDescription)
+        }
+    }
+    
     // MARK: - Core Data stack
     
     lazy var persistentContainer: NSPersistentContainer = {

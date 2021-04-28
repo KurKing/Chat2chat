@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AuthMediator: class {
+    func goToChat(viewController: UIViewController)
+}
+
 class PresenterMediator {
     
     let authPresenter: AuthPresenter
@@ -16,11 +20,17 @@ class PresenterMediator {
         authPresenter = AuthPresenter()
         chatPresenter = ChatPresenter()
         chatPresenter.chatViewController.presenter = chatPresenter
-        // TODO:
-        chatPresenter.startChat()
     }
     
     func getRootViewContoller() -> UIViewController {
-        return UINavigationController(rootViewController: chatPresenter.chatViewController)
+        authPresenter.mediator = self
+        return authPresenter.getRootViewContoller()
+    }
+}
+
+extension PresenterMediator: AuthMediator {
+    func goToChat(viewController: UIViewController) {
+        viewController.show(chatPresenter.chatViewController, sender: self)
+        chatPresenter.startChat()
     }
 }

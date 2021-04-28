@@ -9,7 +9,7 @@ import Foundation
 
 class ChatPresenter: ChatDataBaseDelegate {
     
-    let chatViewController: ChatViewController
+    private(set) lazy var chatViewController = ChatViewController()
     var chatId = ""
     var delegate: ChatPresenterDelegate {
         return chatViewController
@@ -20,7 +20,6 @@ class ChatPresenter: ChatDataBaseDelegate {
     private let userToken: String
     
     init() {
-        chatViewController = ChatViewController()
         dataBase = FirestoreChatDataBase()
         messageContainer = MessageContainer()
         

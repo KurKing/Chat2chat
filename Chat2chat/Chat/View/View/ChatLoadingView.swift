@@ -1,5 +1,5 @@
 //
-//  LoadingView.swift
+//  ChatLoadingView.swift
 //  Chat2chat
 //
 //  Created by Oleksiy on 18.03.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct LoadingView {
+struct ChatLoadingView {
     //MARK: - Views
     private let labelBackground: UIView = {
         let view = UIView()

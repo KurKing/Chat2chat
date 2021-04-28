@@ -12,6 +12,7 @@ struct Constants {
     
     struct DataBase {
         static let chatCollection = "Chats"
+        static let userCollection = "Users"
         static let messageCollection = "Messages"
         static let userToken = "userToken"
         

@@ -39,6 +39,15 @@ class AuthViewController: UIViewController {
     
     func buttonPressed() {}
     
+    func getString(from textfield: AuthTextField) -> String? {
+        guard let string = Validator.validate(string: textfield.text) else {
+            textfield.clear()
+            textfield.ping()
+            return nil
+        }
+        return string
+    }
+    
     @objc private func authButtonPressed(_ sender: UIButton) {
         buttonPressed()
     }

@@ -22,6 +22,10 @@ struct AuthTextField {
         return uiView
     }()
     
+    var text: String? {
+        return textField.text
+    }
+    
     private let textFieldImage: UIImageView = {
         let uiImageView = UIImageView()
         uiImageView.tintColor = UIColor(named: "UnselectedBarItemColor")
@@ -35,13 +39,31 @@ struct AuthTextField {
         return uiView
     }()
     
+    private let placeHolder: String
+    
     init(image: UIImage, placeHolder: String) {
+        self.placeHolder = placeHolder
         textField.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         
         textFieldImage.image = image
         
         view.addSubview(textField)
         view.addSubview(textFieldImage)
+    }
+    
+    func clear() {
+        textField.text = ""
+    }
+    
+    func ping() {
+        UIView.animate(withDuration: 0.4) {
+            textField.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+        }
+        Timer.scheduledTimer(withTimeInterval: 0.4, repeats: false) { (_) in
+            UIView.animate(withDuration: 0.4) {
+                textField.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+            }
+        }
     }
     
     //MARK: - Constrains

@@ -71,6 +71,7 @@ struct SignUpView: AuthView {
         }
         button.button.snp.makeConstraints {
             $0.centerY.equalToSuperview().offset(200)
+            $0.centerX.equalToSuperview()
         }
         
         button.addConstains()

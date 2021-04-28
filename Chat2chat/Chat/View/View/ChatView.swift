@@ -28,7 +28,7 @@ struct ChatView {
     
     let view  = UIView()
     let textFieldView: SenderTextFieldView
-    let loadingView = LoadingView()
+    let loadingView = ChatLoadingView()
     
     var messageText: String? {
         set{

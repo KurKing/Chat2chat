@@ -8,7 +8,7 @@
 import UIKit
 
 enum AuthButtonType: String {
-    case login = "Login"
+    case login = "Log in"
     case signup = "Sign up"
 }
 
@@ -32,7 +32,6 @@ struct AuthButton {
         button.snp.makeConstraints {
             $0.height.equalTo(45)
             $0.width.equalTo(150)
-            $0.centerX.equalToSuperview()
         }
     }
 }
