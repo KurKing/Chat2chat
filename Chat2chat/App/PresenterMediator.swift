@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol AuthMediator: class {
+protocol AuthMediator: AnyObject {
     func goToChat(viewController: UIViewController)
 }
 

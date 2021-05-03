@@ -39,7 +39,8 @@ class AuthPresenter {
         return AuthData(email: login, password: password)
     }
     private func getStringFromUserDefaults(key: String) -> String? {
-        return Validator.validate(string: UserDefaults.standard.string(forKey: key))
+        let validator = Validator()
+        return validator.validate(string: UserDefaults.standard.string(forKey: key))
     }
 }
 

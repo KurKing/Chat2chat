@@ -29,4 +29,10 @@ struct Constants {
         static let chatStartMessage = "Chat started! Say hello to your interlocutor"
         static let endChatMessage = "Your interlocutor has finished chatting"
     }
+    
+    struct Regex {
+        static let email = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
+        // Minimum eight characters, at least one uppercase letter, one lowercase letter and one number
+        static let password = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$"
+    }
 }

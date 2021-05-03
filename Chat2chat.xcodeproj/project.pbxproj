@@ -18,7 +18,6 @@
 		D237330D25D1BD1B004098E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237330C25D1BD1B004098E5 /* SceneDelegate.swift */; };
 		D237331725D1BD1F004098E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D237331625D1BD1F004098E5 /* Assets.xcassets */; };
 		D237331A25D1BD1F004098E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D237331825D1BD1F004098E5 /* LaunchScreen.storyboard */; };
-		D237332525D1BD1F004098E5 /* Chat2chatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237332425D1BD1F004098E5 /* Chat2chatTests.swift */; };
 		D237334A25D1C61B004098E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D237334925D1C61B004098E5 /* GoogleService-Info.plist */; };
 		D23733DD25D27BCB004098E5 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23733DB25D27BCB004098E5 /* ChatViewController.swift */; };
 		D237341525D30E0B004098E5 /* InterlocutorMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D237341425D30E0B004098E5 /* InterlocutorMessageViewCell.swift */; };
@@ -50,6 +49,10 @@
 		D2B2218A2637275D0084F152 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B221892637275D0084F152 /* AuthTextField.swift */; };
 		D2B2218E263736D50084F152 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2218D263736D50084F152 /* AuthButton.swift */; };
 		D2B2219726373DC30084F152 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2219626373DC30084F152 /* SignUpView.swift */; };
+		D2C5C3D826406927000A8CBE /* NSRegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C5C3D726406927000A8CBE /* NSRegularExpression.swift */; };
+		D2C5C3DA2640740A000A8CBE /* RegexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C5C3D926407409000A8CBE /* RegexTests.swift */; };
+		D2C5C3DC26407F98000A8CBE /* ValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C5C3DB26407F98000A8CBE /* ValidatorTests.swift */; };
+		D2C5C3DE26408419000A8CBE /* MessageContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C5C3DD26408419000A8CBE /* MessageContainerTests.swift */; };
 		D96D86F0C0E3156FA350326E /* Pods_Chat2chatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8BE8A5C72B2360047DA629 /* Pods_Chat2chatTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,7 +86,6 @@
 		D237331925D1BD1F004098E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D237331B25D1BD1F004098E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D237332025D1BD1F004098E5 /* Chat2chatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Chat2chatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D237332425D1BD1F004098E5 /* Chat2chatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat2chatTests.swift; sourceTree = "<group>"; };
 		D237332625D1BD1F004098E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D237334925D1C61B004098E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D23733DB25D27BCB004098E5 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,10 @@
 		D2B221892637275D0084F152 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		D2B2218D263736D50084F152 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		D2B2219626373DC30084F152 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		D2C5C3D726406927000A8CBE /* NSRegularExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSRegularExpression.swift; sourceTree = "<group>"; };
+		D2C5C3D926407409000A8CBE /* RegexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexTests.swift; sourceTree = "<group>"; };
+		D2C5C3DB26407F98000A8CBE /* ValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorTests.swift; sourceTree = "<group>"; };
+		D2C5C3DD26408419000A8CBE /* MessageContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageContainerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,8 +204,10 @@
 		D237332325D1BD1F004098E5 /* Chat2chatTests */ = {
 			isa = PBXGroup;
 			children = (
-				D237332425D1BD1F004098E5 /* Chat2chatTests.swift */,
 				D237332625D1BD1F004098E5 /* Info.plist */,
+				D2C5C3D926407409000A8CBE /* RegexTests.swift */,
+				D2C5C3DB26407F98000A8CBE /* ValidatorTests.swift */,
+				D2C5C3DD26408419000A8CBE /* MessageContainerTests.swift */,
 			);
 			path = Chat2chatTests;
 			sourceTree = "<group>";
@@ -234,10 +242,10 @@
 		D23733F325D2A3DB004098E5 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				D22BBAD6262EC1EC00CBEC02 /* Validator.swift */,
 				D221ACE72603D77200DE590A /* Constants.swift */,
 				D237331825D1BD1F004098E5 /* LaunchScreen.storyboard */,
 				D237331625D1BD1F004098E5 /* Assets.xcassets */,
-				D22BBAD6262EC1EC00CBEC02 /* Validator.swift */,
 				D2B2214F26357D360084F152 /* Chat2chat.xcdatamodeld */,
 			);
 			path = SupportingFiles;
@@ -286,6 +294,7 @@
 			children = (
 				D29C106325D7C186003473F3 /* StringExtension.swift */,
 				D26F323A26066D06004A808F /* TableViewExtension.swift */,
+				D2C5C3D726406927000A8CBE /* NSRegularExpression.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -612,6 +621,7 @@
 				D22BBAD7262EC1EC00CBEC02 /* Validator.swift in Sources */,
 				D2A3A827263810AB00E79C87 /* AuthViewController.swift in Sources */,
 				D2A3A81126380E7900E79C87 /* AuthView.swift in Sources */,
+				D2C5C3D826406927000A8CBE /* NSRegularExpression.swift in Sources */,
 				D2A3A80D26380AF100E79C87 /* LoginView.swift in Sources */,
 				D297722625D70CDC002EA547 /* FirestoreChatDataBase.swift in Sources */,
 				D2A3A8852638826A00E79C87 /* AuthService.swift in Sources */,
@@ -630,7 +640,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D237332525D1BD1F004098E5 /* Chat2chatTests.swift in Sources */,
+				D2C5C3DE26408419000A8CBE /* MessageContainerTests.swift in Sources */,
+				D2C5C3DC26407F98000A8CBE /* ValidatorTests.swift in Sources */,
+				D2C5C3DA2640740A000A8CBE /* RegexTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

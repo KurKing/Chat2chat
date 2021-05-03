@@ -29,3 +29,12 @@ extension String {
         return String(self[start ..< end])
     }
 }
+
+extension String {
+    static func ~= (lhs: String, rhs: String) -> Bool {
+        guard let regex = try? NSRegularExpression(pattern: rhs) else {
+            return false
+        }
+        return regex.matches(lhs)
+    }
+}

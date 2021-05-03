@@ -40,7 +40,8 @@ class AuthViewController: UIViewController {
     func buttonPressed() {}
     
     func getString(from textfield: AuthTextField) -> String? {
-        guard let string = Validator.validate(string: textfield.text) else {
+        let validator = Validator()
+        guard let string = validator.validate(string: textfield.text) else {
             textfield.clear()
             textfield.ping()
             return nil

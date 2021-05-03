@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol SignupViewControllerPresenter: class {
+protocol SignupViewControllerPresenter: AnyObject {
     func signupButtonPressed(name: String, authData: AuthData)
 }

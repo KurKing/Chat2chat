@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol LoginViewControllerPresenter: class {
+protocol LoginViewControllerPresenter: AnyObject {
     func loginButtonPressed(authData: AuthData)
     func signupButtonPressed()
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ChatDataBaseDelegate: class {
+protocol ChatDataBaseDelegate: AnyObject {
     var chatId: String { set get }
     func clearMessages()
     func addMessage(message: MessageDBEntity)

@@ -56,7 +56,8 @@ class ChatViewController: UIViewController  {
     }
     
     @objc func sendButtonPressed(_ sender: UIButton){
-        guard let text = Validator.validate(string: chatView.messageText) else { return }
+        let validator = Validator()
+        guard let text = validator.validate(string: chatView.messageText) else { return }
         presenter?.sendMessage(text: text)
         chatView.clearMessageTextField()
     }

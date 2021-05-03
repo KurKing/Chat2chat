@@ -74,9 +74,7 @@ extension ChatPresenter {
     }
     func addMessage(message: MessageDBEntity) {
         delegate.hideLoadingView()
-        messageContainer.addMessage(
-            MessageViewModel(text: message.text, fromMe: message.userToken==userToken)
-        )
+        messageContainer.addMessage(message.mapToViewModel(token: userToken))
         delegate.reloadData()
     }
 }

@@ -7,7 +7,11 @@
 
 import UIKit
 
-struct MessageViewModel {
+struct MessageViewModel: Equatable {
     let text: String
     let fromMe: Bool
+    
+    static func == (lhs: MessageViewModel, rhs: MessageViewModel) -> Bool {
+        return lhs.fromMe == rhs.fromMe && lhs.text == rhs.text
+    }
 }

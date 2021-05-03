@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ChatPresenterDelegate: class {
+protocol ChatPresenterDelegate: AnyObject {
     func showLoadingView()
     func hideLoadingView()
     func reloadData()
