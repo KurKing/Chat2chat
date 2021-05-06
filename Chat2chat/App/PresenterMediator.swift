@@ -31,8 +31,8 @@ class PresenterMediator {
 
 extension PresenterMediator: AuthMediator {
     func goToChat(viewController: UIViewController, email: String) {
-        viewController.show(chatPresenter.chatViewController, sender: self)
         chatPresenter.userLogin = email
         chatPresenter.startChat()
+        viewController.show(chatPresenter.chatViewController, sender: self)
     }
 }

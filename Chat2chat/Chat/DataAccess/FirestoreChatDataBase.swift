@@ -26,7 +26,7 @@ class FirestoreChatDataBase: ChatDataBase {
                     
                     if query.isEmpty {
                         //create new chat
-                        let chatId = UUID().uuidString[0..<6]
+                        let chatId = UUID().uuidString
                         self.db.collection(DBConstants.chatCollection)
                             .document(chatId)
                             .setData([

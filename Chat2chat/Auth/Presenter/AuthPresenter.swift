@@ -14,6 +14,8 @@ class AuthPresenter {
     weak var mediator: AuthMediator?
     private let authService = AuthService()
     
+    var wasButtonPressed = false
+    
     func getRootViewContoller() -> UIViewController {
         loginViewController.presenter = self
         
@@ -32,12 +34,16 @@ extension AuthPresenter: LoginViewControllerPresenter {
         signUpViewController.presenter = self
     }
     func loginButtonPressed(authData: AuthData) {
-        authService.login(authData: authData) { [weak self] email in
-            if let strongSelf = self {
-                strongSelf.mediator?.goToChat(viewController: strongSelf.loginViewController, email: email)
+        if !wasButtonPressed {
+            authService.login(authData: authData) { [weak self] email in
+                if let strongSelf = self {
+                    strongSelf.mediator?.goToChat(viewController: strongSelf.loginViewController, email: email)
+                    strongSelf.wasButtonPressed = true
+                }
+            } failComplition: { [weak self] error in
+                self?.loginViewController.showErrorAlert(errorMessage: error.rawValue)
+                self?.wasButtonPressed = false
             }
-        } failComplition: { [weak self] error in
-            self?.loginViewController.showErrorAlert(errorMessage: error.rawValue)
         }
     }
 }
@@ -45,13 +51,17 @@ extension AuthPresenter: LoginViewControllerPresenter {
 //MARK: - SignupViewControllerPresenter
 extension AuthPresenter: SignupViewControllerPresenter {
     func signupButtonPressed(name: String, authData: AuthData) {
+        if !wasButtonPressed {
         authService.signUp(name: name, authData: authData)
         { [weak self] email in
             if let strongSelf = self {
                 strongSelf.mediator?.goToChat(viewController: strongSelf.signUpViewController, email: email)
+                strongSelf.wasButtonPressed = true
             }
         } failComplition: { [weak self] error in
             self?.signUpViewController.showErrorAlert(errorMessage: error.rawValue)
+            self?.wasButtonPressed = false
         }
     }
+}
 }

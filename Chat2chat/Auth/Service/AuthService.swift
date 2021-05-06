@@ -20,7 +20,6 @@ class AuthService {
         Auth.auth().signIn(withEmail: authData.email.lowercased(), password: authData.password) { [weak self] (result, error) in
             
             if let result = result {
-                self?.saveAuthDataToStorage(authData: authData)
                 guard let email = result.user.email else {
                     failComplition(FirebaseCustomError.unknownError)
                     do {
@@ -30,6 +29,7 @@ class AuthService {
                     }
                     return
                 }
+                self?.saveAuthDataToStorage(authData: authData)
                 successComplition(email)
                 return
             }
@@ -52,6 +52,7 @@ class AuthService {
                 } catch let error {
                     print(error.localizedDescription)
                 }
+                self?.saveAuthDataToStorage(authData: authData)
                 successComplition(email)
                 return
             }
