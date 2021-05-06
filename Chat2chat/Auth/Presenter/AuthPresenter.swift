@@ -12,38 +12,20 @@ class AuthPresenter {
     var loginViewController = LoginViewController()
     
     weak var mediator: AuthMediator?
-    
     private let authService = AuthService()
     
     func getRootViewContoller() -> UIViewController {
         loginViewController.presenter = self
         
-        if let authData = getAuthDataFromUserDefaults() {
-            loginViewController.authView.getTextField(tag: 0)?.text = authData.email
-            loginViewController.authView.getTextField(tag: 1)?.text = authData.password
+        if let authData = authService.getAuthDataFromStorage() {
+            loginViewController.setAuthData(authData: authData)
         }
         
         return UINavigationController(rootViewController: loginViewController)
     }
-    
-    private func getAuthDataFromUserDefaults() -> AuthData? {
-        guard let login = getStringFromUserDefaults(key: "login")
-        else {
-            return nil
-        }
-        guard let password = getStringFromUserDefaults(key: "password")
-        else {
-            return nil
-        }
-        
-        return AuthData(email: login, password: password)
-    }
-    private func getStringFromUserDefaults(key: String) -> String? {
-        let validator = Validator()
-        return validator.validate(string: UserDefaults.standard.string(forKey: key))
-    }
 }
 
+//MARK: - LoginViewControllerPresenter
 extension AuthPresenter: LoginViewControllerPresenter {
     func signupButtonPressed() {
         loginViewController.show(signUpViewController, sender: self)
@@ -54,24 +36,21 @@ extension AuthPresenter: LoginViewControllerPresenter {
             if let strongSelf = self {
                 strongSelf.mediator?.goToChat(viewController: strongSelf.loginViewController)
             }
-        } failComplition: { [weak self] in
-            if let strongSelf = self {
-                strongSelf.loginViewController.clearTextFields()
-            }
+        } failComplition: { [weak self] error in
+            self?.loginViewController.showErrorAlert(errorMessage: error.rawValue)
         }
     }
 }
 
+//MARK: - SignupViewControllerPresenter
 extension AuthPresenter: SignupViewControllerPresenter {
     func signupButtonPressed(name: String, authData: AuthData) {
         authService.signUp(name: name, authData: authData) { [weak self] in
             if let strongSelf = self {
-                print("success")
                 strongSelf.mediator?.goToChat(viewController: strongSelf.signUpViewController)
             }
         } failComplition: { [weak self] in
             if let strongSelf = self {
-                print("fail")
                 strongSelf.signUpViewController.clearTextFields()
             }
         }

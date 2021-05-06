@@ -49,6 +49,12 @@ class AuthViewController: UIViewController {
         return string
     }
     
+    func showErrorAlert(errorMessage: String) {
+        let alertViewController = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+        alertViewController.addAction(UIAlertAction(title: "OK", style: .destructive, handler: nil))
+        present(alertViewController, animated: true, completion: nil)
+    }
+    
     @objc private func authButtonPressed(_ sender: UIButton) {
         buttonPressed()
     }

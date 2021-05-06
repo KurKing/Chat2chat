@@ -23,7 +23,9 @@ struct AuthTextField {
     }()
     
     var text: String? {
-        return textField.text
+        get {
+            return textField.text
+        }
     }
     
     private let textFieldImage: UIImageView = {

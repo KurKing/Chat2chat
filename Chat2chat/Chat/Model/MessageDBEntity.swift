@@ -13,6 +13,6 @@ struct MessageDBEntity {
     let userToken: String
     
     func mapToViewModel(token: String) -> MessageViewModel {
-        return MessageViewModel(text: text, fromMe: self.userToken==userToken)
+        return MessageViewModel(text: text, fromMe: userToken==token)
     }
 }

@@ -41,6 +41,11 @@ class LoginViewController: AuthViewController {
         loginView.emailTextField.clear()
     }
     
+    func setAuthData(authData: AuthData) {
+        loginView.passwordTextField.textField.text = authData.password
+        loginView.emailTextField.textField.text = authData.email
+    }
+    
     @objc private func signUpButtonPressed(_ sender: UIButton) {
         presenter?.signupButtonPressed()
     }

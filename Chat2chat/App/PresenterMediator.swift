@@ -19,6 +19,7 @@ class PresenterMediator {
     init() {
         authPresenter = AuthPresenter()
         chatPresenter = ChatPresenter()
+        chatPresenter.delegate = chatPresenter.chatViewController
         chatPresenter.chatViewController.presenter = chatPresenter
     }
     

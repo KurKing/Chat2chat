@@ -9,11 +9,9 @@ import Foundation
 
 class ChatPresenter: ChatDataBaseDelegate {
     
-    private(set) lazy var chatViewController = ChatViewController()
+    private(set) var chatViewController = ChatViewController()
     var chatId = ""
-    var delegate: ChatPresenterDelegate {
-        return chatViewController
-    }
+    weak var delegate: ChatPresenterDelegate?
 
     private let dataBase: ChatDataBase
     private let messageContainer: MessageContainer
@@ -45,14 +43,14 @@ class ChatPresenter: ChatDataBaseDelegate {
     }
     
     func startChat() {
-        delegate.showLoadingView()
+        delegate?.showLoadingView()
         dataBase.startChat(delegate: self, userToken: userToken)
     }
     
     func endChat() {
         if !chatId.isEmpty {
             messageContainer.clearMessages()
-            delegate.reloadData()
+            delegate?.reloadData()
             dataBase.endChat(delegate: self, chatId: chatId)
             startChat()
         }        
@@ -67,14 +65,14 @@ class ChatPresenter: ChatDataBaseDelegate {
 extension ChatPresenter {
     func clearMessages() {
         messageContainer.clearMessages()
-        delegate.showDeletedChatAlert {
+        delegate?.showDeletedChatAlert {
             [weak self] in self?.startChat()
         }
-        delegate.reloadData()
+        delegate?.reloadData()
     }
     func addMessage(message: MessageDBEntity) {
-        delegate.hideLoadingView()
+        delegate?.hideLoadingView()
         messageContainer.addMessage(message.mapToViewModel(token: userToken))
-        delegate.reloadData()
+        delegate?.reloadData()
     }
 }

@@ -32,7 +32,11 @@ struct Constants {
     
     struct Regex {
         static let email = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
-        // Minimum eight characters, at least one uppercase letter, one lowercase letter and one number
         static let password = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$"
+    }
+    
+    struct UserDefaultsKey {
+        static let email = "EmailUserDefaultsKey"
+        static let password = "PasswordUserDefulatsKey"
     }
 }
