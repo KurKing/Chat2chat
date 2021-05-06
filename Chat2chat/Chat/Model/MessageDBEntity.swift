@@ -10,9 +10,9 @@ import Foundation
 struct MessageDBEntity {
     let text: String
     let time: Double
-    let userToken: String
+    let fromUser: String
     
-    func mapToViewModel(token: String) -> MessageViewModel {
-        return MessageViewModel(text: text, fromMe: userToken==token)
+    func mapToViewModel(login: String) -> MessageViewModel {
+        return MessageViewModel(text: text, fromMe: fromUser==login)
     }
 }

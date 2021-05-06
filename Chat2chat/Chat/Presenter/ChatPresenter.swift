@@ -9,25 +9,17 @@ import Foundation
 
 class ChatPresenter: ChatDataBaseDelegate {
     
-    private(set) var chatViewController = ChatViewController()
+    var userLogin: String!
     var chatId = ""
     weak var delegate: ChatPresenterDelegate?
-
+    
+    private(set) var chatViewController = ChatViewController()
     private let dataBase: ChatDataBase
     private let messageContainer: MessageContainer
-    private let userToken: String
     
     init() {
         dataBase = FirestoreChatDataBase()
         messageContainer = MessageContainer()
-        
-        if let token = UserDefaults.standard.string(forKey: Constants.DataBase.userToken){
-            userToken = token[0..<6]
-        } else {
-            userToken = UUID().uuidString[0..<6]
-            UserDefaults.standard.set(userToken, forKey: Constants.DataBase.userToken)
-        }
-        print("User token: \(userToken)")
     }
     
     var messagesCount: Int {
@@ -44,7 +36,7 @@ class ChatPresenter: ChatDataBaseDelegate {
     
     func startChat() {
         delegate?.showLoadingView()
-        dataBase.startChat(delegate: self, userToken: userToken)
+        dataBase.startChat(delegate: self, userLogin: userLogin)
     }
     
     func endChat() {
@@ -57,7 +49,7 @@ class ChatPresenter: ChatDataBaseDelegate {
     }
     
     func sendMessage(text: String) {
-        dataBase.sendMessage(message: MessageDBEntity(text: text, time: Date().timeIntervalSince1970, userToken: userToken), chatId: chatId)
+        dataBase.sendMessage(message: MessageDBEntity(text: text, time: Date().timeIntervalSince1970, fromUser: userLogin), chatId: chatId)
     }
 }
 
@@ -72,7 +64,7 @@ extension ChatPresenter {
     }
     func addMessage(message: MessageDBEntity) {
         delegate?.hideLoadingView()
-        messageContainer.addMessage(message.mapToViewModel(token: userToken))
+        messageContainer.addMessage(message.mapToViewModel(login: userLogin))
         delegate?.reloadData()
     }
 }

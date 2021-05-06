@@ -32,9 +32,9 @@ extension AuthPresenter: LoginViewControllerPresenter {
         signUpViewController.presenter = self
     }
     func loginButtonPressed(authData: AuthData) {
-        authService.login(authData: authData) { [weak self] in
+        authService.login(authData: authData) { [weak self] email in
             if let strongSelf = self {
-                strongSelf.mediator?.goToChat(viewController: strongSelf.loginViewController)
+                strongSelf.mediator?.goToChat(viewController: strongSelf.loginViewController, email: email)
             }
         } failComplition: { [weak self] error in
             self?.loginViewController.showErrorAlert(errorMessage: error.rawValue)
@@ -45,14 +45,13 @@ extension AuthPresenter: LoginViewControllerPresenter {
 //MARK: - SignupViewControllerPresenter
 extension AuthPresenter: SignupViewControllerPresenter {
     func signupButtonPressed(name: String, authData: AuthData) {
-        authService.signUp(name: name, authData: authData) { [weak self] in
+        authService.signUp(name: name, authData: authData)
+        { [weak self] email in
             if let strongSelf = self {
-                strongSelf.mediator?.goToChat(viewController: strongSelf.signUpViewController)
+                strongSelf.mediator?.goToChat(viewController: strongSelf.signUpViewController, email: email)
             }
-        } failComplition: { [weak self] in
-            if let strongSelf = self {
-                strongSelf.signUpViewController.clearTextFields()
-            }
+        } failComplition: { [weak self] error in
+            self?.signUpViewController.showErrorAlert(errorMessage: error.rawValue)
         }
     }
 }

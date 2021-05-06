@@ -10,7 +10,7 @@ import Firebase
 
 class AuthService {
     
-    func login(authData: AuthData, successComplition: @escaping ()->(), failComplition: @escaping (FirebaseCustomError)->()) {
+    func login(authData: AuthData, successComplition: @escaping (String)->(), failComplition: @escaping (FirebaseCustomError)->()) {
         
         if !isValidated(authData: authData) {
             failComplition(.incorrectPassword)
@@ -19,9 +19,18 @@ class AuthService {
         
         Auth.auth().signIn(withEmail: authData.email.lowercased(), password: authData.password) { [weak self] (result, error) in
             
-            if result != nil {
+            if let result = result {
                 self?.saveAuthDataToStorage(authData: authData)
-                successComplition()
+                guard let email = result.user.email else {
+                    failComplition(FirebaseCustomError.unknownError)
+                    do {
+                        try Auth.auth().signOut()
+                    } catch let error {
+                        print(error.localizedDescription)
+                    }
+                    return
+                }
+                successComplition(email)
                 return
             }
             
@@ -29,26 +38,36 @@ class AuthService {
         }
     }
     
-    func signUp(name: String, authData: AuthData, successComplition: @escaping ()->(), failComplition: @escaping ()->()) {
+    func signUp(name: String, authData: AuthData, successComplition: @escaping (String)->(), failComplition: @escaping (FirebaseCustomError)->()) {
         Auth.auth().createUser(withEmail: authData.email.lowercased(), password: authData.password) { [weak self] (result, error) in
+            
             if let result = result, let strongSelf = self {
-                strongSelf.createUser(result: result, name: name)
-                successComplition()
-            } else {
-                failComplition()
+                strongSelf.createUser(result: result, name: name, authData: authData)
+                guard let email = result.user.email else {
+                    failComplition(FirebaseCustomError.unknownError)
+                    return
+                }
+                do {
+                    try Auth.auth().signOut()
+                } catch let error {
+                    print(error.localizedDescription)
+                }
+                successComplition(email)
+                return
             }
+            
+            failComplition(FirebaseCustomError.mapFromFirebaseError(error: error))
         }
     }
     
-    private func createUser(result: AuthDataResult, name: String) {
-        result.user.getIDToken { (token, error) in
-            if let token = token {
-                Firestore.firestore()
-                    .collection(Constants.DataBase.userCollection)
-                    .document(token)
-                    .setData(["name":name])
-            }
-        }
+    private func createUser(result: AuthDataResult, name: String, authData: AuthData) {
+        Firestore.firestore()
+            .collection(Constants.DataBase.userCollection)
+            .document(authData.email)
+            .setData([
+                "name": name,
+                "createdSince1970": Date().timeIntervalSince1970
+            ])
     }
     
     //MARK: - UserDefaults
@@ -56,15 +75,15 @@ class AuthService {
         let validator = Validator()
         
         guard let email = validator.validate(
-                string: UserDefaults.standard
-                    .string(forKey: Constants.UserDefaultsKey.email)
+            string: UserDefaults.standard
+                .string(forKey: Constants.UserDefaultsKey.email)
         ) else {
             return nil
         }
         
         guard let password = validator.validate(
-                string: UserDefaults.standard
-                    .string(forKey: Constants.UserDefaultsKey.password)
+            string: UserDefaults.standard
+                .string(forKey: Constants.UserDefaultsKey.password)
         ) else {
             return nil
         }

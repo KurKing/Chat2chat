@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ChatDataBase {
-    func startChat(delegate: ChatDataBaseDelegate, userToken: String)
+    func startChat(delegate: ChatDataBaseDelegate, userLogin: String)
     func endChat(delegate: ChatDataBaseDelegate, chatId: String)
     func sendMessage(message: MessageDBEntity, chatId: String)
 }

@@ -13,10 +13,10 @@ class FirestoreChatDataBase: ChatDataBase {
     private let db = Firestore.firestore()
     private var listener: ListenerRegistration?
     
-    func startChat(delegate: ChatDataBaseDelegate, userToken: String) {
+    func startChat(delegate: ChatDataBaseDelegate, userLogin: String) {
         db.collection(DBConstants.chatCollection)
             .whereField(DBConstants.isFreeParametr, isEqualTo: true)
-            .whereField(DBConstants.user1, isNotEqualTo: userToken)
+            .whereField(DBConstants.user1, isNotEqualTo: userLogin)
             .getDocuments { [weak self] query, error in
                 if let self = self {
                     
@@ -31,7 +31,7 @@ class FirestoreChatDataBase: ChatDataBase {
                             .document(chatId)
                             .setData([
                                 DBConstants.isFreeParametr: true,
-                                "User1": userToken,
+                                "User1": userLogin,
                                 "User2": "-",
                                 DBConstants.timeParametr: Date().timeIntervalSince1970
                             ])
@@ -49,11 +49,11 @@ class FirestoreChatDataBase: ChatDataBase {
                             .document(chatId)
                             .updateData([
                                 DBConstants.isFreeParametr : false,
-                                "User2": userToken
+                                "User2": userLogin
                             ])
                         
                         self.sendMessage(message:
-                                            MessageDBEntity(text: Constants.Messages.chatStartMessage, time: Date().timeIntervalSince1970, userToken: userToken),
+                                            MessageDBEntity(text: Constants.Messages.chatStartMessage, time: Date().timeIntervalSince1970, fromUser: userLogin),
                                          chatId: chatId)
                         self.addListenerToChat(delegate: delegate, chatId: chatId)
                     }
@@ -86,7 +86,7 @@ class FirestoreChatDataBase: ChatDataBase {
             .collection(DBConstants.messageCollection)
             .addDocument(data: [
                 DBConstants.textParametr : message.text,
-                DBConstants.userToken : message.userToken,
+                DBConstants.userToken : message.fromUser,
                 DBConstants.timeParametr : message.time
             ])
     }
@@ -128,10 +128,10 @@ class FirestoreChatDataBase: ChatDataBase {
         guard let text = data["text"] as? String,
               let time = data["time"] as? Double,
               let userToken = data["userToken"] as? String
-        else {
+        else { 
             return nil
         }
-        return MessageDBEntity(text: text, time: time, userToken: userToken)
+        return MessageDBEntity(text: text, time: time, fromUser: userToken)
     }
     
 }

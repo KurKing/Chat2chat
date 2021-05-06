@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AuthMediator: AnyObject {
-    func goToChat(viewController: UIViewController)
+    func goToChat(viewController: UIViewController, email: String)
 }
 
 class PresenterMediator {
@@ -30,8 +30,9 @@ class PresenterMediator {
 }
 
 extension PresenterMediator: AuthMediator {
-    func goToChat(viewController: UIViewController) {
+    func goToChat(viewController: UIViewController, email: String) {
         viewController.show(chatPresenter.chatViewController, sender: self)
+        chatPresenter.userLogin = email
         chatPresenter.startChat()
     }
 }
