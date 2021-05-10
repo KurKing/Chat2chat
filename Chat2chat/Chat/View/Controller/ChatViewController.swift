@@ -144,6 +144,7 @@ extension ChatViewController: ChatPresenterDelegate {
     func reloadData() {
         DispatchQueue.main.async {
             self.chatView.tableView.reloadData()
+            self.chatView.tableView.scrollToRow(at: IndexPath(row: (self.presenter?.messagesCount ?? 0) - 1, section: 0), at: .top, animated: false)
         }
     }
     
