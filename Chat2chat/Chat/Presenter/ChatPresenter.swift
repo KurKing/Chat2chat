@@ -10,6 +10,7 @@ import Foundation
 class ChatPresenter: ChatDataBaseDelegate {
     
     var userLogin: String!
+    var userName: String?
     var chatId = ""
     weak var delegate: ChatPresenterDelegate?
     
@@ -70,7 +71,11 @@ extension ChatPresenter {
         if messageContainer.isOnlyFirstMessageAdded {
             dataBase.getChatInfo(chatId: chatId) { [weak self] data in
                 if let self = self, let user1 = data[Constants.DataBase.user1] as? String, let user2 = data[Constants.DataBase.user2] as? String {
-                    self.delegate?.title = user1 == self.userLogin ? user2 : user1
+                    
+                    self.dataBase.getName(login: user1 == self.userLogin ? user2 : user1) { [weak self] name in
+                        self?.delegate?.title = name
+                    }
+                    
                 }
             }
         }

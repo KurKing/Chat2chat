@@ -36,9 +36,9 @@ extension AuthPresenter: LoginViewControllerPresenter {
     func loginButtonPressed(authData: AuthData) {
         if !wasButtonPressed {
             authService.login(authData: authData) { [weak self] email in
-                if let strongSelf = self {
-                    strongSelf.mediator?.goToChat(viewController: strongSelf.loginViewController, email: email)
-                    strongSelf.wasButtonPressed = true
+                if let self = self {
+                    self.mediator?.goToChat(viewController: self.loginViewController, email: email)
+                    self.wasButtonPressed = true
                 }
             } failComplition: { [weak self] error in
                 self?.loginViewController.showErrorAlert(errorMessage: error.rawValue)
@@ -54,9 +54,9 @@ extension AuthPresenter: SignupViewControllerPresenter {
         if !wasButtonPressed {
         authService.signUp(name: name, authData: authData)
         { [weak self] email in
-            if let strongSelf = self {
-                strongSelf.mediator?.goToChat(viewController: strongSelf.signUpViewController, email: email)
-                strongSelf.wasButtonPressed = true
+            if let self = self {
+                self.mediator?.goToChat(viewController: self.signUpViewController, email: email)
+                self.wasButtonPressed = true
             }
         } failComplition: { [weak self] error in
             self?.signUpViewController.showErrorAlert(errorMessage: error.rawValue)
