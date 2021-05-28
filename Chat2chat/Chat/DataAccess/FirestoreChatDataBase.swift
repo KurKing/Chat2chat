@@ -31,8 +31,8 @@ class FirestoreChatDataBase: ChatDataBase {
                             .document(chatId)
                             .setData([
                                 DBConstants.isFreeParametr: true,
-                                "User1": userLogin,
-                                "User2": "-",
+                                DBConstants.user1: userLogin,
+                                DBConstants.user2: "-",
                                 DBConstants.timeParametr: Date().timeIntervalSince1970
                             ])
                         delegate.chatId = chatId
@@ -49,7 +49,7 @@ class FirestoreChatDataBase: ChatDataBase {
                             .document(chatId)
                             .updateData([
                                 DBConstants.isFreeParametr : false,
-                                "User2": userLogin
+                                DBConstants.user2: userLogin
                             ])
                         
                         self.sendMessage(message:
@@ -89,6 +89,26 @@ class FirestoreChatDataBase: ChatDataBase {
                 DBConstants.userToken : message.fromUser,
                 DBConstants.timeParametr : message.time
             ])
+    }
+    
+    func getName(login: String, complition: @escaping (String) -> ()) {
+        db.collection(DBConstants.userCollection)
+            .document(login)
+            .getDocument { query, error in
+                if let query = query, let name = query.get(DBConstants.userName) as? String {
+                    complition(name)
+                }
+            }
+    }
+    
+    func getChatInfo(chatId: String, complition: @escaping ([String : Any]) -> ()) {
+        db.collection(DBConstants.chatCollection)
+            .document(chatId)
+            .getDocument { query, error in
+                if let query = query, let data = query.data() {
+                    complition(data)
+                }
+            }
     }
     
     private func addListenerToChat(delegate: ChatDataBaseDelegate, chatId: String) {

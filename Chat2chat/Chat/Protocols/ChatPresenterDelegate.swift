@@ -12,4 +12,6 @@ protocol ChatPresenterDelegate: AnyObject {
     func hideLoadingView()
     func reloadData()
     func showDeletedChatAlert(action: @escaping ()->())
+    
+    var title: String? { set get }
 }

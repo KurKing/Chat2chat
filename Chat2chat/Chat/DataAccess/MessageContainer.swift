@@ -10,6 +10,10 @@ import Foundation
 class MessageContainer {
     private(set) var messages = [MessageViewModel]()
     
+    var isOnlyFirstMessageAdded: Bool {
+        return messages.count == 1 && messages[0].text == Constants.Messages.chatStartMessage
+    }
+    
     func addMessage(_ message: MessageViewModel) {
         removeIfNeedFirstMessage()
         messages.append(message)

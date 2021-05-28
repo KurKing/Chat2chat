@@ -65,6 +65,7 @@ class ChatViewController: UIViewController  {
     @objc func reloadButtonPressed(_ sender: UIButton){
         if chatView.isLoadingViewHidden {
             presenter?.endChat()
+            title = Constants.title
             dismissKeyboard()
         }
     }
@@ -144,7 +145,9 @@ extension ChatViewController: ChatPresenterDelegate {
     func reloadData() {
         DispatchQueue.main.async {
             self.chatView.tableView.reloadData()
-            self.chatView.tableView.scrollToRow(at: IndexPath(row: (self.presenter?.messagesCount ?? 0) - 1, section: 0), at: .top, animated: false)
+            if !(self.presenter?.isMessagesEmpty ?? true) {
+                self.chatView.tableView.scrollToRow(at: IndexPath(row: (self.presenter?.messagesCount ?? 0) - 1, section: 0), at: .top, animated: false)
+            }
         }
     }
     

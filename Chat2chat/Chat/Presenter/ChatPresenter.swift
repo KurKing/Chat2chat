@@ -66,5 +66,13 @@ extension ChatPresenter {
         delegate?.hideLoadingView()
         messageContainer.addMessage(message.mapToViewModel(login: userLogin))
         delegate?.reloadData()
+        
+        if messageContainer.isOnlyFirstMessageAdded {
+            dataBase.getChatInfo(chatId: chatId) { [weak self] data in
+                if let self = self, let user1 = data[Constants.DataBase.user1] as? String, let user2 = data[Constants.DataBase.user2] as? String {
+                    self.delegate?.title = user1 == self.userLogin ? user2 : user1
+                }
+            }
+        }
     }
 }

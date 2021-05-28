@@ -14,12 +14,13 @@ struct Constants {
         static let chatCollection = "Chats"
         static let userCollection = "Users"
         static let messageCollection = "Messages"
-        static let userToken = "userToken"
         
+        static let userToken = "userToken"
         static let isFreeParametr = "isFree"
         static let timeParametr = "time"
         static let textParametr = "text"
         static let shouldBeDeleted = "shouldBeDeleted"
+        static let userName = "name"
         
         static let user1 = "User1"
         static let user2 = "User2"
@@ -32,6 +33,7 @@ struct Constants {
     
     struct Regex {
         static let email = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
+        // Minimum eight characters, at least one uppercase letter, one lowercase letter and one number
         static let password = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$"
     }
     
