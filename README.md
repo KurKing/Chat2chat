@@ -20,4 +20,12 @@ Design copied from: https://themes.contest.com/theme/VaporNeon
             <img src="https://github.com/KurKing/Chat2chat/blob/master/Screenshots/Screenshot4.png" width="250" align = "center">
         </td>
     </tr>
+    <tr>
+        <td>
+            <img src="https://github.com/KurKing/Chat2chat/blob/master/Screenshots/Screenshot5.png" width="250" align = "center">
+        </td>
+        <td>
+            <img src="https://github.com/KurKing/Chat2chat/blob/master/Screenshots/Screenshot6.png" width="250" align = "center">
+        </td>
+    </tr>
 </table>
