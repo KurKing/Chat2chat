@@ -17,6 +17,7 @@ class FirestoreChatDataBase: ChatDataBase {
         db.collection(DBConstants.chatCollection)
             .whereField(DBConstants.isFreeParametr, isEqualTo: true)
             .whereField(DBConstants.user1, isNotEqualTo: userLogin)
+            .limit(to: 10)
             .getDocuments { [weak self] query, error in
                 if let self = self {
                     
