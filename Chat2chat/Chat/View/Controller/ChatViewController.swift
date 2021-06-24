@@ -154,12 +154,14 @@ extension ChatViewController: ChatPresenterDelegate {
     func showLoadingView() {
         DispatchQueue.main.async {
             self.chatView.showLoadingView()
+            self.chatView.view.isUserInteractionEnabled = false
         }
     }
     
     func hideLoadingView() {
         DispatchQueue.main.async {
             self.chatView.hideLoadingView()
+            self.chatView.view.isUserInteractionEnabled = true
         }
     }
     

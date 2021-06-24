@@ -12,27 +12,37 @@ class ChatPresenter: ChatDataBaseDelegate {
     var userLogin: String!
     var userName: String?
     var chatId = ""
-    weak var delegate: ChatPresenterDelegate?
     
-    private(set) var chatViewController = ChatViewController()
+    weak var delegate: ChatPresenterDelegate?
+    let chatViewController: ChatViewController
+    
     private let dataBase: ChatDataBase
     private let messageContainer: MessageContainer
     
-    init() {
-        dataBase = FirestoreChatDataBase()
-        messageContainer = MessageContainer()
+    init(dataBase: ChatDataBase, viewController: ChatViewController, messageContainer: MessageContainer, delegate: ChatPresenterDelegate? = nil) {
+        self.chatViewController = viewController
+        self.dataBase = dataBase
+        self.messageContainer = messageContainer
+        
+        if let delegate = delegate {
+            self.delegate = delegate
+        } else {
+            self.delegate = viewController
+        }
+        
+        viewController.presenter = self
     }
     
     var messagesCount: Int {
-        return messageContainer.messages.count
+        return messageContainer.count
     }
     
     var isMessagesEmpty: Bool {
-        return messageContainer.messages.isEmpty
+        return messageContainer.count == 0
     }
     
-    func getMessage(index: Int) -> MessageViewModel {
-        return messageContainer.messages[index]
+    func getMessage(index: Int) -> MessageViewModel? {
+        return messageContainer.getMessage(index: index)
     }
     
     func startChat() {

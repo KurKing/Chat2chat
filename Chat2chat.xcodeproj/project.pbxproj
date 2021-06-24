@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		87C7CED2D9429B81B7BC1C5B /* Pods_Chat2chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F98299313DCC7A980FA8CB7 /* Pods_Chat2chat.framework */; };
+		D20A8C312684C43A00304A6E /* ThreadSafeArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A8C302684C43A00304A6E /* ThreadSafeArray.swift */; };
 		D221ACDE2603C54000DE590A /* ChatLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D221ACDD2603C54000DE590A /* ChatLoadingView.swift */; };
 		D221ACE82603D77200DE590A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D221ACE72603D77200DE590A /* Constants.swift */; };
 		D22826FF25D55DB400589766 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22826FE25D55DB400589766 /* MessageViewModel.swift */; };
@@ -74,6 +75,7 @@
 		8F6B4C2FD21B0222BD2B409B /* Pods-Chat2chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat2chat.debug.xcconfig"; path = "Target Support Files/Pods-Chat2chat/Pods-Chat2chat.debug.xcconfig"; sourceTree = "<group>"; };
 		A7873E3D9A9D1998F27A73A7 /* Pods-Chat2chatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat2chatTests.debug.xcconfig"; path = "Target Support Files/Pods-Chat2chatTests/Pods-Chat2chatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AF8BE8A5C72B2360047DA629 /* Pods_Chat2chatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat2chatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D20A8C302684C43A00304A6E /* ThreadSafeArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadSafeArray.swift; sourceTree = "<group>"; };
 		D221ACDD2603C54000DE590A /* ChatLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLoadingView.swift; sourceTree = "<group>"; };
 		D221ACE72603D77200DE590A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D22826FE25D55DB400589766 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
@@ -167,6 +169,25 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D20A8C2E2684C10000304A6E /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				D20A8C2F2684C41600304A6E /* Models */,
+				D23B5AA126443E2C00F6954C /* Utils */,
+				D26F323926066CE5004A808F /* Extensions */,
+				D2B22191263737180084F152 /* Protocols */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		D20A8C2F2684C41600304A6E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D20A8C302684C43A00304A6E /* ThreadSafeArray.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D23732FE25D1BD1B004098E5 = {
 			isa = PBXGroup;
 			children = (
@@ -192,11 +213,9 @@
 			children = (
 				D2A4C5C125F93E9F00307B72 /* Chat2chat.entitlements */,
 				D237334E25D1C689004098E5 /* App */,
-				D23B5AA126443E2C00F6954C /* Utils */,
 				D269ED08263571C2005BE0E8 /* Chat */,
 				D2B2216F2637217E0084F152 /* Auth */,
-				D2B22191263737180084F152 /* Protocols */,
-				D26F323926066CE5004A808F /* Extensions */,
+				D20A8C2E2684C10000304A6E /* Shared */,
 				D23733F325D2A3DB004098E5 /* SupportingFiles */,
 				D237331B25D1BD1F004098E5 /* Info.plist */,
 				D237334925D1C61B004098E5 /* GoogleService-Info.plist */,
@@ -416,8 +435,7 @@
 			children = (
 				D26F323E26066E6E004A808F /* ReuseViewProtocol.swift */,
 			);
-			name = Protocols;
-			path = Auth/Protocols;
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -619,6 +637,7 @@
 				D24B00C8262B5B5E00AEA3D3 /* ChatPresenter.swift in Sources */,
 				D2A3A8742638711500E79C87 /* PresenterMediator.swift in Sources */,
 				D221ACE82603D77200DE590A /* Constants.swift in Sources */,
+				D20A8C312684C43A00304A6E /* ThreadSafeArray.swift in Sources */,
 				D2A3A8892638949A00E79C87 /* AuthData.swift in Sources */,
 				D26F3247260670C4004A808F /* StartedChatTableViewCell.swift in Sources */,
 				D2A3A878263874A800E79C87 /* AuthPresenter.swift in Sources */,

@@ -8,10 +8,19 @@
 import Foundation
 
 class MessageContainer {
-    private(set) var messages = [MessageViewModel]()
+    private let messages = ThreadSafeArray<MessageViewModel>()
+    
+    var count: Int {
+        messages.count
+    }
     
     var isOnlyFirstMessageAdded: Bool {
-        return messages.count == 1 && messages[0].text == Constants.Messages.chatStartMessage
+        return messages.count == 1 &&
+            (messages.get(index: 0)?.text ?? "") == Constants.Messages.chatStartMessage
+    }
+    
+    func getMessage(index: Int) -> MessageViewModel? {
+        return messages.get(index: index)
     }
     
     func addMessage(_ message: MessageViewModel) {
@@ -19,8 +28,9 @@ class MessageContainer {
         messages.append(message)
     }
     
-    func setMessages(_ messages: [MessageViewModel]) {
-        self.messages = messages
+    func setMessages(_ newMessages: [MessageViewModel]) {
+        messages.removeAll()
+        messages.append(contentsOf: newMessages)
         removeIfNeedFirstMessage()
     }
     
@@ -29,7 +39,8 @@ class MessageContainer {
     }
     
     private func removeIfNeedFirstMessage() {
-        if messages.count > 0 && messages[0].text == Constants.Messages.chatStartMessage {
+        if messages.count > 0 &&
+            (messages.get(index: 0)?.text ?? "") == Constants.Messages.chatStartMessage {
             messages.remove(at: 0)
         }
     }

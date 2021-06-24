@@ -18,9 +18,7 @@ class PresenterMediator {
     
     init() {
         authPresenter = AuthPresenter()
-        chatPresenter = ChatPresenter()
-        chatPresenter.delegate = chatPresenter.chatViewController
-        chatPresenter.chatViewController.presenter = chatPresenter
+        chatPresenter = ChatPresenter(dataBase: FirestoreChatDataBase(), viewController: ChatViewController(), messageContainer: MessageContainer())
     }
     
     func getRootViewContoller() -> UIViewController {
