@@ -11,7 +11,7 @@ class ChatViewController: UIViewController  {
     
     let avatarName = "catAvatar\(Int.random(in: 1...5))"
     
-    weak var presenter: ChatPresenter?
+    weak var presenter: ChatPresenterProtocol?
     var chatView: ChatView!
         
     override func loadView() {

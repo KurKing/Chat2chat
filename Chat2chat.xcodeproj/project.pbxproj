@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		87C7CED2D9429B81B7BC1C5B /* Pods_Chat2chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F98299313DCC7A980FA8CB7 /* Pods_Chat2chat.framework */; };
 		D20A8C312684C43A00304A6E /* ThreadSafeArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A8C302684C43A00304A6E /* ThreadSafeArray.swift */; };
+		D20A8C332684D01800304A6E /* ChatPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20A8C322684D01800304A6E /* ChatPresenterProtocol.swift */; };
 		D221ACDE2603C54000DE590A /* ChatLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D221ACDD2603C54000DE590A /* ChatLoadingView.swift */; };
 		D221ACE82603D77200DE590A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D221ACE72603D77200DE590A /* Constants.swift */; };
 		D22826FF25D55DB400589766 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D22826FE25D55DB400589766 /* MessageViewModel.swift */; };
@@ -76,6 +77,7 @@
 		A7873E3D9A9D1998F27A73A7 /* Pods-Chat2chatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat2chatTests.debug.xcconfig"; path = "Target Support Files/Pods-Chat2chatTests/Pods-Chat2chatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AF8BE8A5C72B2360047DA629 /* Pods_Chat2chatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat2chatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20A8C302684C43A00304A6E /* ThreadSafeArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadSafeArray.swift; sourceTree = "<group>"; };
+		D20A8C322684D01800304A6E /* ChatPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresenterProtocol.swift; sourceTree = "<group>"; };
 		D221ACDD2603C54000DE590A /* ChatLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLoadingView.swift; sourceTree = "<group>"; };
 		D221ACE72603D77200DE590A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D22826FE25D55DB400589766 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				D2A4C5CB25F95D2700307B72 /* ChatDataBaseDelegate.swift */,
 				D24B00DE262B5E1C00AEA3D3 /* ChatPresenterDelegate.swift */,
 				D29B8C37262C1F2500D8B103 /* ChatDataBase.swift */,
+				D20A8C322684D01800304A6E /* ChatPresenterProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				D26F323F26066E6E004A808F /* ReuseViewProtocol.swift in Sources */,
 				D22826FF25D55DB400589766 /* MessageViewModel.swift in Sources */,
 				D29B8C38262C1F2500D8B103 /* ChatDataBase.swift in Sources */,
+				D20A8C332684D01800304A6E /* ChatPresenterProtocol.swift in Sources */,
 				D228270B25D573E500589766 /* SelfMessageViewCell.swift in Sources */,
 				D2B22186263725350084F152 /* SignUpViewController.swift in Sources */,
 				D26610E725D7EA4A00CB7CFE /* SenderTextFieldView.swift in Sources */,

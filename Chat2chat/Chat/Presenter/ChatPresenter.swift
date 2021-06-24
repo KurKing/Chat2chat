@@ -7,19 +7,21 @@
 
 import Foundation
 
-class ChatPresenter: ChatDataBaseDelegate {
-    
+class ChatPresenter: ChatPresenterProtocol {
+
     var userLogin: String!
     var userName: String?
-    var chatId = ""
+    var currentChatId = ""
     
-    weak var delegate: ChatPresenterDelegate?
+    var delegate: ChatPresenterDelegate?
     let chatViewController: ChatViewController
     
     private let dataBase: ChatDataBase
     private let messageContainer: MessageContainer
     
-    init(dataBase: ChatDataBase, viewController: ChatViewController, messageContainer: MessageContainer, delegate: ChatPresenterDelegate? = nil) {
+    init(dataBase: ChatDataBase, viewController: ChatViewController,
+         messageContainer: MessageContainer,
+         delegate: ChatPresenterDelegate? = nil) {
         self.chatViewController = viewController
         self.dataBase = dataBase
         self.messageContainer = messageContainer
@@ -54,18 +56,27 @@ class ChatPresenter: ChatDataBaseDelegate {
         if !chatId.isEmpty {
             messageContainer.clearMessages()
             delegate?.reloadData()
-            dataBase.endChat(delegate: self, chatId: chatId)
+            dataBase.endChat(delegate: self, chatId: currentChatId)
             startChat()
         }        
     }
     
     func sendMessage(text: String) {
-        dataBase.sendMessage(message: MessageDBEntity(text: text, time: Date().timeIntervalSince1970, fromUser: userLogin), chatId: chatId)
+        dataBase.sendMessage(message: MessageDBEntity(text: text, time: Date().timeIntervalSince1970, fromUser: userLogin), chatId: currentChatId)
     }
 }
 
 //MARK: - ChatDataBaseDelegate
-extension ChatPresenter {
+extension ChatPresenter: ChatDataBaseDelegate {
+    var chatId: String {
+        get {
+            currentChatId
+        }
+        set {
+            currentChatId = newValue
+        }
+    }
+    
     func clearMessages() {
         messageContainer.clearMessages()
         delegate?.showDeletedChatAlert {
