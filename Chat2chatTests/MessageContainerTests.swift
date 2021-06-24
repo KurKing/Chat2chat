@@ -18,36 +18,43 @@ class MessageContainerTests: XCTestCase {
             MessageViewModel(text: "hello world2", fromMe: false),
             MessageViewModel(text: "hello world3", fromMe: true)
         ])
-        XCTAssertTrue(container.messages == [
+        
+        for (index, value) in [
             MessageViewModel(text: "hello world0", fromMe: false),
             MessageViewModel(text: "hello world1", fromMe: true),
             MessageViewModel(text: "hello world2", fromMe: false),
             MessageViewModel(text: "hello world3", fromMe: true)
-        ], "Setting error")
+        ].enumerated() {
+            XCTAssertTrue(container.getMessage(index: index) == value, "Setting error")
+        }
         
         container.clearMessages()
-        XCTAssertTrue(container.messages.isEmpty, "Messages clear error")
+        XCTAssertTrue(container.count == 0, "Messages clear error")
     }
     
     func testInsertingByOne() {
         container.clearMessages()
         
         container.addMessage(MessageViewModel(text: Constants.Messages.chatStartMessage, fromMe: false))
-        XCTAssertTrue(container.messages == [MessageViewModel(text: Constants.Messages.chatStartMessage, fromMe: false)], "Set first message error")
+        XCTAssertTrue(container.getMessage(index: 0) == MessageViewModel(text: Constants.Messages.chatStartMessage, fromMe: false), "Set first message error")
         
         container.addMessage(MessageViewModel(text: "Hello world!", fromMe: true))
-        XCTAssertTrue(container.messages == [MessageViewModel(text: "Hello world!", fromMe: true)], "Set second message error")
+        XCTAssertTrue(container.getMessage(index: 0) == MessageViewModel(text: "Hello world!", fromMe: true), "Set second message error")
         
         for i in 1..<3 {
             container.addMessage(MessageViewModel(text: "Hello world! \(i)", fromMe: true))
         }
-        XCTAssertTrue(container.messages == [
+        
+        for (index, value) in [
             MessageViewModel(text: "Hello world!", fromMe: true),
             MessageViewModel(text: "Hello world! 1", fromMe: true),
             MessageViewModel(text: "Hello world! 2", fromMe: true)
-        ], "Multiple insertion error")
+        ].enumerated() {
+            XCTAssertTrue(container.getMessage(index: index) == value, "Multiple insertion error")
+        }
+        
         
         container.clearMessages()
-        XCTAssertTrue(container.messages.isEmpty)
+        XCTAssertTrue(container.count == 0)
     }
 }

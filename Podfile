@@ -17,5 +17,12 @@ target 'Chat2chat' do
      pod 'SnapKit', '~> 5.0.0'
      pod 'Firebase/Auth'
   end
+  
+  target 'Chat2chatUITests' do
+     inherit! :search_paths
+     pod 'Firebase/Firestore'
+     pod 'SnapKit', '~> 5.0.0'
+     pod 'Firebase/Auth'
+  end
 
 end
