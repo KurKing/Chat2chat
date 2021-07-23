@@ -1,7 +1,7 @@
 # Chat2chat
 Simple anonymous chat app
 
-Design copied from: https://themes.contest.com/theme/VaporNeon
+Design copied from: https://themes.contest.com/theme/VaporNeon<br>
 Objective-C: https://github.com/KurKing/Chat2chat-objc
 
 <table border=0>
