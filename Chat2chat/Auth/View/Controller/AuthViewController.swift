@@ -52,7 +52,7 @@ class AuthViewController: UIViewController {
     
     func buttonPressed() {}
     
-    func getString(from textfield: AuthTextField) -> String? {
+    func getString(from textfield: AuthTextFieldView) -> String? {
         let validator = Validator()
         guard let string = validator.validate(string: textfield.text) else {
             textfield.clear()

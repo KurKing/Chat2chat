@@ -8,9 +8,9 @@
 import UIKit
 
 struct SignUpView: AuthView {
-    let nameTextField = AuthTextField(image: UIImage(systemName: "person") ?? UIImage(), placeHolder: "Name")
-    let emailTextField = AuthTextField(image: UIImage(systemName: "envelope") ?? UIImage(), placeHolder: "Email")
-    let passwordTextField = AuthTextField(image: UIImage(systemName: "lock") ?? UIImage(), placeHolder: "Password")
+    let nameTextField = AuthTextFieldView(image: UIImage(systemName: "person") ?? UIImage(), placeHolder: "Name")
+    let emailTextField = AuthTextFieldView(image: UIImage(systemName: "envelope") ?? UIImage(), placeHolder: "Email")
+    let passwordTextField = AuthTextFieldView(image: UIImage(systemName: "lock") ?? UIImage(), placeHolder: "Password")
     let button = AuthButton(type: .signup)
     
     let view = UIView()
@@ -22,9 +22,9 @@ struct SignUpView: AuthView {
     init() {
         view.backgroundColor = UIColor(named: "BackgroundColor")
         
-        view.addSubview(nameTextField.view)
-        view.addSubview(emailTextField.view)
-        view.addSubview(passwordTextField.view)
+        view.addSubview(nameTextField)
+        view.addSubview(emailTextField)
+        view.addSubview(passwordTextField)
         view.addSubview(button)
         
         nameTextField.textField.tag = 0
@@ -60,13 +60,13 @@ struct SignUpView: AuthView {
             $0.bottom.equalToSuperview()
             $0.centerX.equalToSuperview()
         }
-        nameTextField.view.snp.makeConstraints {
+        nameTextField.snp.makeConstraints {
             $0.centerY.equalToSuperview().offset(-130)
         }
-        emailTextField.view.snp.makeConstraints {
+        emailTextField.snp.makeConstraints {
             $0.centerY.equalToSuperview().offset(-65)
         }
-        passwordTextField.view.snp.makeConstraints {
+        passwordTextField.snp.makeConstraints {
             $0.centerY.equalToSuperview()
         }
         button.snp.makeConstraints {

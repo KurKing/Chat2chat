@@ -7,19 +7,13 @@
 
 import UIKit
 
-struct AuthTextField {
+class AuthTextFieldView: UIView {
     let textField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = UIColor(named: "BackgroundColor")
         textField.textColor = .white
         textField.font = .systemFont(ofSize: 18)
         return textField
-    }()
-    
-    let view: UIView = {
-        let uiView = UIView()
-        uiView.backgroundColor = UIColor(named: "BackgroundColor")
-        return uiView
     }()
     
     var text: String? {
@@ -45,12 +39,19 @@ struct AuthTextField {
     
     init(image: UIImage, placeHolder: String) {
         self.placeHolder = placeHolder
-        textField.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        super.init(frame: .zero)
         
+        backgroundColor = UIColor(named: "BackgroundColor")
+        
+        textField.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         textFieldImage.image = image
         
-        view.addSubview(textField)
-        view.addSubview(textFieldImage)
+        addSubview(textField)
+        addSubview(textFieldImage)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func clear() {
@@ -58,19 +59,20 @@ struct AuthTextField {
     }
     
     func ping() {
-        UIView.animate(withDuration: 0.4) {
-            textField.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+        let placeHolder = placeHolder
+        UIView.animate(withDuration: 0.4) { [weak self] in
+            self?.textField.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
         }
         Timer.scheduledTimer(withTimeInterval: 0.4, repeats: false) { (_) in
-            UIView.animate(withDuration: 0.4) {
-                textField.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+            UIView.animate(withDuration: 0.4) { [weak self] in
+                self?.textField.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
             }
         }
     }
     
     //MARK: - Constrains
     func addConstrains(){
-        view.snp.makeConstraints {
+        snp.makeConstraints {
             $0.leading.equalToSuperview().offset(15)
             $0.trailing.equalToSuperview().offset(-15)
             $0.height.equalTo(50)
