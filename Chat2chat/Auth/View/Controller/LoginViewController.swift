@@ -7,30 +7,24 @@
 
 import UIKit
 
-class LoginViewController: AuthViewController {
-    let loginView = LoginView()
+final class LoginViewController: AuthViewController {
+    let loginView: LoginView
     weak var presenter: LoginViewControllerPresenter?
     
-    override var authView: AuthView {
-        return loginView
+    init() {
+        loginView = LoginView()
+        super.init(authView: loginView)
     }
     
-    override func loadView() {
-        super.loadView()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginView.signupButton.addTarget(self, action: #selector(signUpButtonPressed(_:)), for: .touchUpInside)
-        
-        // naviogation view
         title = "Log in"
-    }
-    
-    override func buttonPressed() {
-        if let data = getAuthData() {
-            presenter?.loginButtonPressed(authData: data)
-        }
+        loginView.signupButton.addTarget(self, action: #selector(signUpButtonPressed(_:)), for: .touchUpInside)
+        loginView.loginButton.addTarget(self, action: #selector(authButtonPressed(_:)), for: .touchUpInside)
     }
     
     func clearTextFields() {
@@ -41,6 +35,12 @@ class LoginViewController: AuthViewController {
     func setAuthData(authData: AuthData) {
         loginView.passwordTextField.textField.text = authData.password
         loginView.emailTextField.textField.text = authData.email
+    }
+    
+    @objc func authButtonPressed(_ sender: UIButton) {
+        if let data = getAuthData() {
+            presenter?.loginButtonPressed(authData: data)
+        }
     }
     
     @objc private func signUpButtonPressed(_ sender: UIButton) {

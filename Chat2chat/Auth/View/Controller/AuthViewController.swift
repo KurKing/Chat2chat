@@ -8,33 +8,31 @@
 import UIKit
 
 class AuthViewController: UIViewController {
+    private let authView: AuthView
     
-    var authView: AuthView {
-        return emptyAuthView()
+    init(authView: AuthView) {
+        self.authView = authView
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func loadView() {
         super.loadView()
         view.backgroundColor = UIColor(named: "BackgroundColor")
-        view.addSubview(authView.view)
-        if view.bounds.width > 650 {
-            authView.view.snp.makeConstraints {
-                $0.width.equalTo(650)
-            }
-        } else {
-            authView.view.snp.makeConstraints {
-                $0.width.equalToSuperview()
-            }
+        view.addSubview(authView)
+        authView.snp.makeConstraints {
+            $0.width.equalToSuperview()
         }
         authView.addConstrains()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         authView.setTextFieldDelegate(delegate: self)
         hideKeyboardWhenTappedAround()
-        
-        authView.authButton.addTarget(self, action: #selector(authButtonPressed(_:)), for: .touchUpInside)
         
         navigationController?.navigationBar.barTintColor = UIColor(named: "BackgroundColor")
         navigationController?.navigationBar.isTranslucent = false
@@ -49,8 +47,6 @@ class AuthViewController: UIViewController {
             navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
         }
     }
-    
-    func buttonPressed() {}
     
     func getString(from textfield: AuthTextFieldView) -> String? {
         let validator = Validator()
@@ -68,10 +64,6 @@ class AuthViewController: UIViewController {
         present(alertViewController, animated: true, completion: nil)
     }
     
-    @objc private func authButtonPressed(_ sender: UIButton) {
-        buttonPressed()
-    }
-    
     @objc private func dismissKeyboard() {
         view.endEditing(true)
     }
@@ -81,14 +73,6 @@ class AuthViewController: UIViewController {
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
-    
-    private struct emptyAuthView: AuthView {
-        var view = UIView()
-        var authButton = UIButton()
-        func setTextFieldDelegate(delegate: UITextFieldDelegate) {}
-        func getTextField(tag: Int) -> UITextField? { return nil }
-        func addConstrains() {}
-    }
 }
 
 //MARK: - UITextFieldDelegate
@@ -96,9 +80,9 @@ extension AuthViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let nextTextField = authView
                 .getTextField(tag: textField.tag + 1) else {
-            textField.resignFirstResponder()
-            return true
-        }
+                    textField.resignFirstResponder()
+                    return true
+                }
         nextTextField.becomeFirstResponder()
         return true
     }

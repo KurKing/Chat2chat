@@ -7,31 +7,31 @@
 
 import UIKit
 
-struct SignUpView: AuthView {
+class SignUpView: UIView, AuthView {
     let nameTextField = AuthTextFieldView(image: UIImage(systemName: "person") ?? UIImage(), placeHolder: "Name")
     let emailTextField = AuthTextFieldView(image: UIImage(systemName: "envelope") ?? UIImage(), placeHolder: "Email")
     let passwordTextField = AuthTextFieldView(image: UIImage(systemName: "lock") ?? UIImage(), placeHolder: "Password")
     let button = AuthButton(type: .signup)
     
-    let view = UIView()
-    
-    var authButton: UIButton {
-        return button
-    }
-    
     init() {
-        view.backgroundColor = UIColor(named: "BackgroundColor")
+        super.init(frame: .zero)
         
-        view.addSubview(nameTextField)
-        view.addSubview(emailTextField)
-        view.addSubview(passwordTextField)
-        view.addSubview(button)
+        backgroundColor = UIColor(named: "BackgroundColor")
+        
+        addSubview(nameTextField)
+        addSubview(emailTextField)
+        addSubview(passwordTextField)
+        addSubview(button)
         
         nameTextField.textField.tag = 0
         emailTextField.textField.tag = 1
         passwordTextField.textField.tag = 2
         
         passwordTextField.textField.isSecureTextEntry = true
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func setTextFieldDelegate(delegate: UITextFieldDelegate) {
@@ -55,7 +55,7 @@ struct SignUpView: AuthView {
     
     //MARK: - Add Constrains
     func addConstrains() {
-        view.snp.makeConstraints {
+        snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.bottom.equalToSuperview()
             $0.centerX.equalToSuperview()

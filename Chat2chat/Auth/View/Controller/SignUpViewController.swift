@@ -7,26 +7,26 @@
 
 import UIKit
 
-class SignUpViewController: AuthViewController {
-    let signUpView = SignUpView()
+final class SignUpViewController: AuthViewController {
+    let signUpView: SignUpView
     weak var presenter: SignupViewControllerPresenter?
     
-    override var authView: AuthView {
-        return signUpView
+    init() {
+        signUpView = SignUpView()
+        super.init(authView: signUpView)
     }
     
-    override func loadView() {
-        super.loadView()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // navigation view
         title = "Sign Up"
+        signUpView.button.addTarget(self, action: #selector(authButtonPressed(_:)), for: .touchUpInside)
     }
     
-    override func buttonPressed() {
+    @objc func authButtonPressed(_ sender: UIButton) {
         if let data = getAuthData() {
             presenter?.signupButtonPressed(name: data.name, authData: data.authData)
         }

@@ -7,9 +7,7 @@
 
 import UIKit
 
-protocol AuthView {
-    var view: UIView { get }
-    var authButton: UIButton { get }
+protocol AuthView: UIView {
     func setTextFieldDelegate(delegate: UITextFieldDelegate)
     func getTextField(tag: Int) -> UITextField?
     func addConstrains()
