@@ -35,6 +35,19 @@ class AuthViewController: UIViewController {
         hideKeyboardWhenTappedAround()
         
         authView.authButton.addTarget(self, action: #selector(authButtonPressed(_:)), for: .touchUpInside)
+        
+        navigationController?.navigationBar.barTintColor = UIColor(named: "BackgroundColor")
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        if #available(iOS 15.0, *) {
+            let navigationBarAppearance = UINavigationBarAppearance()
+            navigationBarAppearance.shadowImage = nil
+            navigationBarAppearance.backgroundColor = UIColor(named: "BackgroundColor")
+            navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+            navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+        }
     }
     
     func buttonPressed() {}

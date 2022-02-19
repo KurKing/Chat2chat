@@ -22,11 +22,8 @@ class SignUpViewController: AuthViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // naviogation view
+        // navigation view
         title = "Sign Up"
-        navigationController?.navigationBar.barTintColor = UIColor(named: "BackgroundColor")
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
     override func buttonPressed() {

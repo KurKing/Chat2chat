@@ -35,6 +35,15 @@ class ChatViewController: UIViewController  {
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         navigationItem.hidesBackButton = true
         
+        if #available(iOS 15.0, *) {
+            let navigationBarAppearance = UINavigationBarAppearance()
+            navigationBarAppearance.shadowImage = nil
+            navigationBarAppearance.backgroundColor = UIColor(named: "BackgroundColor")
+            navigationBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+            navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+        }
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadButtonPressed(_:)))
         
         // cells registration

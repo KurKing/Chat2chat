@@ -25,9 +25,6 @@ class LoginViewController: AuthViewController {
         
         // naviogation view
         title = "Log in"
-        navigationController?.navigationBar.barTintColor = UIColor(named: "BackgroundColor")
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
     override func buttonPressed() {
