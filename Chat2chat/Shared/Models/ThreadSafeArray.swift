@@ -11,6 +11,22 @@ class ThreadSafeArray<T> {
     private var data = [T]()
     private let queue = DispatchQueue(label: "data.append.and.read", attributes: .concurrent)
     
+    var count: Int {
+        var currentCount = 0
+        queue.sync {
+            currentCount = data.count
+        }
+        return currentCount
+    }
+    
+    var isEmpty: Bool {
+        var isEmpty = false
+        queue.sync {
+            isEmpty = data.isEmpty
+        }
+        return isEmpty
+    }
+    
     func append(_ data: T) {
         queue.async(flags: .barrier) { [weak self] in
             self?.data.append(data)
@@ -47,11 +63,11 @@ class ThreadSafeArray<T> {
         return readData
     }
     
-    var count: Int {
-        var currentCount = 0
+    func getAll() -> [T] {
+        var data = [T]()
         queue.sync {
-            currentCount = data.count
+            data = self.data
         }
-        return currentCount
+        return data
     }
 }

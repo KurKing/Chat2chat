@@ -14,9 +14,17 @@ class MessageContainer {
         messages.count
     }
     
+    var isEmpty: Bool {
+        messages.isEmpty
+    }
+    
     var isOnlyFirstMessageAdded: Bool {
         return messages.count == 1 &&
             (messages.get(index: 0)?.text ?? "") == Constants.Messages.chatStartMessage
+    }
+    
+    var allMessages: [MessageViewModel] {
+        return messages.getAll()
     }
     
     func getMessage(index: Int) -> MessageViewModel? {
