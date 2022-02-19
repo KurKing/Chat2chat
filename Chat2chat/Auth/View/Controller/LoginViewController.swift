@@ -21,7 +21,7 @@ class LoginViewController: AuthViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginView.signupButton.button.addTarget(self, action: #selector(signUpButtonPressed(_:)), for: .touchUpInside)
+        loginView.signupButton.addTarget(self, action: #selector(signUpButtonPressed(_:)), for: .touchUpInside)
         
         // naviogation view
         title = "Log in"

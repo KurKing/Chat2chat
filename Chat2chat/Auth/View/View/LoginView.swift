@@ -16,7 +16,7 @@ struct LoginView: AuthView {
     let view = UIView()
     
     var authButton: UIButton {
-        return loginButton.button
+        return loginButton
     }
     
     init() {
@@ -24,8 +24,8 @@ struct LoginView: AuthView {
         
         view.addSubview(emailTextField.view)
         view.addSubview(passwordTextField.view)
-        view.addSubview(loginButton.button)
-        view.addSubview(signupButton.button)
+        view.addSubview(loginButton)
+        view.addSubview(signupButton)
 
         emailTextField.textField.tag = 0
         passwordTextField.textField.tag = 1
@@ -62,11 +62,11 @@ struct LoginView: AuthView {
         passwordTextField.view.snp.makeConstraints {
             $0.centerY.equalToSuperview().offset(-65)
         }
-        loginButton.button.snp.makeConstraints {
+        loginButton.snp.makeConstraints {
             $0.centerY.equalToSuperview().offset(200)
             $0.centerX.equalToSuperview().offset(-90)
         }
-        signupButton.button.snp.makeConstraints {
+        signupButton.snp.makeConstraints {
             $0.centerY.equalToSuperview().offset(200)
             $0.centerX.equalToSuperview().offset(90)
         }
