@@ -20,7 +20,7 @@ class ChatViewController: UIViewController  {
         chatView = ChatView(dataSource: self, tableViewDelegate: self)
         
         view.addSubview(chatView.bgImageView)
-        view.addSubview(chatView.view)
+        view.addSubview(chatView)
         
         chatView.addConstraints()
     }
@@ -109,21 +109,21 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(type: InterlocutorMessageViewCell.self)
         cell.setMessage(message)
         if let avatar = UIImage(named: avatarName) {
-            cell.setAvatarImage(avatar)
+            cell.image = avatar
         }
         return cell
-        
     }
 }
 
 //MARK: - Keyboard
 private extension ChatViewController {
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let userInfo = notification.userInfo else { return }
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         let keyboardFrame = keyboardSize.cgRectValue
         
-        chatView.view.snp.updateConstraints {
+        chatView.snp.updateConstraints {
             $0.bottom.equalToSuperview().offset(-keyboardFrame.height)
         }
         
@@ -132,12 +132,14 @@ private extension ChatViewController {
             chatView.tableView.scrollToRow(at: IndexPath(row: (presenter?.messagesCount ?? 0) - 1, section: 0), at: .top, animated: false)
         }
     }
+    
     @objc func keyboardWillHide(notification: NSNotification) {
-        chatView.view.snp.updateConstraints {
+        chatView.snp.updateConstraints {
             $0.bottom.equalToSuperview()
         }
         view.layoutIfNeeded()
     }
+    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
@@ -151,6 +153,7 @@ private extension ChatViewController {
 
 //MARK: - ChatPresenterDelegate
 extension ChatViewController: ChatPresenterDelegate {
+    
     func reloadData() {
         DispatchQueue.main.async {
             self.chatView.tableView.reloadData()
@@ -163,14 +166,14 @@ extension ChatViewController: ChatPresenterDelegate {
     func showLoadingView() {
         DispatchQueue.main.async {
             self.chatView.showLoadingView()
-            self.chatView.view.isUserInteractionEnabled = false
+            self.chatView.isUserInteractionEnabled = false
         }
     }
     
     func hideLoadingView() {
         DispatchQueue.main.async {
             self.chatView.hideLoadingView()
-            self.chatView.view.isUserInteractionEnabled = true
+            self.chatView.isUserInteractionEnabled = true
         }
     }
     

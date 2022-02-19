@@ -13,7 +13,7 @@ class StartedChatTableViewCell: UITableViewCell {
 
     func addConstraints(){
         
-        messageView.view.snp.makeConstraints {
+        messageView.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(20)
             $0.trailing.equalToSuperview().offset(-20)
             $0.bottom.equalToSuperview().offset(-2)
@@ -23,7 +23,7 @@ class StartedChatTableViewCell: UITableViewCell {
         messageView.addConstraints()
     }
     
-    func setMessage(_ message: MessageViewModel) {
+    func setMessage(_ message: Message) {
         messageView.setMessage(message)
     }
 
@@ -34,12 +34,12 @@ class StartedChatTableViewCell: UITableViewCell {
         backgroundColor = .clear
         
         messageView = MessageView()
-        messageView.view.backgroundColor = UIColor(named: "SelfMessageColor")
+        messageView.backgroundColor = UIColor(named: "SelfMessageColor")
         messageView.label.textAlignment = .center
         messageView.label.font = .systemFont(ofSize: 12)
         messageView.label.text = Constants.Messages.chatStartMessage
 
-        contentView.addSubview(messageView.view)
+        contentView.addSubview(messageView)
         addConstraints()
     }
 

@@ -9,7 +9,7 @@ import Foundation
 
 protocol ChatPresenterProtocol: AnyObject {
     func sendMessage(text: String)
-    func getMessage(index: Int) -> MessageViewModel?
+    func getMessage(index: Int) -> Message?
     func endChat()
     
     var isMessagesEmpty: Bool { get }

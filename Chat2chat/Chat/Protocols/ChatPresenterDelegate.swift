@@ -8,10 +8,10 @@
 import Foundation
 
 protocol ChatPresenterDelegate: AnyObject {
+    var title: String? { set get }
+    
     func showLoadingView()
     func hideLoadingView()
     func reloadData()
     func showDeletedChatAlert(action: @escaping ()->())
-    
-    var title: String? { set get }
 }

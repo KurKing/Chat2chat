@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct SenderTextFieldView {
+class SenderTextFieldView: UIView {
     let sendMessageTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = UIColor(named: "BackgroundColor")
@@ -27,20 +27,15 @@ struct SenderTextFieldView {
         return uiButton
     }()
     
-    var view: UIView {
-        return sendMessageTextFieldView
-    }
-
-    private let sendMessageTextFieldView: UIView = {
-        let uiView = UIView()
-        uiView.backgroundColor = UIColor(named: "BackgroundColor")
-        
-        return uiView
-    }()
-    
     init() {
-        sendMessageTextFieldView.addSubview(sendMessageTextField)
-        sendMessageTextFieldView.addSubview(button)
+        super.init(frame: .zero)
+        backgroundColor = UIColor(named: "BackgroundColor")
+        addSubview(sendMessageTextField)
+        addSubview(button)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func clear() {

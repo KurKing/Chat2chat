@@ -9,7 +9,16 @@ import UIKit
 import SnapKit
 
 class InterlocutorMessageViewCell: UITableViewCell {
-
+    
+    var image: UIImage? {
+        set {
+            avatar.image = newValue
+        }
+        get {
+            avatar.image
+        }
+    }
+    
     private let avatar: UIImageView = {
         let image = UIImage(named: "noavatar")
         let imageView = UIImageView(image: image)
@@ -20,32 +29,6 @@ class InterlocutorMessageViewCell: UITableViewCell {
     }()
     
     private var messageView: MessageView
-
-    func addConstraints(){
-        avatar.snp.makeConstraints {
-            $0.size.equalTo(40)
-            
-            $0.leading.equalToSuperview().offset(10)
-            $0.bottom.equalToSuperview().offset(-2)
-        }
-        
-        messageView.view.snp.makeConstraints {
-            $0.leading.equalTo(avatar.snp.trailing).offset(5)
-            $0.trailing.lessThanOrEqualToSuperview().offset(-50)
-            $0.bottom.equalToSuperview().offset(-2)
-            $0.topMargin.equalToSuperview().offset(10)
-        }
-        
-        messageView.addConstraints()
-    }
-
-    func setMessage(_ message: MessageViewModel) {
-        messageView.setMessage(message)
-    }
-    
-    func setAvatarImage(_ image: UIImage) {
-        avatar.image = image
-    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         messageView = MessageView()
@@ -56,9 +39,13 @@ class InterlocutorMessageViewCell: UITableViewCell {
         backgroundColor = .clear
         
         contentView.addSubview(avatar)
-        contentView.addSubview(messageView.view)
+        contentView.addSubview(messageView)
         
         addConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func awakeFromNib() {
@@ -69,7 +56,25 @@ class InterlocutorMessageViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func setMessage(_ message: Message) {
+        messageView.setMessage(message)
+    }
+    
+    func addConstraints(){
+        avatar.snp.makeConstraints {
+            $0.size.equalTo(40)
+            
+            $0.leading.equalToSuperview().offset(10)
+            $0.bottom.equalToSuperview().offset(-2)
+        }
+        
+        messageView.snp.makeConstraints {
+            $0.leading.equalTo(avatar.snp.trailing).offset(5)
+            $0.trailing.lessThanOrEqualToSuperview().offset(-50)
+            $0.bottom.equalToSuperview().offset(-2)
+            $0.topMargin.equalToSuperview().offset(10)
+        }
+        
+        messageView.addConstraints()
     }
 }

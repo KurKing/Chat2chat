@@ -12,7 +12,7 @@ struct MessageDBEntity {
     let time: Double
     let fromUser: String
     
-    func mapToViewModel(login: String) -> MessageViewModel {
-        return MessageViewModel(text: text, fromMe: fromUser==login)
+    func mapToMessage(login: String) -> Message {
+        return Message(text: text, fromMe: fromUser==login)
     }
 }

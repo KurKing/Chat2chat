@@ -7,7 +7,8 @@
 
 import UIKit
 
-struct MessageView {
+class MessageView: UIView {
+    
     let label: UILabel = {
         let uilabel = UILabel()
         
@@ -19,15 +20,22 @@ struct MessageView {
         
         return uilabel
     }()
-
-    let view: UIView = {
-        let uiView = UIView()
-        uiView.layer.cornerRadius = 10
-        uiView.clipsToBounds = true
-        uiView.backgroundColor = UIColor(named: "BackgroundColor")
-        
-        return uiView
-    }()
+    
+    init() {
+        super.init(frame: .zero)
+        layer.cornerRadius = 10
+        clipsToBounds = true
+        backgroundColor = UIColor(named: "BackgroundColor")
+        addSubview(label)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setMessage(_ message: Message) {
+        label.text = message.text
+    }
     
     func addConstraints(){
         label.snp.makeConstraints {
@@ -37,13 +45,5 @@ struct MessageView {
             $0.leadingMargin.equalTo(10)
             $0.trailingMargin.equalTo(-10)
         }
-    }
-
-    func setMessage(_ message: MessageViewModel) {
-        label.text = message.text
-    }
-    
-    init() {
-        view.addSubview(label)
     }
 }

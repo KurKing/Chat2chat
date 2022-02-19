@@ -7,7 +7,10 @@
 
 import UIKit
 
-struct ChatView {
+class ChatView: UIView {
+
+    let textFieldView: SenderTextFieldView
+    let loadingView = ChatLoadingView()
     
     let bgImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "chatBg"))
@@ -26,10 +29,6 @@ struct ChatView {
         return tableView
     }()
     
-    let view  = UIView()
-    let textFieldView: SenderTextFieldView
-    let loadingView = ChatLoadingView()
-    
     var messageText: String? {
         set{
             textFieldView.sendMessageTextField.text = newValue
@@ -43,23 +42,28 @@ struct ChatView {
         
         textFieldView = SenderTextFieldView()
         
+        super.init(frame: .zero)
+        
         tableView.dataSource = dataSource
         tableView.delegate = tableViewDelegate
         
-        view.addSubview(tableView)
-        view.addSubview(textFieldView.view)
-        view.addSubview(loadingView.view)
-
+        addSubview(tableView)
+        addSubview(textFieldView)
+        addSubview(loadingView)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func showLoadingView() {
-        loadingView.view.alpha = 1
+        loadingView.alpha = 1
         textFieldView.sendMessageTextField.isEnabled = false
         textFieldView.button.isEnabled = false
     }
     
     func hideLoadingView() {
-        loadingView.view.alpha = 0
+        loadingView.alpha = 0
         textFieldView.sendMessageTextField.isEnabled = true
         textFieldView.button.isEnabled = true
     }
@@ -69,7 +73,7 @@ struct ChatView {
     }
     
     var isLoadingViewHidden: Bool {
-        return loadingView.view.alpha == 0
+        return loadingView.alpha == 0
     }
     
     //MARK: - addConstraints
@@ -77,16 +81,16 @@ struct ChatView {
         bgImageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        view.snp.makeConstraints {
+        snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         tableView.snp.makeConstraints {
-            $0.bottom.equalTo(textFieldView.view.snp.top)
+            $0.bottom.equalTo(textFieldView.snp.top)
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
         }
-        textFieldView.view.snp.makeConstraints {
+        textFieldView.snp.makeConstraints {
             $0.height.lessThanOrEqualTo(100)
             $0.bottom.equalToSuperview()
             $0.leading.equalToSuperview()

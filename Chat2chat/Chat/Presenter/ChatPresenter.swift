@@ -43,7 +43,7 @@ class ChatPresenter: ChatPresenterProtocol {
         return messageContainer.count == 0
     }
     
-    func getMessage(index: Int) -> MessageViewModel? {
+    func getMessage(index: Int) -> Message? {
         return messageContainer.getMessage(index: index)
     }
     
@@ -84,9 +84,10 @@ extension ChatPresenter: ChatDataBaseDelegate {
         }
         delegate?.reloadData()
     }
+    
     func addMessage(message: MessageDBEntity) {
         delegate?.hideLoadingView()
-        messageContainer.addMessage(message.mapToViewModel(login: userLogin))
+        messageContainer.addMessage(message.mapToMessage(login: userLogin))
         delegate?.reloadData()
         
         if messageContainer.isOnlyFirstMessageAdded {

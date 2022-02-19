@@ -11,22 +11,6 @@ class SelfMessageViewCell: UITableViewCell {
 
     private var messageView: MessageView!
 
-    func addConstraints(){
-        
-        messageView.view.snp.makeConstraints {
-            $0.leading.greaterThanOrEqualToSuperview().offset(50)
-            $0.trailing.equalToSuperview().offset(-3)
-            $0.bottom.equalToSuperview().offset(-2)
-            $0.topMargin.equalToSuperview().offset(10)
-        }
-        
-        messageView.addConstraints()
-    }
-    
-    func setMessage(_ message: MessageViewModel) {
-        messageView.setMessage(message)
-    }
-
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -34,10 +18,14 @@ class SelfMessageViewCell: UITableViewCell {
         backgroundColor = .clear
         
         messageView = MessageView()
-        messageView.view.backgroundColor = UIColor(named: "SelfMessageColor")
+        messageView.backgroundColor = UIColor(named: "SelfMessageColor")
 
-        contentView.addSubview(messageView.view)
+        contentView.addSubview(messageView)
         addConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func awakeFromNib() {
@@ -48,8 +36,17 @@ class SelfMessageViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func addConstraints(){
+        messageView.snp.makeConstraints {
+            $0.leading.greaterThanOrEqualToSuperview().offset(50)
+            $0.trailing.equalToSuperview().offset(-3)
+            $0.bottom.equalToSuperview().offset(-2)
+            $0.topMargin.equalToSuperview().offset(10)
+        }
+        messageView.addConstraints()
     }
-
+    
+    func setMessage(_ message: Message) {
+        messageView.setMessage(message)
+    }
 }

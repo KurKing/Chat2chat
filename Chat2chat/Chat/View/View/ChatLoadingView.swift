@@ -7,15 +7,7 @@
 
 import UIKit
 
-struct ChatLoadingView {
-    //MARK: - Views
-    private let labelBackground: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(named: "SelfMessageColor")
-        view.layer.cornerRadius = 7
-        view.clipsToBounds = true
-        return view
-    }()
+class ChatLoadingView: UIView {
     
     private let label: UILabel = {
         let uiLabel = UILabel()
@@ -26,9 +18,22 @@ struct ChatLoadingView {
         return uiLabel
     }()
     
-    //MARK: - addConstraints
-    func addConstraints(){
-        labelBackground.snp.makeConstraints {
+    init() {
+        super.init(frame: .zero)
+        
+        backgroundColor = UIColor(named: "SelfMessageColor")
+        layer.cornerRadius = 7
+        clipsToBounds = true
+        
+        addSubview(label)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func addConstraints() {
+        snp.makeConstraints {
             $0.center.equalToSuperview()
         }
         label.snp.makeConstraints {
@@ -37,13 +42,5 @@ struct ChatLoadingView {
             $0.leading.equalToSuperview().offset(10)
             $0.trailing.equalToSuperview().offset(-10)
         }
-    }
-    
-    init() {
-        labelBackground.addSubview(label)
-    }
-    
-    var view: UIView {
-        return labelBackground
     }
 }
